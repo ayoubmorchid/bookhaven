@@ -208,3 +208,24 @@ input:focus {
     background: linear-gradient(to right, #D9A891, #85191A);
   }
 }
+
+
+
+
+/* login.css */
+
+.forgot-password {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.forgot-link {
+  color: #a00000;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}

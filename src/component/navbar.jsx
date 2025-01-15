@@ -12,37 +12,37 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="logo-link">
-        EpicReads
+        <Link to="/" onClick={() => handleTabClick('home')}>EpicReads</Link>
       </div>
       <ul className="nav-links">
         <li
           className={`nav-item ${activeTab === 'home' ? 'active' : ''}`}
           onClick={() => handleTabClick('home')}
         >
-          <a href="#">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li
           className={`nav-item ${activeTab === 'books' ? 'active' : ''}`}
           onClick={() => handleTabClick('books')}
         >
-          <Link to='books'>Books</Link>
+          <Link to="/books">Books</Link>
         </li>
         <li
           className={`nav-item ${activeTab === 'about' ? 'active' : ''}`}
           onClick={() => handleTabClick('about')}
         >
-          <a href="#">About</a>
+          <Link to="/about">About</Link>
         </li>
         <li
           className={`nav-item ${activeTab === 'contact' ? 'active' : ''}`}
           onClick={() => handleTabClick('contact')}
         >
-          <a href="#">Contact</a>
+          <Link to="/contact">Contact</Link>
         </li>
       </ul>
       <div className="auth-links">
-        <Link to="login" className="auth-link">Login</Link>
-        <Link to="signup" className="auth-link">Sign Up</Link>
+        <Link to="/login" className="auth-link">Login</Link>
+        <Link to="/signup" className="auth-link">Sign Up</Link>
       </div>
     </nav>
   );

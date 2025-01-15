@@ -47,6 +47,11 @@ const Login = () => {
               {isLoading ? <div className="loading-spinner"></div> : "Log In"}
             </button>
           </form>
+          <div className="forgot-password">
+            <Link to="/forget-password" className="forgot-link">
+              Forgot your password?
+            </Link>
+          </div>
           <div className="or">Or Log in with</div>
           <div className="social-login">
             <Link aria-label="Log in with Facebook">
