@@ -209,3 +209,23 @@ input:focus {
     background: linear-gradient(to right, #D9A891, #85191A);
   }
 }
+
+
+
+.signup-redirect {
+  text-align: center;
+  margin-top: 20px;
+  color: #000;
+  font-size: 14px;
+}
+
+.signup-redirect .signup-link {
+  color: #9b5e5e;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.signup-redirect .signup-link:hover {
+  text-decoration: underline;
+  color: #7a4949;
+}
