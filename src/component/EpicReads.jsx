@@ -2,13 +2,23 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../style/page1.css";
 
-
+// Import images
+import bindingImage from "../images/BINDING.jpg";
+import classyImage from "../images/CLASSY.jpg";
+import dragonTattooImage from "../images/Detective Investigation Book Cover Template.jpg";
+import harryImage from "../images/HARRY.jpg";
+import hollowImage from "../images/HOLLOW.jpg";
+import hooverImage from "../images/HOOVER.jpg";
+import kingdomImage from "../images/KINGDOM.jpg";
+import robertsImage from "../images/ROBERTS.jpg";
+import ruinsImage from "../images/RUINS.jpg";
+import turanoImage from "../images/TURANO.jpg";
+import universeImage from "../images/UNIVERSE.jpg";
+import xoxoImage from "../images/XOXO.jpg";
 
 const EpicReads = () => {
   return (
     <div>
-
-
       {/* Sidebar */}
       <div className="sidebar">
         <div className="search-bar">
@@ -50,11 +60,11 @@ const EpicReads = () => {
         <CategorySection
           title="Detective"
           books={[
-            { image : "CLASSY.jpg", title: "Jaya: The Mahabharata" },
-            { image: "HARRY.jpg", title: "1984 by George Orwell" },
-            { image: "ROBERTS.jpg", title: "Sherlock Holmes" },
+            { image: classyImage, title: "Jaya: The Mahabharata" },
+            { image: harryImage, title: "1984 by George Orwell" },
+            { image: robertsImage, title: "Sherlock Holmes" },
             {
-              image: "Detective Investigation Book Cover Template.jpg",
+              image: dragonTattooImage,
               title: "The Girl with the Dragon Tattoo",
             },
           ]}
@@ -64,10 +74,10 @@ const EpicReads = () => {
         <CategorySection
           title="Love"
           books={[
-            { image: "HOOVER.jpg", title: "Pride and Prejudice" },
-            { image: "XOXO.jpg", title: "The Notebook" },
-            { image: "TURANO.jpg", title: "Me Before You" },
-            { image: "HOLLOW.jpg", title: "The Time Traveler's Wife" },
+            { image: hooverImage, title: "Pride and Prejudice" },
+            { image: xoxoImage, title: "The Notebook" },
+            { image: turanoImage, title: "Me Before You" },
+            { image: hollowImage, title: "The Time Traveler's Wife" },
           ]}
         />
 
@@ -75,10 +85,10 @@ const EpicReads = () => {
         <CategorySection
           title="Science Fiction"
           books={[
-            { image: "BINDING.jpg", title: "Dune by Frank Herbert" },
-            { image: "UNIVERSE.jpg", title: "Ender's Game" },
-            { image: "KINGDOM.jpg", title: "Neuromancer" },
-            { image: "RUINS.jpg", title: "The Hitchhiker's Guide to the Galaxy" },
+            { image: bindingImage, title: "Dune by Frank Herbert" },
+            { image: universeImage, title: "Ender's Game" },
+            { image: kingdomImage, title: "Neuromancer" },
+            { image: ruinsImage, title: "The Hitchhiker's Guide to the Galaxy" },
           ]}
         />
       </div>
