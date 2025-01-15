@@ -18,85 +18,85 @@ import xoxoImage from "../images/XOXO.jpg";
 
 const EpicReads = () => {
   return (
-    <div>
-      {/* Sidebar */}
-      <div className="sidebar">
-        <div className="search-bar">
-          <input type="text" placeholder="Search books..." />
-          <button>🔍</button>
+    <div className="books-container">
+      {/* عنوان الصفحة */}
+      <h1>Explore Our Books</h1>
+      <p>Find your next favorite read from our diverse collection.</p>
+
+      <div className="content-container">
+        {/* Sidebar */}
+        <div className="sidebar">
+          <div className="search-bar">
+            <input type="text" placeholder="Search books..." />
+            <button>🔍</button>
+          </div>
+          <h2>Popular Categories</h2>
+          <ul>
+            <li>
+              <Link to="#">📘 Memory books</Link>
+            </li>
+            <li>
+              <Link to="#">📖 Novels</Link>
+            </li>
+            <li>
+              <Link to="#">🌍 Travel books</Link>
+            </li>
+            <li>
+              <Link to="#">✒️ Poetry books</Link>
+            </li>
+            <li>
+              <Link to="#">👤 Biography books</Link>
+            </li>
+            <li>
+              <Link to="#">📚 Religious books</Link>
+            </li>
+            <li>
+              <Link to="#">💡 Knowledge books</Link>
+            </li>
+            <li>
+              <Link to="#">👶 Children's books</Link>
+            </li>
+          </ul>
         </div>
-        <h2>Popular Categories</h2>
-        <ul>
-          <li>
-            <Link to="#">📘 Memory books</Link>
-          </li>
-          <li>
-            <Link to="#">📖 Novels</Link>
-          </li>
-          <li>
-            <Link to="#">🌍 Travel books</Link>
-          </li>
-          <li>
-            <Link to="#">✒️ Poetry books</Link>
-          </li>
-          <li>
-            <Link to="#">👤 Biography books</Link>
-          </li>
-          <li>
-            <Link to="#">📚 Religious books</Link>
-          </li>
-          <li>
-            <Link to="#">💡 Knowledge books</Link>
-          </li>
-          <li>
-            <Link to="#">👶 Children's books</Link>
-          </li>
-        </ul>
-      </div>
 
-      {/* Main Content */}
-      <div className="main-content">
-        {/* Category: Detective */}
-        <CategorySection
-          title="Detective"
-          books={[
-            { image: classyImage, title: "Jaya: The Mahabharata" },
-            { image: harryImage, title: "1984 by George Orwell" },
-            { image: robertsImage, title: "Sherlock Holmes" },
-            {
-              image: dragonTattooImage,
-              title: "The Girl with the Dragon Tattoo",
-            },
-          ]}
-        />
+        {/* الأقسام */}
+        <div className="books-grid">
+          <CategorySection
+            title="Detective"
+            books={[
+              { image: classyImage, title: "Jaya: The Mahabharata" },
+              { image: harryImage, title: "1984 by George Orwell" },
+              { image: robertsImage, title: "Sherlock Holmes" },
+              { image: dragonTattooImage, title: "The Girl with the Dragon Tattoo" },
+            ]}
+          />
 
-        {/* Category: Love */}
-        <CategorySection
-          title="Love"
-          books={[
-            { image: hooverImage, title: "Pride and Prejudice" },
-            { image: xoxoImage, title: "The Notebook" },
-            { image: turanoImage, title: "Me Before You" },
-            { image: hollowImage, title: "The Time Traveler's Wife" },
-          ]}
-        />
+          <CategorySection
+            title="Love"
+            books={[
+              { image: hooverImage, title: "Pride and Prejudice" },
+              { image: xoxoImage, title: "The Notebook" },
+              { image: turanoImage, title: "Me Before You" },
+              { image: hollowImage, title: "The Time Traveler's Wife" },
+            ]}
+          />
 
-        {/* Category: Science Fiction */}
-        <CategorySection
-          title="Science Fiction"
-          books={[
-            { image: bindingImage, title: "Dune by Frank Herbert" },
-            { image: universeImage, title: "Ender's Game" },
-            { image: kingdomImage, title: "Neuromancer" },
-            { image: ruinsImage, title: "The Hitchhiker's Guide to the Galaxy" },
-          ]}
-        />
+          <CategorySection
+            title="Science Fiction"
+            books={[
+              { image: bindingImage, title: "Dune by Frank Herbert" },
+              { image: universeImage, title: "Ender's Game" },
+              { image: kingdomImage, title: "Neuromancer" },
+              { image: ruinsImage, title: "The Hitchhiker's Guide to the Galaxy" },
+            ]}
+          />
+        </div>
       </div>
     </div>
   );
 };
 
-// Category Section Component
+// Component for a single category
 const CategorySection = ({ title, books }) => (
   <div className="category-section">
     <h3>{title}</h3>
@@ -106,9 +106,9 @@ const CategorySection = ({ title, books }) => (
           <img src={book.image} alt={book.title} />
           <p>{book.title}</p>
           <div className="actions">
-            <button>📖</button>
-            <button>❤</button>
-            <button>🛒</button>
+            <button>📖 Read</button>
+            <button>❤ Like</button>
+            <button>🛒 Buy</button>
           </div>
         </div>
       ))}
