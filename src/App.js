@@ -5,6 +5,8 @@ import SignUpForm from './pages/register';
 import Login from "./pages/login";
 import Books from "./pages/Books";
 import ForgetPassword from './pages/ForgetPassword';
+import ContactUs from './pages/contactus';
+
 
 
 function App() {
@@ -16,6 +18,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/books" element={<Books />} />
         <Route path="/forget-password" element={<ForgetPassword />} />
+        <Route path="/contact" element={<ContactUs />} />
 
       </Routes>
     </Router>
