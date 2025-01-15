@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+
+/* Variables CSS */
+:root {
+    --primary-color: #85191A;
+    --secondary-color: #E9C3B2;
+    --font-family-main: "Open Sans", sans-serif;
+    --font-family-alt: "Noto Sans JP", sans-serif;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: var(--secondary-color);
+}
+
+/* Section image */
+
+
+.image img {
+    position: relative;
+    right: 100px;
+    top: 80px;
+    width: 450px;
+    height: 500px;
+    float: right;
+    border-radius: 10px; /* Optionnel pour arrondir les coins */
+}
+
+/* Section Welcome */
+.welcom {
+    position: relative;
+    right: -140px;
+    top: 250px;
+    width: 400px;
+    text-align: center;
+    line-height: 50px;
+    letter-spacing: 2px;
+
+}
+
+.welcom h1 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    font-family: var(--font-family-main);
+    font-style: normal;
+    padding-top: 20px;
+}
+
+.welcom p {
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.welcom input {
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 20px;
+    height: 28px;
+    width: 200px;
+    background-color: transparent;
+    padding-left: 10px;
+    position: relative;
+    top: 10px;
+}
+
+/* Section Description */
+.description {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-family-alt);
+    font-size: 1rem;
+    color: var(--primary-color);
+    position: relative;
+    top: 200px;
+    left: 50px;
+    width: 1130px;
+}
+
+.description h1{
+    text-align: left;
+    padding: 5px 40px;
+    margin:0;
+    width: 1130px;
+}
+.description h2 {
+    display: flex; /* Définit le h2 comme un conteneur flex */
+    align-items: center; /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement */
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 20px 0;
+    text-align: center; /* Facultatif, pour aligner le texte au centre */
+}
+
+
+.description h2::before,
+.description h2::after {
+    content: "";
+    width: 400px; /* Largeur fixe */
+    height: 2px;
+    background-color: #85191A;
+    margin: 0 10px;
+}
+
+.description button {
+    background-color: transparent;
+    font-size: 1rem;
+    font-weight: 550;
+    color: var(--primary-color);
+    border: none;
+    width: 160px;
+    height: 30px;
+    margin: 10px auto 30px auto;
+    display: block;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.description button:hover {
+    transform: scale(1.1);
+    color: antiquewhite;
+}
+
+/* Section Books */
+.popularbook,
+.sellingbook {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 1130px;
+    margin: 20px auto;
+    margin-left: 1px;
+}
+
+.popularbook div,
+.sellingbook div {
+    margin-right: 70px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popularbook div:hover,
+.sellingbook div:hover {
+    transform: scale(1.1);
+}
+
+.popularbook img,
+.sellingbook img {
+    width: 170px;
+    height: 270px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.popularbook p,
+.sellingbook p {
+    color: black;
+    font-size: medium;
+    text-align: center;
+}
+
+/* Section Description Detail */
+.desc {
+    margin-top: 250px;
+    height: 450px;
+}
+
+.desc img {
+    width: 700px;
+    height: 450px;
+    float: right;
+    margin-right: 10px;
+    border-radius: 0 0 0 180px;
+}
+
+.desc h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 900;
+    padding-right: 40px;
+    padding-top: 100px;
+    color: var(--primary-color);
+}
+
+.desc p {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 400;
+    padding-right: 40px;
+    margin-top: 10px;
+    font-family: var(--font-family-alt);
+}

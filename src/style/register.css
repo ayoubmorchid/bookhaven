@@ -1,0 +1,103 @@
+/* register.css */
+.register-page fieldset {
+    border-radius: 10px;
+    width: 410px;
+    box-shadow: #000;
+    position: relative;
+    left: 400px;
+    top: 100px;
+  }
+  
+  .register-container {
+    background-color: #f0c8bc;
+    padding: 20px 30px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 5px #000;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000;
+  }
+  
+  .input-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #000;
+    font-weight: bold;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  input:focus {
+    border-color: #9b5e5e;
+    box-shadow: 0 0 5px rgba(155, 94, 94, 0.5);
+  }
+  
+  .signup-btn {
+    width: 100%;
+    background-color: #9b5e5e;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .signup-btn:hover {
+    background-color: #7a4949;
+  }
+  
+  .or {
+    text-align: center;
+    margin: 15px 0;
+    color: #000;
+    font-weight: bold;
+  }
+  
+  .social-login {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .social-login img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+  
+  .register-container::before,
+  .register-container::after {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-color: #830606;
+    border-radius: 50%;
+    z-index: -1;
+  }
+  
+  .register-container::before {
+    top: -50px;
+    left: -50px;
+  }
+  
+  .register-container::after {
+    bottom: -50px;
+    right: -50px;
+  }
