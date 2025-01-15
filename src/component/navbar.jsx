@@ -25,7 +25,7 @@ const Navbar = () => {
           className={`nav-item ${activeTab === 'books' ? 'active' : ''}`}
           onClick={() => handleTabClick('books')}
         >
-          <a href="#">Books</a>
+          <Link to='books'>Books</Link>
         </li>
         <li
           className={`nav-item ${activeTab === 'about' ? 'active' : ''}`}

@@ -2,9 +2,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 15px 10px;
   background-color: #800000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
+
 
 .logo-link {
   font-size: 20px;
