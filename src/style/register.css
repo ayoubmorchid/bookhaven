@@ -229,3 +229,22 @@ input:focus {
   text-decoration: underline;
   color: #7a4949;
 }
+
+
+.login-redirect {
+  text-align: center;
+  margin-top: 20px;
+  color: #000;
+  font-size: 14px;
+}
+
+.login-redirect .login-link {
+  color: #9b5e5e;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.login-redirect .login-link:hover {
+  text-decoration: underline;
+  color: #7a4949;
+}
