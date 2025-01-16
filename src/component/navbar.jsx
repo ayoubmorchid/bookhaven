@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="logo-link">
-        <Link to="/" onClick={() => handleTabClick('home')}>EpicReads</Link>
+        <Link to="/shopping" onClick={() => handleTabClick('home')}>EpicReads</Link>
       </div>
       <ul className="nav-links">
         <li

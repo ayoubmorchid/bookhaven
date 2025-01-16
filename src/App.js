@@ -7,6 +7,8 @@ import Books from "./pages/Books";
 import ForgetPassword from './pages/ForgetPassword';
 import ContactUs from './pages/contactus';
 import AboutUs from './pages/about';
+import ShoppingCart from './pages/shoppingcart';
+
 
 
 
@@ -17,6 +19,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="shopping" element={<ShoppingCart />} />
         <Route path="/signup" element={<SignUpForm/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/books" element={<Books />} />
