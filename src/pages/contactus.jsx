@@ -10,9 +10,7 @@ const ContactUs = () => {
             <div className="intro-text">
                 <h2>We'd Love to Hear From You!</h2>
                 <p>
-                Whether you're looking for your next great read, need help finding a specific book, or just want to explore our collection, our team at BookHaven is here to assist you. Connect with us today, and let's dive into the world of stories together!
-
-
+                    Whether you're looking for your next great read, need help finding a specific book, or just want to explore our collection, our team at <strong>BookHaven</strong> is here to assist you. Connect with us today, and let's dive into the world of stories together!
                 </p>
             </div>
 
@@ -22,14 +20,14 @@ const ContactUs = () => {
                 <div className="contact-form">
                     <h3>Get In Touch</h3>
                     <p>
-                        Have questions about our eco-friendly products or want to partner with us? Our team is ready to help!
+                        Have questions or need help? We're ready to assist you!
                     </p>
 
                     <form action="https://formspree.io/f/xovqzgbv" method="POST">
                         <div className="form-group">
                             <input type="text" name="full_name" placeholder="Full Name" required />
                             <input type="email" name="email" placeholder="Email" required />
-                            <textarea name="message" placeholder="Write Message" required></textarea>
+                            <textarea name="message" placeholder="Write your message here" required></textarea>
                         </div>
                         <button type="submit" className="submit-button">
                             <FontAwesomeIcon icon={faEnvelope} /> Send Message
@@ -39,11 +37,11 @@ const ContactUs = () => {
                     <ul className="contact-info">
                         <li>
                             <FontAwesomeIcon icon={faEnvelope} />
-                            <a href="mailto:contact@greenbag.com">contact@epicreads.com</a>
+                            <a href="mailto:contact@bookhaven.com">contact@bookhaven.com</a>
                         </li>
                         <li>
                             <FontAwesomeIcon icon={faPhone} />
-                            <a href="tel:+212636960514">+212 601-100-826 </a>
+                            <a href="tel:+212601100826">+212 601-100-826</a>
                         </li>
                     </ul>
                 </div>
@@ -54,7 +52,7 @@ const ContactUs = () => {
                         src="https://maps.google.com/maps?q=Agadir,%20Morocco&t=&z=13&ie=UTF8&iwloc=&output=embed"
                         frameBorder="0"
                         allowFullScreen
-                        title="Agadir Location"
+                        title="BookHaven Location"
                     ></iframe>
                 </div>
             </div>
