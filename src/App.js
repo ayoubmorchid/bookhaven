@@ -6,6 +6,9 @@ import Login from "./pages/login";
 import Books from "./pages/Books";
 import ForgetPassword from './pages/ForgetPassword';
 import ContactUs from './pages/contactus';
+import AboutUs from './pages/about';
+
+
 
 
 
@@ -19,6 +22,8 @@ function App() {
         <Route path="/books" element={<Books />} />
         <Route path="/forget-password" element={<ForgetPassword />} />
         <Route path="/contact" element={<ContactUs />} />
+        <Route path="/about" element={<AboutUs />} />
+
 
       </Routes>
     </Router>
