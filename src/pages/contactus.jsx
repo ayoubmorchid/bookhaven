@@ -1,12 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import '../style/contactus.css';
 
 const ContactUs = () => {
+    const [errors, setErrors] = useState({});
+    const [formData, setFormData] = useState({ email: "", message: "" });
+
+
+    const handleValidation = (e) => {
+        const { name, value } = e.target;
+
+        if (name === "email") {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            setErrors((prevErrors) => ({
+                ...prevErrors,
+                email: !emailRegex.test(value) ? "Invalid email address" : "",
+            }));
+        }
+
+        if (name === "message") {
+            setErrors((prevErrors) => ({
+                ...prevErrors,
+                message: value.length < 10 ? "Message must be at least 10 characters" : "",
+            }));
+        }
+
+ 
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (!formData.email || errors.email) {
+            alert("Please provide a valid email.");
+            return;
+        }
+        if (!formData.message || errors.message) {
+            alert("Please provide a valid message.");
+            return;
+        }
+        alert("Form submitted successfully!");
+    };
+
     return (
         <section id="contact" className="contact-container">
-   
             <div className="intro-text">
                 <h2>We'd Love to Hear From You!</h2>
                 <p>
@@ -14,20 +56,35 @@ const ContactUs = () => {
                 </p>
             </div>
 
-         
             <div className="contact-section">
-        
                 <div className="contact-form">
                     <h3>Get In Touch</h3>
                     <p>
                         Have questions or need help? We're ready to assist you!
                     </p>
 
-                    <form action="https://formspree.io/f/xovqzgbv" method="POST">
+                    <form onSubmit={handleSubmit}>
                         <div className="form-group">
-                            <input type="text" name="full_name" placeholder="Full Name" required />
-                            <input type="email" name="email" placeholder="Email" required />
-                            <textarea name="message" placeholder="Write your message here" required></textarea>
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Email"
+                                required
+                                value={formData.email}
+                                onChange={handleValidation}
+                                className={`input ${errors.email ? "error" : ""}`}
+                            />
+                            {errors.email && <p className="error-text">{errors.email}</p>}
+
+                            <textarea
+                                name="message"
+                                placeholder="Write your message here"
+                                required
+                                value={formData.message}
+                                onChange={handleValidation}
+                                className={`textarea ${errors.message ? "error" : ""}`}
+                            ></textarea>
+                            {errors.message && <p className="error-text">{errors.message}</p>}
                         </div>
                         <button type="submit" className="submit-button">
                             <FontAwesomeIcon icon={faEnvelope} /> Send Message
@@ -45,7 +102,6 @@ const ContactUs = () => {
                         </li>
                     </ul>
                 </div>
-
 
                 <div className="contact-map">
                     <iframe
