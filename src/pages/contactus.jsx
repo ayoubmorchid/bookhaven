@@ -6,7 +6,7 @@ import '../style/contactus.css';
 const ContactUs = () => {
     return (
         <section id="contact" className="contact-container">
-            {/* Introductory Text */}
+   
             <div className="intro-text">
                 <h2>We'd Love to Hear From You!</h2>
                 <p>
@@ -14,9 +14,9 @@ const ContactUs = () => {
                 </p>
             </div>
 
-            {/* Contact Section */}
+         
             <div className="contact-section">
-                {/* Contact Form */}
+        
                 <div className="contact-form">
                     <h3>Get In Touch</h3>
                     <p>
@@ -46,7 +46,7 @@ const ContactUs = () => {
                     </ul>
                 </div>
 
-                {/* Map */}
+
                 <div className="contact-map">
                     <iframe
                         src="https://maps.google.com/maps?q=Agadir,%20Morocco&t=&z=13&ie=UTF8&iwloc=&output=embed"
