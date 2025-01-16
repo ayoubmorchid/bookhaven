@@ -1,15 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-
 import "../style/login.css";
 
 const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [errors, setErrors] = useState({});
+
+  const handleValidation = (e) => {
+    const { name, value } = e.target;
+
+    if (name === "password") {
+      setErrors((prev) => ({
+        ...prev,
+        password:
+          value.length < 6 ? "Password must be at least 6 characters" : "",
+      }));
+    }
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
+
+    // Final validation before submission
+    if (!formData.username || errors.username) {
+      alert("Please provide a valid username.");
+      setIsLoading(false);
+      return;
+    }
+    if (!formData.password || errors.password) {
+      alert("Please provide a valid password.");
+      setIsLoading(false);
+      return;
+    }
 
     setTimeout(() => {
       setIsLoading(false);
@@ -30,18 +55,26 @@ const Login = () => {
               <input
                 type="text"
                 id="username"
+                name="username"
                 placeholder="Type your username or Email"
                 required
+                onChange={handleValidation}
+                className={`input ${errors.username ? "error" : ""}`}
               />
+              {errors.username && <p className="error-text">{errors.username}</p>}
             </div>
             <div className="input-group">
               <label htmlFor="password">Password</label>
               <input
                 type="password"
                 id="password"
+                name="password"
                 placeholder="Type your password"
                 required
+                onChange={handleValidation}
+                className={`input ${errors.password ? "error" : ""}`}
               />
+              {errors.password && <p className="error-text">{errors.password}</p>}
             </div>
             <button type="submit" className="login-btn" disabled={isLoading}>
               {isLoading ? <div className="loading-spinner"></div> : "Log In"}
