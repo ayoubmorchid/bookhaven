@@ -1,9 +1,12 @@
+/* Checkout Page Styles */
+
 .checkout-container {
-    font-family: 'Open Sans', sans-serif;
-    background-color: #f9f9f9;
-    padding: 20px;
     text-align: center;
-    min-height: 100vh;
+    padding: 50px;
+    font-family: 'Open Sans', sans-serif; 
+    color: var(--primary-color); 
+    background-color: var(--secondary-color); 
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,19 +14,22 @@
   }
   
   .checkout-title {
-    font-size: 2.5rem;
-    color: #333;
-    margin-bottom: 30px;
+    font-size: 3.5rem;
+    color: var(--primary-color);
     font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
   }
   
   .checkout-items {
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 100%;
-    max-width: 600px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 90%;
+    max-width: 800px;
+    margin-bottom: 30px;
+    text-align: left;
   }
   
   .item {
@@ -46,38 +52,41 @@
   }
   
   .item-title {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: #333;
     font-weight: bold;
     margin-bottom: 5px;
   }
   
   .item-price {
-    font-size: 1rem;
-    color: #e63946;
+    font-size: 1.2rem;
+    color: var(--primary-color);
     margin-bottom: 5px;
+    font-weight: bold;
   }
   
   .item-quantity {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #555;
   }
   
   .confirm-btn {
-    background-color: #28a745;
+    background-color: var(--primary-color);
     color: #fff;
-    padding: 10px 20px;
+    padding: 15px 30px;
     border: none;
-    border-radius: 5px;
-    font-size: 1.1rem;
+    border-radius: 25px;
+    font-size: 1.2rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 100%;
-    margin-top: 15px;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }
   
   .confirm-btn:hover {
-    background-color: #218838;
+    background-color: #a00000; 
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
   }
   
   /* Popup Styles */
@@ -96,9 +105,9 @@
   }
   
   .popup {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     padding: 30px;
     width: 90%;
     max-width: 500px;
@@ -106,9 +115,10 @@
   }
   
   .popup h2 {
-    font-size: 1.8rem;
-    color: #333;
+    font-size: 2.5rem;
+    color: var(--primary-color);
     margin-bottom: 20px;
+    font-weight: bold;
   }
   
   .shipping-form label {
@@ -120,19 +130,25 @@
   }
   
   .shipping-form input {
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 1rem;
     width: 100%;
     margin-bottom: 15px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .shipping-form input:focus {
+    border-color: var(--primary-color);
+    outline: none;
   }
   
   .terms {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #555;
     margin-bottom: 20px;
   }
@@ -141,37 +157,42 @@
     display: flex;
     justify-content: space-between;
     gap: 10px;
+    margin-top: 20px;
   }
   
   .confirm-btn {
-    background-color: #28a745;
+    background-color: var(--primary-color);
     color: #fff;
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
-    font-size: 1.1rem;
+    border-radius: 25px;
+    font-size: 1.2rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
     width: 48%;
   }
   
   .confirm-btn:hover {
-    background-color: #218838;
+    background-color: #a00000; 
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
   }
   
   .continue-btn {
-    background-color: #ffc107;
+    background-color: #6c757d;
     color: #fff;
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
-    font-size: 1.1rem;
+    border-radius: 25px;
+    font-size: 1.2rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
     width: 48%;
   }
   
   .continue-btn:hover {
-    background-color: #e0a800;
+    background-color: #5a6268;
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
   }
   
