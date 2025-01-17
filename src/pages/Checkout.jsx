@@ -16,22 +16,72 @@ const Checkout = () => {
 
   return (
     <div className="checkout-container">
-      <h1>Checkout</h1>
-      <p>Review your items and confirm your purchase.</p>
+      <h1 className="checkout-title">Shopping Cart</h1>
 
-      <div className="checkout-summary">
-        <h2>Order Summary</h2>
-        <ul>
-          <li>Book 1: $19.99</li>
-          <li>Book 2: $24.99</li>
-          <li>Book 3: $15.99</li>
-        </ul>
-        <p className="total">Total: $60.97</p>
+      <div className="checkout-card">
+        <div className="product-info">
+          <img
+            src="../images/book-placeholder.jpg"
+            alt="Book Cover"
+            className="product-image"
+          />
+          <div className="product-details">
+            <h2 className="product-title">
+              Livre L'enfer de Dante illustré par Gustave Dore vers 1890 édition
+              Altemus
+            </h2>
+            <p className="product-price">210 MAD</p>
+            <p className="product-reviews">★ 871 Reviews | 5,000+ sold</p>
+            <div className="payment-options">
+              <span>Pay with:</span>
+              <img src="../images/visa.png" alt="Visa" />
+              <img src="../images/paypal.png" alt="PayPal" />
+              <img src="../images/sepa.png" alt="SEPA" />
+            </div>
+            <div className="buyer-protection">
+              <input type="checkbox" id="buyer-protection" />
+              <label htmlFor="buyer-protection">
+                Get full refund if the item is not as described or if it is not
+                delivered
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div className="checkout-actions">
+          <div className="seller-info">
+            <h3>Sold By</h3>
+            <p className="seller-name">Family Store (Trader)</p>
+            <p className="free-shipping">Free Shipping</p>
+          </div>
+
+          <form className="shipping-form">
+            <label>
+              Full Name:
+              <input type="text" placeholder="Enter your full name" />
+            </label>
+            <label>
+              Location:
+              <input type="text" placeholder="Enter your location" />
+            </label>
+            <label>
+              Delivery Note:
+              <input type="text" placeholder="Optional note" />
+            </label>
+            <div className="terms">
+              <input type="checkbox" id="accept-terms" />
+              <label htmlFor="accept-terms">I accept the terms and conditions</label>
+            </div>
+            <button type="submit" className="save-shipping-btn">
+              Save shipping information
+            </button>
+          </form>
+        </div>
       </div>
 
-      <div className="checkout-actions">
+      <div className="checkout-footer">
         <button onClick={handleConfirmPurchase} className="confirm-btn">
-          Confirm Purchase
+          Go To Checkout
         </button>
         <button onClick={handleContinueShopping} className="continue-btn">
           Continue Shopping
