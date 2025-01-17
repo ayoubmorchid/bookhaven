@@ -1,92 +1,73 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import "../style/Checkout.css";
 
 const Checkout = () => {
-  const navigate = useNavigate();
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  const handleContinueShopping = () => {
-    navigate("/books"); // توجيه المستخدم إلى صفحة الكتب
+  const handleOpenPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
   };
 
   const handleConfirmPurchase = () => {
     alert("Thank you for your purchase! Your order has been confirmed.");
-    navigate("/books"); // إعادة المستخدم إلى صفحة الكتب بعد الشراء
+    setIsPopupOpen(false);
   };
 
   return (
     <div className="checkout-container">
-      <h1 className="checkout-title">Shopping Cart</h1>
+      <h1 className="checkout-title">Order Summary</h1>
 
-      <div className="checkout-card">
-        <div className="product-info">
-          <img
-            src="../images/book-placeholder.jpg"
-            alt="Book Cover"
-            className="product-image"
-          />
-          <div className="product-details">
-            <h2 className="product-title">
-              Livre L'enfer de Dante illustré par Gustave Dore vers 1890 édition
-              Altemus
-            </h2>
-            <p className="product-price">210 MAD</p>
-            <p className="product-reviews">★ 871 Reviews | 5,000+ sold</p>
-            <div className="payment-options">
-              <span>Pay with:</span>
-              <img src="../images/visa.png" alt="Visa" />
-              <img src="../images/paypal.png" alt="PayPal" />
-              <img src="../images/sepa.png" alt="SEPA" />
-            </div>
-            <div className="buyer-protection">
-              <input type="checkbox" id="buyer-protection" />
-              <label htmlFor="buyer-protection">
-                Get full refund if the item is not as described or if it is not
-                delivered
+      <div className="checkout-items">
+        <div className="item">
+          <img src="../images/BINDING.jpg" alt="Book Cover" className="item-image" />
+          <div className="item-details">
+            <p className="item-title">Livre L'enfer de Dante</p>
+            <p className="item-price">210 MAD</p>
+            <p className="item-quantity">Quantity: 1</p>
+          </div>
+        </div>
+        <button onClick={handleOpenPopup} className="confirm-btn">
+          Proceed to Shipping Information
+        </button>
+      </div>
+
+      {isPopupOpen && (
+        <div className="popup-overlay">
+          <div className="popup">
+            <h2>Shipping Information</h2>
+            <form className="shipping-form">
+              <label>
+                Full Name:
+                <input type="text" placeholder="Enter your full name" />
               </label>
+              <label>
+                Location:
+                <input type="text" placeholder="Enter your location" />
+              </label>
+              <label>
+                Delivery Note:
+                <input type="text" placeholder="Optional note" />
+              </label>
+              <div className="terms">
+                <input type="checkbox" id="accept-terms" />
+                <label htmlFor="accept-terms">I accept the terms and conditions</label>
+              </div>
+            </form>
+            <div className="popup-actions">
+              <button onClick={handleConfirmPurchase} className="confirm-btn">
+                Confirm Purchase
+              </button>
+              <button onClick={handleClosePopup} className="continue-btn">
+                Cancel
+              </button>
             </div>
           </div>
         </div>
-
-        <div className="checkout-actions">
-          <div className="seller-info">
-            <h3>Sold By</h3>
-            <p className="seller-name">Family Store (Trader)</p>
-            <p className="free-shipping">Free Shipping</p>
-          </div>
-
-          <form className="shipping-form">
-            <label>
-              Full Name:
-              <input type="text" placeholder="Enter your full name" />
-            </label>
-            <label>
-              Location:
-              <input type="text" placeholder="Enter your location" />
-            </label>
-            <label>
-              Delivery Note:
-              <input type="text" placeholder="Optional note" />
-            </label>
-            <div className="terms">
-              <input type="checkbox" id="accept-terms" />
-              <label htmlFor="accept-terms">I accept the terms and conditions</label>
-            </div>
-            <button type="submit" className="save-shipping-btn">
-              Save shipping information
-            </button>
-          </form>
-        </div>
-      </div>
-
-      <div className="checkout-footer">
-        <button onClick={handleConfirmPurchase} className="confirm-btn">
-          Go To Checkout
-        </button>
-        <button onClick={handleContinueShopping} className="continue-btn">
-          Continue Shopping
-        </button>
-      </div>
+      )}
     </div>
   );
 };
