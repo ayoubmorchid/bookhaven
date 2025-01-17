@@ -1,5 +1,4 @@
 import React from 'react';
-import img from '../assets/img/about.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import hsina from '../assets/img/team/hsina.jpg';
@@ -83,7 +82,7 @@ const AboutUs = () => {
       <section className="about-section">
         <div className="about-content">
           <div className="about-image">
-            <img src={img} alt="About GreenBag" className="image" />
+            <img src={ayoub} alt="About GreenBag" className="image" />
           </div>
 
           <div className="about-text">

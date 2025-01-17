@@ -7,7 +7,8 @@ import Books from "./pages/Books";
 import ForgetPassword from './pages/ForgetPassword';
 import ContactUs from './pages/contactus';
 import AboutUs from './pages/about';
-import ShoppingCart from './pages/shoppingcart';
+import NotFound from "./pages/NotFound"; 
+
 
 
 
@@ -19,13 +20,14 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="shopping" element={<ShoppingCart />} />
         <Route path="/signup" element={<SignUpForm/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/books" element={<Books />} />
         <Route path="/forget-password" element={<ForgetPassword />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/about" element={<AboutUs />} />
+        <Route path="*" element={<NotFound />} /> 
+
 
 
       </Routes>

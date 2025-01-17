@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../style/page1.css";
+import "../style/EpicReads.css";
 
 // Import images
 import bindingImage from "../images/BINDING.jpg";
@@ -15,6 +15,7 @@ import ruinsImage from "../images/RUINS.jpg";
 import turanoImage from "../images/TURANO.jpg";
 import universeImage from "../images/UNIVERSE.jpg";
 import xoxoImage from "../images/XOXO.jpg";
+
 
 const EpicReads = () => {
   return (
