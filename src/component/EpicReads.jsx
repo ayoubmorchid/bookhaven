@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom"; // أضف useNavigate
+import { Link, useNavigate } from "react-router-dom";
 import "../style/EpicReads.css";
 
 // Import images
@@ -19,14 +19,18 @@ import xoxoImage from "../images/XOXO.jpg";
 const EpicReads = () => {
   const navigate = useNavigate();
 
- 
-  const isLoggedIn = false; 
+  // محاكاة تسجيل الدخول باستخدام localStorage
+  const isLoggedIn = () => {
+    return localStorage.getItem("token") === "logged_in";
+  };
 
   const handleBuyClick = () => {
-    if (!isLoggedIn) {
+    if (!isLoggedIn()) {
+      // تخزين المسار المطلوب (checkout) قبل التوجيه إلى صفحة تسجيل الدخول
+      localStorage.setItem("redirectPath", "/checkout");
       navigate("/login");
     } else {
-      navigate("/checkout"); 
+      navigate("/checkout");
     }
   };
 
@@ -81,7 +85,7 @@ const EpicReads = () => {
               { image: robertsImage, title: "Sherlock Holmes" },
               { image: dragonTattooImage, title: "The Girl with the Dragon Tattoo" },
             ]}
-            onBuyClick={handleBuyClick} // تمرير وظيفة الشراء
+            onBuyClick={handleBuyClick}
           />
 
           <CategorySection
@@ -123,7 +127,6 @@ const CategorySection = ({ title, books, onBuyClick }) => (
           <div className="actions">
             <button>📖 Read</button>
             <button>❤ Like</button>
-            {/* ربط زر الشراء بوظيفة الشراء */}
             <button onClick={onBuyClick}>🛒 Buy</button>
           </div>
         </div>
