@@ -8,6 +8,7 @@ import ForgetPassword from './pages/ForgetPassword';
 import ContactUs from './pages/contactus';
 import AboutUs from './pages/about';
 import NotFound from "./pages/NotFound"; 
+import Checkout from "./pages/Checkout"
 
 
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="*" element={<NotFound />} /> 
+        <Route path="checkout" element={<Checkout/>} />
 
 
 
