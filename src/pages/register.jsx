@@ -86,6 +86,9 @@ const SignUpForm = () => {
         </div>
       </fieldset>
     </div>
+
+
+
   );
 };
 

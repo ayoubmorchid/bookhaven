@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // أضف useNavigate
 import "../style/EpicReads.css";
 
 // Import images
@@ -16,11 +16,22 @@ import turanoImage from "../images/TURANO.jpg";
 import universeImage from "../images/UNIVERSE.jpg";
 import xoxoImage from "../images/XOXO.jpg";
 
-
 const EpicReads = () => {
+  const navigate = useNavigate();
+
+ 
+  const isLoggedIn = false; 
+
+  const handleBuyClick = () => {
+    if (!isLoggedIn) {
+      navigate("/login");
+    } else {
+      navigate("/checkout"); 
+    }
+  };
+
   return (
     <div className="books-container">
-      {/* عنوان الصفحة */}
       <h1>Explore Our Books</h1>
       <p>Find your next favorite read from our diverse collection.</p>
 
@@ -70,6 +81,7 @@ const EpicReads = () => {
               { image: robertsImage, title: "Sherlock Holmes" },
               { image: dragonTattooImage, title: "The Girl with the Dragon Tattoo" },
             ]}
+            onBuyClick={handleBuyClick} // تمرير وظيفة الشراء
           />
 
           <CategorySection
@@ -80,6 +92,7 @@ const EpicReads = () => {
               { image: turanoImage, title: "Me Before You" },
               { image: hollowImage, title: "The Time Traveler's Wife" },
             ]}
+            onBuyClick={handleBuyClick}
           />
 
           <CategorySection
@@ -90,6 +103,7 @@ const EpicReads = () => {
               { image: kingdomImage, title: "Neuromancer" },
               { image: ruinsImage, title: "The Hitchhiker's Guide to the Galaxy" },
             ]}
+            onBuyClick={handleBuyClick}
           />
         </div>
       </div>
@@ -98,7 +112,7 @@ const EpicReads = () => {
 };
 
 // Component for a single category
-const CategorySection = ({ title, books }) => (
+const CategorySection = ({ title, books, onBuyClick }) => (
   <div className="category-section">
     <h3>{title}</h3>
     <div className="book-grid">
@@ -109,7 +123,8 @@ const CategorySection = ({ title, books }) => (
           <div className="actions">
             <button>📖 Read</button>
             <button>❤ Like</button>
-            <button>🛒 Buy</button>
+            {/* ربط زر الشراء بوظيفة الشراء */}
+            <button onClick={onBuyClick}>🛒 Buy</button>
           </div>
         </div>
       ))}
