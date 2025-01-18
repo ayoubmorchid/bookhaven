@@ -1,3 +1,21 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(120deg, #ff9a9e, #fad0c4, #fbc2eb);
+  background-size: 300% 300%;
+  animation: gradientBG 8s ease infinite;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+
+
 .login-page fieldset {
   border-radius: 10px;
   width: 410px;
