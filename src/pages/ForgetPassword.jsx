@@ -1,62 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../style/ForgetPassword.css";
 
 const ForgetPassword = () => {
-  const [formData, setFormData] = useState({ username: "", email: "" });
+  const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [timer, setTimer] = useState(0); // عداد بالثواني
+  const [canResend, setCanResend] = useState(true); // حالة الزر
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
+  const handleSendCode = (e) => {
     e.preventDefault();
 
-    if (!formData.username || !formData.email) {
-      setError("Both fields are required.");
+    if (!email) {
+      setError("Please enter a valid email.");
       return;
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      setError("Please enter a valid email address.");
-      return;
-    }
-
+    setMessage("Verification code sent to your email.");
     setError("");
-    setMessage("A recovery link has been sent to your email.");
+    setCanResend(false);
+    setTimer(60); 
   };
+
+  useEffect(() => {
+    let interval = null;
+
+    if (timer > 0) {
+      interval = setInterval(() => {
+        setTimer((prev) => prev - 1);
+      }, 1000);
+    } else if (timer === 0) {
+      setCanResend(true); 
+    }
+
+    return () => clearInterval(interval); 
+  }, [timer]);
 
   return (
     <div className="forget-password-page">
       <div className="container">
         <h2>Forgot Your Password?</h2>
-        <p>
-          Enter your username and email address, and we'll send you a recovery
-          link.
-        </p>
+        <p>Enter your email to receive a verification code.</p>
         {message && <p className="success-message">{message}</p>}
         {error && <p className="error-message">{error}</p>}
-        <form onSubmit={handleSubmit}>
-          <div className="input-group">
-            <label htmlFor="username">
-              <i className="fa fa-user"></i>
-            </label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              placeholder="Full Name"
-              value={formData.username}
-              onChange={handleChange}
-              required
-            />
-          </div>
+        <form onSubmit={handleSendCode}>
           <div className="input-group">
             <label htmlFor="email">
               <i className="fa fa-envelope"></i>
@@ -64,15 +51,14 @@ const ForgetPassword = () => {
             <input
               type="email"
               id="email"
-              name="email"
-              placeholder="johndoe@gmail.com"
-              value={formData.email}
-              onChange={handleChange}
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
-          <button type="submit" className="reset-button">
-            Reset Password
+          <button type="submit" className="reset-button" disabled={!canResend}>
+            {canResend ? "Send Verification Code" : `Resend in ${timer}s`}
           </button>
         </form>
       </div>
