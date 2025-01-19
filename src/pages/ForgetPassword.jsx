@@ -43,7 +43,7 @@ const ForgetPassword = () => {
     const code = generateCode(); // توليد الكود وتخزينه
     setError("");
     setCanResend(false);
-    setTimer(5); // ضبط العداد لإعادة الإرسال
+    setTimer(60); // ضبط العداد لإعادة الإرسال
   };
 
   // عداد لإعادة الإرسال
