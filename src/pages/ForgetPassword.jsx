@@ -11,12 +11,14 @@ const ForgetPassword = () => {
   const [error, setError] = useState("");
   const [timer, setTimer] = useState(0); // عداد لإعادة الإرسال
   const [canResend, setCanResend] = useState(true); // حالة الزر
+  const [showBubble, setShowBubble] = useState(false); // عرض الفقاعة
 
   // توليد كود عشوائي
   const generateCode = () => {
     const code = Math.floor(100000 + Math.random() * 900000).toString(); // كود مكون من 6 أرقام
     setGeneratedCode(code);
-    console.log("Generated Code:", code); // عرض الكود في وحدة التحكم
+    setShowBubble(true); // إظهار الفقاعة
+    setTimeout(() => setShowBubble(false), 5000); // إخفاء الفقاعة بعد 5 ثوانٍ
     return code;
   };
 
@@ -153,6 +155,13 @@ const ForgetPassword = () => {
               Verify Code
             </button>
           </form>
+        )}
+
+        {/* فقاعة الكود */}
+        {showBubble && (
+          <div className="code-bubble">
+            Verification Code: <strong>{generatedCode}</strong>
+          </div>
         )}
 
         {/* رسائل */}
