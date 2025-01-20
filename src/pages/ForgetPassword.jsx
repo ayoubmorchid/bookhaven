@@ -2,27 +2,26 @@ import React, { useState, useEffect } from "react";
 import "../style/ForgetPassword.css";
 
 const ForgetPassword = () => {
-  const [method, setMethod] = useState("email"); // اختيار الطريقة
+  const [method, setMethod] = useState("email"); 
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [verificationCode, setVerificationCode] = useState(""); // إدخال الكود من المستخدم
-  const [generatedCode, setGeneratedCode] = useState(""); // الكود المولد
+  const [verificationCode, setVerificationCode] = useState(""); 
+  const [generatedCode, setGeneratedCode] = useState(""); 
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-  const [timer, setTimer] = useState(0); // عداد لإعادة الإرسال
-  const [canResend, setCanResend] = useState(true); // حالة الزر
-  const [showBubble, setShowBubble] = useState(false); // عرض الفقاعة
+  const [timer, setTimer] = useState(0); 
+  const [canResend, setCanResend] = useState(true); 
+  const [showBubble, setShowBubble] = useState(false);
 
-  // توليد كود عشوائي
   const generateCode = () => {
-    const code = Math.floor(100000 + Math.random() * 900000).toString(); // كود مكون من 6 أرقام
+    const code = Math.floor(100000 + Math.random() * 900000).toString(); 
     setGeneratedCode(code);
-    setShowBubble(true); // إظهار الفقاعة
-    setTimeout(() => setShowBubble(false), 5000); // إخفاء الفقاعة بعد 5 ثوانٍ
+    setShowBubble(true); 
+    setTimeout(() => setShowBubble(false), 5000); 
     return code;
   };
 
-  // إرسال الكود
+
   const handleSendCode = (e) => {
     e.preventDefault();
 
@@ -40,13 +39,13 @@ const ForgetPassword = () => {
       setMessage(`Verification code sent to your phone.`);
     }
 
-    const code = generateCode(); // توليد الكود وتخزينه
+    const code = generateCode(); 
     setError("");
     setCanResend(false);
-    setTimer(60); // ضبط العداد لإعادة الإرسال
+    setTimer(60); 
   };
 
-  // عداد لإعادة الإرسال
+
   useEffect(() => {
     let interval = null;
 
@@ -61,7 +60,8 @@ const ForgetPassword = () => {
     return () => clearInterval(interval);
   }, [timer]);
 
-  // التحقق من الكود
+
+  
   const handleVerifyCode = (e) => {
     e.preventDefault();
 
