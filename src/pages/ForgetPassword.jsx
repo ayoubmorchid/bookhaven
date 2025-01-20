@@ -39,13 +39,12 @@ const ForgetPassword = () => {
       setMessage(`Verification code sent to your phone.`);
     }
 
-    const code = generateCode(); // توليد الكود وتخزينه
+    const code = generateCode(); 
     setError("");
     setCanResend(false);
-    setTimer(60); // ضبط العداد لإعادة الإرسال
+    setTimer(5); 
   };
 
-  // عداد لإعادة الإرسال
   useEffect(() => {
     let interval = null;
 
@@ -60,7 +59,6 @@ const ForgetPassword = () => {
     return () => clearInterval(interval);
   }, [timer]);
 
-  // التحقق من الكود
   const handleVerifyCode = (e) => {
     e.preventDefault();
 
@@ -97,7 +95,6 @@ const ForgetPassword = () => {
           </button>
         </div>
 
-        {/* إرسال الكود */}
         <form onSubmit={handleSendCode}>
           {method === "email" && (
             <div className="input-group">
@@ -134,7 +131,6 @@ const ForgetPassword = () => {
           </button>
         </form>
 
-        {/* التحقق من الكود */}
         {generatedCode && (
           <form onSubmit={handleVerifyCode}>
             <div className="input-group">
@@ -163,7 +159,6 @@ const ForgetPassword = () => {
           </div>
         )}
 
-        {/* رسائل */}
         {message && <p className="success-message">{message}</p>}
         {error && <p className="error-message">{error}</p>}
       </div>

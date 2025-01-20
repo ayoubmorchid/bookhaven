@@ -19,14 +19,12 @@ import xoxoImage from "../images/XOXO.jpg";
 const EpicReads = () => {
   const navigate = useNavigate();
 
-  // محاكاة تسجيل الدخول باستخدام localStorage
   const isLoggedIn = () => {
     return localStorage.getItem("token") === "logged_in";
   };
 
   const handleBuyClick = () => {
     if (!isLoggedIn()) {
-      // تخزين المسار المطلوب (checkout) قبل التوجيه إلى صفحة تسجيل الدخول
       localStorage.setItem("redirectPath", "/checkout");
       navigate("/login");
     } else {
