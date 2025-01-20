@@ -8,7 +8,9 @@ import ForgetPassword from './pages/ForgetPassword';
 import ContactUs from './pages/contactus';
 import AboutUs from './pages/about';
 import NotFound from "./pages/NotFound"; 
-import Checkout from "./pages/Checkout"
+import Checkout from "./pages/Checkout";
+import './style/global.css';
+
 
 
 
