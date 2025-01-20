@@ -39,13 +39,13 @@ const ForgetPassword = () => {
       setMessage(`Verification code sent to your phone.`);
     }
 
-    const code = generateCode(); 
+    const code = generateCode(); // توليد الكود وتخزينه
     setError("");
     setCanResend(false);
-    setTimer(60); 
+    setTimer(60); // ضبط العداد لإعادة الإرسال
   };
 
-
+  // عداد لإعادة الإرسال
   useEffect(() => {
     let interval = null;
 
@@ -60,8 +60,7 @@ const ForgetPassword = () => {
     return () => clearInterval(interval);
   }, [timer]);
 
-
-  
+  // التحقق من الكود
   const handleVerifyCode = (e) => {
     e.preventDefault();
 
