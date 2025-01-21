@@ -1,8 +1,8 @@
 :root {
-  --primary-color: #4CAF50; /* أخضر جميل يناسب التفاعل */
-  --secondary-color: #FF5722; /* برتقالي مناسب للعناصر البارزة */
-  --background-color: #FAFAFA; /* لون خلفية خفيف ومريح */
-  --text-color: #212121; /* لون نص واضح وسهل القراءة */
-  --link-color: #4CAF50; /* روابط بنفس لون الأساسي */
-  --link-hover-color: #388E3C; /* لون داكن عند التمرير على الروابط */
+  --primary-color: #007BFF;
+  --secondary-color: #FFC107;
+  --background-color: #FFFFFF;
+  --text-color: #000000;
+  --link-color: #0056b3;
+  --link-hover-color: #004085;
 }
