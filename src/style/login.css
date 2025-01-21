@@ -1,4 +1,3 @@
-/* خلفية ديناميكية */
 body {
   font-family: 'Roboto', sans-serif;
   background: linear-gradient(120deg, var(--primary-color), var(--secondary-color), var(--background-color));
@@ -14,7 +13,6 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* صفحة تسجيل الدخول */
 .login-page fieldset {
   border-radius: 10px;
   width: 410px;
@@ -129,7 +127,6 @@ input:focus {
   }
 }
 
-/* الدوائر المتحركة */
 .circle1 {
   height: 200px;
   width: 200px;
@@ -190,7 +187,6 @@ input:focus {
   }
 }
 
-/* رابط نسيت كلمة المرور */
 .forgot-password {
   text-align: center;
   margin-top: 10px;
