@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Checkout = () => {
   const { cartItems, updateQuantity, removeFromCart } = useContext(CartContext);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate(); // للتنقل بين الصفحات
 
   const handleOpenPopup = () => setIsPopupOpen(true);
   const handleClosePopup = () => setIsPopupOpen(false);
@@ -64,7 +64,7 @@ const Checkout = () => {
 
       <div className="checkout-actions">
         <button
-          onClick={() => navigate("/books")} 
+          onClick={() => navigate("/books")} // التنقل إلى صفحة Books
           className="back-btn"
         >
           Back to Books
@@ -75,49 +75,39 @@ const Checkout = () => {
       </div>
 
       {isPopupOpen && (
-  <div className="popup-overlay">
-    <div className="popup">
-      <h2>Confirm Your Order</h2>
-      <form className="shipping-form">
-        <div className="order-summary">
-          <h3>Order Details</h3>
-          <p>Total Items: {cartItems.length}</p>
-          <p>Total Price: {calculateTotal()} MAD</p>
-        </div>
-        <label>
-          Full Name:
-          <input type="text" placeholder="Enter your full name" required />
-        </label>
-        <label>
-          Phone Number:
-          <input type="text" placeholder="Enter your phone number" required />
-        </label>
-        <label>
-          Delivery Address:
-          <textarea
-            placeholder="Enter your full address"
-            rows="3"
-            required
-          ></textarea>
-        </label>
-        <div className="terms">
-          <input type="checkbox" id="accept-terms" required />
-          <label htmlFor="accept-terms">I accept the terms and conditions</label>
-        </div>
-      </form>
-      <div className="popup-actions">
-      <button onClick={handleClosePopup} className="continue-btn">
-        Back to Cart
-      </button>
-      <button onClick={handleConfirmPurchase} className="confirm-btn">
-        Place Order
-      </button>
-    </div>
-    </div>
-  </div>
-)}
+        <div className="popup-overlay">
+          <div className="popup">
+            <h2>Shipping Information</h2>
+            <form className="shipping-form">
+              <label>
+                Full Name:
+                <input type="text" placeholder="Enter your full name" />
+              </label>
+              <label>
+                Location:
+                <input type="text" placeholder="Enter your location" />
+              </label>
+              <label>
+                Delivery Note:
+                <input type="text" placeholder="Optional note" />
+              </label>
+              <div className="terms">
+                <input type="checkbox" id="accept-terms" />
+                <label htmlFor="accept-terms">I accept the terms and conditions</label>
+              </div>
+            </form>
+            <div className="popup-actions">
+              <button onClick={handleClosePopup} className="continue-btn">
+                Back to Cart
+              </button>
+              <button onClick={handleConfirmPurchase} className="confirm-btn">
+                Place Order
+              </button>
+            </div>
 
-
+          </div>
+        </div>
+      )}
     </div>
   );
 };

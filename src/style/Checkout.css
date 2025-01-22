@@ -10,8 +10,7 @@
   --hover-color: #a00000; /* لون التحويم */
 }
 
-/* صفحة Checkout */
-
+/* الحاوية الرئيسية لصفحة Checkout */
 .checkout-container {
   text-align: center;
   padding: 30px 20px;
@@ -82,9 +81,30 @@
   font-weight: bold;
 }
 
-.item-quantity {
-  font-size: 0.9rem;
-  color: var(--subtext-color);
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity-controls button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.quantity-controls button:hover {
+  background-color: #388e3c;
+}
+
+.quantity-controls span {
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .order-total {
@@ -97,30 +117,12 @@
 }
 
 /* أزرار Checkout */
-
 .checkout-actions {
   display: flex;
   justify-content: space-between;
   width: 100%;
   max-width: 600px;
   margin-top: 20px;
-}
-
-.confirm-btn {
-  background-color: var(--primary-color);
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 25px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.confirm-btn:hover {
-  background-color: var(--hover-color);
-  transform: scale(1.05);
 }
 
 .back-btn {
@@ -139,8 +141,24 @@
   background-color: #5a6268;
 }
 
-/* نافذة الشحن (Popup) */
+.confirm-btn {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
 
+.confirm-btn:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+/* نافذة الشحن (Popup) */
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -160,7 +178,7 @@
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
   padding: 30px 20px;
   width: 90%;
-  max-width: 500px;
+  max-width: 400px; /* عرض أصغر للنافذة */
   text-align: center;
   position: relative;
 }
@@ -170,26 +188,6 @@
   color: var(--primary-color);
   margin-bottom: 15px;
   font-weight: bold;
-}
-
-.order-summary {
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 20px;
-  text-align: left;
-}
-
-.order-summary h3 {
-  font-size: 1.2rem;
-  color: var(--primary-color);
-  margin-bottom: 10px;
-}
-
-.order-summary p {
-  font-size: 1rem;
-  color: var(--text-color);
-  margin: 5px 0;
 }
 
 .shipping-form label {
@@ -241,6 +239,23 @@
   margin-top: 20px;
 }
 
+.continue-btn {
+  background-color: #ff4d4f;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.continue-btn:hover {
+  background-color: #d9363e;
+  transform: scale(1.05);
+}
+
 .confirm-btn {
   background-color: var(--primary-color);
   color: #ffffff;
@@ -258,19 +273,3 @@
   transform: scale(1.05);
 }
 
-.continue-btn {
-  background-color: #ff4d4f;
-  color: #ffffff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 25px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.continue-btn:hover {
-  background-color: #d9363e;
-  transform: scale(1.05);
-}
