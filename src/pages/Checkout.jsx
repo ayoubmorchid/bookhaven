@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
-import { CartContext } from "../context/CartContext";
 import "../style/Checkout.css";
+import { CartContext } from "../context/CartContext";
 
 const Checkout = () => {
-  const { cartItems } = useContext(CartContext); // الحصول على البيانات من السياق
+  const { cartItems, removeFromCart } = useContext(CartContext); // إضافة removeFromCart
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const handleOpenPopup = () => setIsPopupOpen(true);
@@ -16,11 +16,10 @@ const Checkout = () => {
 
   const calculateTotal = () => {
     return cartItems.reduce((total, item) => {
-      const quantity = item.quantity || 1; 
+      const quantity = item.quantity || 1;
       return total + item.price * quantity;
-    }, 0); 
+    }, 0);
   };
-  
 
   return (
     <div className="checkout-container">
@@ -34,6 +33,12 @@ const Checkout = () => {
               <p className="item-price">{item.price} MAD</p>
               <p className="item-quantity">Quantity: {item.quantity || 1}</p>
             </div>
+            <button
+              className="remove-btn"
+              onClick={() => removeFromCart(item.id)} 
+            >
+              Remove
+            </button>
           </div>
         ))}
         <div className="order-total">
