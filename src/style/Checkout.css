@@ -207,3 +207,31 @@
 .remove-btn:hover {
   background-color: #d9363e;
 }
+
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity-controls button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.quantity-controls button:hover {
+  background-color: #388e3c;
+}
+
+.quantity-controls span {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
