@@ -74,39 +74,59 @@ const Checkout = () => {
         </button>
       </div>
 
-      {isPopupOpen && (
-        <div className="popup-overlay">
-          <div className="popup">
-            <h2>Shipping Information</h2>
-            <form className="shipping-form">
-              <label>
-                Full Name:
-                <input type="text" placeholder="Enter your full name" />
-              </label>
-              <label>
-                Location:
-                <input type="text" placeholder="Enter your location" />
-              </label>
-              <label>
-                Delivery Note:
-                <input type="text" placeholder="Optional note" />
-              </label>
-              <div className="terms">
-                <input type="checkbox" id="accept-terms" />
-                <label htmlFor="accept-terms">I accept the terms and conditions</label>
-              </div>
-            </form>
-            <div className="popup-actions">
-              <button onClick={handleConfirmPurchase} className="confirm-btn">
-                Confirm Purchase
-              </button>
-              <button onClick={handleClosePopup} className="continue-btn">
-                Cancel
-              </button>
-            </div>
-          </div>
+{isPopupOpen && (
+  <div className="popup-overlay">
+    <div className="popup">
+      <h2>Shipping Information</h2>
+      <form className="shipping-form">
+        <label>
+          Full Name:
+          <input type="text" placeholder="Enter your full name" />
+        </label>
+        <label>
+          Phone Number:
+          <input type="text" placeholder="Enter your phone number" />
+        </label>
+        <label>
+          Email Address:
+          <input type="email" placeholder="Enter your email address" />
+        </label>
+        <label>
+          Location:
+          <input type="text" placeholder="Enter your location" />
+        </label>
+        <label>
+          Delivery Note:
+          <textarea
+            placeholder="Optional note for the delivery (e.g., 'Call before arrival')"
+            rows="3"
+          ></textarea>
+        </label>
+        <label>
+          Payment Method:
+          <select>
+            <option value="cash">Cash on Delivery</option>
+            <option value="credit-card">Credit Card</option>
+            <option value="paypal">PayPal</option>
+          </select>
+        </label>
+        <div className="terms">
+          <input type="checkbox" id="accept-terms" />
+          <label htmlFor="accept-terms">I accept the terms and conditions</label>
         </div>
-      )}
+      </form>
+      <div className="popup-actions">
+        <button onClick={handleConfirmPurchase} className="confirm-btn">
+          Confirm Purchase
+        </button>
+        <button onClick={handleClosePopup} className="continue-btn">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
     </div>
   );
 };
