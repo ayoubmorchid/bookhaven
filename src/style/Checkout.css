@@ -4,7 +4,7 @@
   --primary-color: #4caf50; /* الأخضر الأساسي */
   --secondary-color: #388e3c; /* الأخضر الداكن */
   --background-color: #f5f5f5; /* اللون الرمادي الفاتح */
-  --text-color: #333333; /* النصوص */
+  --text-color: #333333; /* لون النصوص */
   --subtext-color: #555555; /* النصوص الثانوية */
   --box-shadow-color: rgba(0, 0, 0, 0.1); /* ظل الصناديق */
   --hover-color: #a00000; /* لون التحويم */
@@ -13,90 +13,96 @@
 .checkout-container {
   text-align: center;
   padding: 50px;
-  font-family: 'Open Sans', sans-serif; 
-  color: var(--text-color); 
-  background-color: var(--background-color); 
-  height: 100vh;
+  font-family: 'Open Sans', sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  gap: 20px;
 }
 
 .checkout-title {
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   color: var(--primary-color);
   font-weight: bold;
-  text-shadow: 2px 2px 4px var(--box-shadow-color);
   margin-bottom: 20px;
+  text-shadow: 2px 2px 4px var(--box-shadow-color);
 }
 
 .checkout-items {
   background-color: #fff;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px var(--box-shadow-color);
-  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px var(--box-shadow-color);
+  padding: 20px;
   width: 90%;
-  max-width: 800px;
-  margin-bottom: 30px;
+  max-width: 600px;
   text-align: left;
 }
 
 .item {
   display: flex;
   align-items: center;
-  gap: 15px;
   margin-bottom: 15px;
+  gap: 15px;
 }
 
 .item-image {
-  width: 100px;
-  height: 120px;
-  border-radius: 8px;
+  width: 80px;
+  height: 100px;
   object-fit: cover;
+  border-radius: 8px;
   border: 1px solid var(--box-shadow-color);
 }
 
 .item-details {
-  text-align: left;
+  flex-grow: 1;
 }
 
 .item-title {
-  font-size: 1.5rem;
-  color: var(--text-color);
+  font-size: 1.2rem;
   font-weight: bold;
+  color: var(--text-color);
   margin-bottom: 5px;
 }
 
 .item-price {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: var(--primary-color);
-  margin-bottom: 5px;
   font-weight: bold;
 }
 
 .item-quantity {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--subtext-color);
+}
+
+.order-total {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-align: right;
+  margin-top: 20px;
+  border-top: 1px solid var(--box-shadow-color);
+  padding-top: 10px;
 }
 
 .confirm-btn {
   background-color: var(--primary-color);
   color: #fff;
-  padding: 15px 30px;
+  padding: 10px 20px;
   border: none;
   border-radius: 25px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 20px;
-  box-shadow: 0 4px 10px var(--box-shadow-color);
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .confirm-btn:hover {
-  background-color: var(--hover-color); 
-  transform: scale(1.1);
-  box-shadow: 0 6px 15px var(--box-shadow-color);
+  background-color: var(--hover-color);
+  transform: scale(1.05);
 }
 
 /* Popup Styles */
@@ -115,8 +121,8 @@
 }
 
 .popup {
-  background-color: #ffffff;
-  border-radius: 15px;
+  background-color: #fff;
+  border-radius: 10px;
   box-shadow: 0 8px 20px var(--box-shadow-color);
   padding: 30px;
   width: 90%;
@@ -125,40 +131,39 @@
 }
 
 .popup h2 {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   color: var(--primary-color);
   margin-bottom: 20px;
   font-weight: bold;
 }
 
 .shipping-form label {
-  font-size: 1rem;
-  color: var(--text-color);
   display: block;
   margin-bottom: 10px;
-  text-align: left;
+  font-size: 1rem;
+  color: var(--text-color);
 }
 
 .shipping-form input {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
   width: 100%;
+  padding: 10px;
   margin-bottom: 15px;
-  transition: border-color 0.3s ease;
+  border: 1px solid var(--box-shadow-color);
+  border-radius: 5px;
+  font-size: 1rem;
 }
 
 .shipping-form input:focus {
-  border-color: var(--primary-color);
   outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px var(--primary-color);
 }
 
 .terms {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--subtext-color);
   margin-bottom: 20px;
 }
@@ -176,14 +181,12 @@
   padding: 10px 20px;
   border: none;
   border-radius: 25px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 48%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .continue-btn:hover {
   background-color: #5a6268;
-  transform: scale(1.1);
-  box-shadow: 0 6px 15px var(--box-shadow-color);
+  transform: scale(1.05);
 }
