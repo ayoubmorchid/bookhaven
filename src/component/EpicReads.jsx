@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../style/EpicReads.css";
+import { CartContext } from "../context/CartContext";
 
 // Import images
 import bindingImage from "../images/BINDING.jpg";
@@ -18,16 +19,18 @@ import xoxoImage from "../images/XOXO.jpg";
 
 const EpicReads = () => {
   const navigate = useNavigate();
+  const { addToCart } = useContext(CartContext); // استخدام سياق CartContext
 
   const isLoggedIn = () => {
     return localStorage.getItem("token") === "logged_in";
   };
 
-  const handleBuyClick = () => {
+  const handleBuyClick = (book) => {
     if (!isLoggedIn()) {
       localStorage.setItem("redirectPath", "/checkout");
       navigate("/login");
     } else {
+      addToCart(book); // إضافة الكتاب للسلة
       navigate("/checkout");
     }
   };
@@ -78,10 +81,10 @@ const EpicReads = () => {
           <CategorySection
             title="Detective"
             books={[
-              { image: classyImage, title: "Jaya: The Mahabharata" },
-              { image: harryImage, title: "1984 by George Orwell" },
-              { image: robertsImage, title: "Sherlock Holmes" },
-              { image: dragonTattooImage, title: "The Girl with the Dragon Tattoo" },
+              { id: 1, image: classyImage, title: "Jaya: The Mahabharata", price: 120 },
+              { id: 2, image: harryImage, title: "1984 by George Orwell", price: 150 },
+              { id: 3, image: robertsImage, title: "Sherlock Holmes", price: 200 },
+              { id: 4, image: dragonTattooImage, title: "The Girl with the Dragon Tattoo", price: 180 },
             ]}
             onBuyClick={handleBuyClick}
           />
@@ -89,10 +92,10 @@ const EpicReads = () => {
           <CategorySection
             title="Love"
             books={[
-              { image: hooverImage, title: "Pride and Prejudice" },
-              { image: xoxoImage, title: "The Notebook" },
-              { image: turanoImage, title: "Me Before You" },
-              { image: hollowImage, title: "The Time Traveler's Wife" },
+              { id: 5, image: hooverImage, title: "Pride and Prejudice", price: 140 },
+              { id: 6, image: xoxoImage, title: "The Notebook", price: 160 },
+              { id: 7, image: turanoImage, title: "Me Before You", price: 130 },
+              { id: 8, image: hollowImage, title: "The Time Traveler's Wife", price: 170 },
             ]}
             onBuyClick={handleBuyClick}
           />
@@ -100,10 +103,10 @@ const EpicReads = () => {
           <CategorySection
             title="Science Fiction"
             books={[
-              { image: bindingImage, title: "Dune by Frank Herbert" },
-              { image: universeImage, title: "Ender's Game" },
-              { image: kingdomImage, title: "Neuromancer" },
-              { image: ruinsImage, title: "The Hitchhiker's Guide to the Galaxy" },
+              { id: 9, image: bindingImage, title: "Dune by Frank Herbert", price: 200 },
+              { id: 10, image: universeImage, title: "Ender's Game", price: 180 },
+              { id: 11, image: kingdomImage, title: "Neuromancer", price: 150 },
+              { id: 12, image: ruinsImage, title: "The Hitchhiker's Guide to the Galaxy", price: 220 },
             ]}
             onBuyClick={handleBuyClick}
           />
@@ -118,14 +121,15 @@ const CategorySection = ({ title, books, onBuyClick }) => (
   <div className="category-section">
     <h3>{title}</h3>
     <div className="book-grid">
-      {books.map((book, index) => (
-        <div className="book" key={index}>
+      {books.map((book) => (
+        <div className="book" key={book.id}>
           <img src={book.image} alt={book.title} />
           <p>{book.title}</p>
+          <p>Price: {book.price} MAD</p>
           <div className="actions">
             <button>📖 Read</button>
             <button>❤ Like</button>
-            <button onClick={onBuyClick}>🛒 Buy</button>
+            <button onClick={() => onBuyClick(book)}>🛒 Buy</button>
           </div>
         </div>
       ))}
