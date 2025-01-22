@@ -235,3 +235,20 @@
   font-weight: bold;
 }
 
+
+.back-btn {
+  background-color: #6c757d;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 10px; /* لإبعاد الزر عن الزر الآخر */
+}
+
+.back-btn:hover {
+  background-color: #5a6268;
+}
+
