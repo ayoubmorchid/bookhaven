@@ -74,58 +74,49 @@ const Checkout = () => {
         </button>
       </div>
 
-{isPopupOpen && (
+      {isPopupOpen && (
   <div className="popup-overlay">
     <div className="popup">
-      <h2>Shipping Information</h2>
+      <h2>Confirm Your Order</h2>
       <form className="shipping-form">
+        <div className="order-summary">
+          <h3>Order Details</h3>
+          <p>Total Items: {cartItems.length}</p>
+          <p>Total Price: {calculateTotal()} MAD</p>
+        </div>
         <label>
           Full Name:
-          <input type="text" placeholder="Enter your full name" />
+          <input type="text" placeholder="Enter your full name" required />
         </label>
         <label>
           Phone Number:
-          <input type="text" placeholder="Enter your phone number" />
+          <input type="text" placeholder="Enter your phone number" required />
         </label>
         <label>
-          Email Address:
-          <input type="email" placeholder="Enter your email address" />
-        </label>
-        <label>
-          Location:
-          <input type="text" placeholder="Enter your location" />
-        </label>
-        <label>
-          Delivery Note:
+          Delivery Address:
           <textarea
-            placeholder="Optional note for the delivery (e.g., 'Call before arrival')"
+            placeholder="Enter your full address"
             rows="3"
+            required
           ></textarea>
         </label>
-        <label>
-          Payment Method:
-          <select>
-            <option value="cash">Cash on Delivery</option>
-            <option value="credit-card">Credit Card</option>
-            <option value="paypal">PayPal</option>
-          </select>
-        </label>
         <div className="terms">
-          <input type="checkbox" id="accept-terms" />
+          <input type="checkbox" id="accept-terms" required />
           <label htmlFor="accept-terms">I accept the terms and conditions</label>
         </div>
       </form>
       <div className="popup-actions">
         <button onClick={handleConfirmPurchase} className="confirm-btn">
-          Confirm Purchase
+          Place Order
         </button>
         <button onClick={handleClosePopup} className="continue-btn">
-          Cancel
+          Back to Cart
         </button>
       </div>
     </div>
   </div>
 )}
+
 
     </div>
   );
