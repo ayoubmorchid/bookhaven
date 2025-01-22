@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../style/Checkout.css";
+import OrderSummary from "./OrderSummary";
 
 const Checkout = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -33,32 +34,16 @@ const Checkout = () => {
     },
   ];
 
-  const calculateTotal = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-  };
-
   return (
     <div className="checkout-container">
       <h1 className="checkout-title">Order Summary</h1>
 
-      <div className="checkout-items">
-        {cartItems.map((item, index) => (
-          <div className="item" key={index}>
-            <img src={item.image} alt="Book Cover" className="item-image" />
-            <div className="item-details">
-              <p className="item-title">{item.title}</p>
-              <p className="item-price">{item.price} MAD</p>
-              <p className="item-quantity">Quantity: {item.quantity}</p>
-            </div>
-          </div>
-        ))}
-        <div className="order-total">
-          <h3>Total: {calculateTotal()} MAD</h3>
-        </div>
-        <button onClick={handleOpenPopup} className="confirm-btn">
-          Proceed to Shipping Information
-        </button>
-      </div>
+      {/* Include OrderSummary component */}
+      <OrderSummary cartItems={cartItems} />
+
+      <button onClick={handleOpenPopup} className="confirm-btn">
+        Proceed to Shipping Information
+      </button>
 
       {isPopupOpen && (
         <div className="popup-overlay">
