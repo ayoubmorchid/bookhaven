@@ -3,7 +3,7 @@ import "../style/Checkout.css";
 import { CartContext } from "../context/CartContext";
 
 const Checkout = () => {
-  const { cartItems, removeFromCart } = useContext(CartContext); // إضافة removeFromCart
+  const { cartItems, updateQuantity, removeFromCart } = useContext(CartContext);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const handleOpenPopup = () => setIsPopupOpen(true);
@@ -15,10 +15,10 @@ const Checkout = () => {
   };
 
   const calculateTotal = () => {
-    return cartItems.reduce((total, item) => {
-      const quantity = item.quantity || 1;
-      return total + item.price * quantity;
-    }, 0);
+    return cartItems.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
   };
 
   return (
@@ -31,11 +31,25 @@ const Checkout = () => {
             <div className="item-details">
               <p className="item-title">{item.title}</p>
               <p className="item-price">{item.price} MAD</p>
-              <p className="item-quantity">Quantity: {item.quantity || 1}</p>
+              <div className="quantity-controls">
+                <button
+                  onClick={() =>
+                    updateQuantity(item.id, Math.max(item.quantity - 1, 1))
+                  }
+                >
+                  -
+                </button>
+                <span>{item.quantity}</span>
+                <button
+                  onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                >
+                  +
+                </button>
+              </div>
             </div>
             <button
               className="remove-btn"
-              onClick={() => removeFromCart(item.id)} 
+              onClick={() => removeFromCart(item.id)}
             >
               Remove
             </button>
