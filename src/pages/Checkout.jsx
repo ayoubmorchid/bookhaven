@@ -15,8 +15,12 @@ const Checkout = () => {
   };
 
   const calculateTotal = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+    return cartItems.reduce((total, item) => {
+      const quantity = item.quantity || 1; 
+      return total + item.price * quantity;
+    }, 0); 
   };
+  
 
   return (
     <div className="checkout-container">
