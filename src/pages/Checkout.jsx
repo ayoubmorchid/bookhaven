@@ -106,13 +106,13 @@ const Checkout = () => {
         </div>
       </form>
       <div className="popup-actions">
-        <button onClick={handleConfirmPurchase} className="confirm-btn">
-          Place Order
-        </button>
-        <button onClick={handleClosePopup} className="continue-btn">
-          Back to Cart
-        </button>
-      </div>
+      <button onClick={handleClosePopup} className="continue-btn">
+        Back to Cart
+      </button>
+      <button onClick={handleConfirmPurchase} className="confirm-btn">
+        Place Order
+      </button>
+    </div>
     </div>
   </div>
 )}
