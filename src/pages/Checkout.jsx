@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
 import "../style/Checkout.css";
 import { CartContext } from "../context/CartContext";
+import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
   const { cartItems, updateQuantity, removeFromCart } = useContext(CartContext);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const navigate = useNavigate(); 
 
   const handleOpenPopup = () => setIsPopupOpen(true);
   const handleClosePopup = () => setIsPopupOpen(false);
@@ -60,9 +62,17 @@ const Checkout = () => {
         </div>
       </div>
 
-      <button onClick={handleOpenPopup} className="confirm-btn">
-        Proceed to Shipping Information
-      </button>
+      <div className="checkout-actions">
+        <button
+          onClick={() => navigate("/books")} 
+          className="back-btn"
+        >
+          Back to Books
+        </button>
+        <button onClick={handleOpenPopup} className="confirm-btn">
+          Proceed to Shipping Information
+        </button>
+      </div>
 
       {isPopupOpen && (
         <div className="popup-overlay">
