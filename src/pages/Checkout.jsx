@@ -1,36 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { CartContext } from "../context/CartContext";
 import "../style/Checkout.css";
 
 const Checkout = () => {
+  const { cartItems } = useContext(CartContext); // الحصول على البيانات من السياق
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  const handleOpenPopup = () => {
-    setIsPopupOpen(true);
-  };
-
-  const handleClosePopup = () => {
-    setIsPopupOpen(false);
-  };
+  const handleOpenPopup = () => setIsPopupOpen(true);
+  const handleClosePopup = () => setIsPopupOpen(false);
 
   const handleConfirmPurchase = () => {
     alert("Thank you for your purchase! Your order has been confirmed.");
     setIsPopupOpen(false);
   };
-
-  const cartItems = [
-    {
-      title: "Livre L'enfer de Dante",
-      price: 210,
-      quantity: 1,
-      image: process.env.PUBLIC_URL + "/images/BINDING.jpg",
-    },
-    {
-      title: "Another Book",
-      price: 150,
-      quantity: 2,
-      image: process.env.PUBLIC_URL + "/images/BOOK2.jpg",
-    },
-  ];
 
   const calculateTotal = () => {
     return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
@@ -39,7 +21,6 @@ const Checkout = () => {
   return (
     <div className="checkout-container">
       <h1 className="checkout-title">Order Summary</h1>
-
       <div className="checkout-items">
         {cartItems.map((item, index) => (
           <div className="item" key={index}>
@@ -47,7 +28,7 @@ const Checkout = () => {
             <div className="item-details">
               <p className="item-title">{item.title}</p>
               <p className="item-price">{item.price} MAD</p>
-              <p className="item-quantity">Quantity: {item.quantity}</p>
+              <p className="item-quantity">Quantity: {item.quantity || 1}</p>
             </div>
           </div>
         ))}
