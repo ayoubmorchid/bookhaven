@@ -4,6 +4,10 @@ import "../style/Favorites.css";
 const Favorites = ({ favorites, removeFromFavorites, isFavoritesOpen, toggleFavorites }) => {
   return (
     <>
+      <button className="favorites-toggle-btn" onClick={toggleFavorites}>
+        {isFavoritesOpen ? "Close Favorites" : "Open Favorites"}
+      </button>
+
       {isFavoritesOpen && (
         <div className="favorites-popup">
           {/* Close button */}
