@@ -1,8 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../style/EpicReads.css";
 import { CartContext } from "../context/CartContext";
-import Favorites from "../component/Favorites";
 
 // Import images
 import bindingImage from "../images/BINDING.jpg";
@@ -17,26 +16,14 @@ import ruinsImage from "../images/RUINS.jpg";
 import turanoImage from "../images/TURANO.jpg";
 import universeImage from "../images/UNIVERSE.jpg";
 import xoxoImage from "../images/XOXO.jpg";
+import Favorites from "../component/Favorites";
 
 const EpicReads = () => {
   const navigate = useNavigate();
   const { addToCart } = useContext(CartContext); // استخدام سياق CartContext
-  const [favorites, setFavorites] = useState([]); // حالة للمفضلة
-  const [isFavoritesOpen, setIsFavoritesOpen] = useState(false); // حالة فتح النافذة
 
-  const toggleFavorites = () => {
-    setIsFavoritesOpen(!isFavoritesOpen);
-  };
-
-  const addToFavorites = (book) => {
-    if (!favorites.find((fav) => fav.id === book.id)) {
-      setFavorites([...favorites, book]);
-    }
-  };
-
-  const removeFromFavorites = (id) => {
-    setFavorites(favorites.filter((fav) => fav.id !== id));
-  };
+  const [favorites, setFavorites] = useState([]);
+  const [isFavoritesOpen, setIsFavoritesOpen] = useState(false);
 
   const isLoggedIn = () => {
     return localStorage.getItem("token") === "logged_in";
@@ -52,10 +39,31 @@ const EpicReads = () => {
     }
   };
 
+  const addToFavorites = (book) => {
+    if (!favorites.find((fav) => fav.id === book.id)) {
+      setFavorites([...favorites, book]);
+    }
+  };
+
+  const removeFromFavorites = (id) => {
+    setFavorites(favorites.filter((fav) => fav.id !== id));
+  };
+
+  const toggleFavorites = () => {
+    setIsFavoritesOpen(!isFavoritesOpen);
+  };
+
   return (
     <div className="books-container">
       <h1>Explore Our Books</h1>
       <p>Find your next favorite read from our diverse collection.</p>
+
+      <Favorites
+        favorites={favorites}
+        removeFromFavorites={removeFromFavorites}
+        isFavoritesOpen={isFavoritesOpen}
+        toggleFavorites={toggleFavorites}
+      />
 
       <div className="content-container">
         {/* Sidebar */}
@@ -104,7 +112,7 @@ const EpicReads = () => {
               { id: 4, image: dragonTattooImage, title: "The Girl with the Dragon Tattoo", price: 180 },
             ]}
             onBuyClick={handleBuyClick}
-            onLikeClick={addToFavorites}
+            addToFavorites={addToFavorites}
           />
 
           <CategorySection
@@ -116,7 +124,7 @@ const EpicReads = () => {
               { id: 8, image: hollowImage, title: "The Time Traveler's Wife", price: 170 },
             ]}
             onBuyClick={handleBuyClick}
-            onLikeClick={addToFavorites}
+            addToFavorites={addToFavorites}
           />
 
           <CategorySection
@@ -128,23 +136,16 @@ const EpicReads = () => {
               { id: 12, image: ruinsImage, title: "The Hitchhiker's Guide to the Galaxy", price: 220 },
             ]}
             onBuyClick={handleBuyClick}
-            onLikeClick={addToFavorites}
+            addToFavorites={addToFavorites}
           />
         </div>
       </div>
-
-      <Favorites
-        favorites={favorites}
-        removeFromFavorites={removeFromFavorites}
-        isFavoritesOpen={isFavoritesOpen}
-        toggleFavorites={toggleFavorites}
-      />
     </div>
   );
 };
 
 // Component for a single category
-const CategorySection = ({ title, books, onBuyClick, onLikeClick }) => (
+const CategorySection = ({ title, books, onBuyClick, addToFavorites }) => (
   <div className="category-section">
     <h3>{title}</h3>
     <div className="book-grid">
@@ -154,8 +155,8 @@ const CategorySection = ({ title, books, onBuyClick, onLikeClick }) => (
           <p>{book.title}</p>
           <p>Price: {book.price} MAD</p>
           <div className="actions">
-          <button>📖 Read</button>
-            <button onClick={() => onLikeClick(book)}>❤ Like</button>
+            <button>📖 Read</button>
+            <button onClick={() => addToFavorites(book)}>❤ Like</button>
             <button onClick={() => onBuyClick(book)}>🛒 Buy</button>
           </div>
         </div>
