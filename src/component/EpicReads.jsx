@@ -20,10 +20,12 @@ import Favorites from "../component/Favorites";
 
 const EpicReads = () => {
   const navigate = useNavigate();
-  const { addToCart } = useContext(CartContext); // استخدام سياق CartContext
+  const { addToCart } = useContext(CartContext);
 
   const [favorites, setFavorites] = useState([]);
   const [isFavoritesOpen, setIsFavoritesOpen] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [currentBook, setCurrentBook] = useState(null);
 
   const isLoggedIn = () => {
     return localStorage.getItem("token") === "logged_in";
@@ -34,9 +36,14 @@ const EpicReads = () => {
       localStorage.setItem("redirectPath", "/checkout");
       navigate("/login");
     } else {
-      addToCart(book); // إضافة الكتاب للسلة
+      addToCart(book);
       navigate("/checkout");
     }
+  };
+
+  const handleReadClick = (book) => {
+    setCurrentBook(book);
+    setIsPopupOpen(true);
   };
 
   const addToFavorites = (book) => {
@@ -51,6 +58,11 @@ const EpicReads = () => {
 
   const toggleFavorites = () => {
     setIsFavoritesOpen(!isFavoritesOpen);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+    setCurrentBook(null);
   };
 
   return (
@@ -106,46 +118,60 @@ const EpicReads = () => {
           <CategorySection
             title="Detective"
             books={[
-              { id: 1, image: classyImage, title: "Jaya: The Mahabharata", price: 120 },
-              { id: 2, image: harryImage, title: "1984 by George Orwell", price: 150 },
-              { id: 3, image: robertsImage, title: "Sherlock Holmes", price: 200 },
-              { id: 4, image: dragonTattooImage, title: "The Girl with the Dragon Tattoo", price: 180 },
+              { id: 1, image: classyImage, title: "Jaya: The Mahabharata", price: 120, summary: "A great epic of Indian mythology.", rating: "4.5/5" },
+              { id: 2, image: harryImage, title: "1984 by George Orwell", price: 150, summary: "A dystopian novel about totalitarianism.", rating: "4.8/5" },
+              { id: 3, image: robertsImage, title: "Sherlock Holmes", price: 200, summary: "The classic detective adventures.", rating: "4.7/5" },
+              { id: 4, image: dragonTattooImage, title: "The Girl with the Dragon Tattoo", price: 180, summary: "A gripping crime thriller.", rating: "4.6/5" },
             ]}
             onBuyClick={handleBuyClick}
+            onReadClick={handleReadClick}
             addToFavorites={addToFavorites}
           />
 
           <CategorySection
             title="Love"
             books={[
-              { id: 5, image: hooverImage, title: "Pride and Prejudice", price: 140 },
-              { id: 6, image: xoxoImage, title: "The Notebook", price: 160 },
-              { id: 7, image: turanoImage, title: "Me Before You", price: 130 },
-              { id: 8, image: hollowImage, title: "The Time Traveler's Wife", price: 170 },
+              { id: 5, image: hooverImage, title: "Pride and Prejudice", price: 140, summary: "A classic romantic novel.", rating: "4.9/5" },
+              { id: 6, image: xoxoImage, title: "The Notebook", price: 160, summary: "A story of enduring love.", rating: "4.7/5" },
+              { id: 7, image: turanoImage, title: "Me Before You", price: 130, summary: "A tale of love and sacrifice.", rating: "4.6/5" },
+              { id: 8, image: hollowImage, title: "The Time Traveler's Wife", price: 170, summary: "A moving story of love through time.", rating: "4.8/5" },
             ]}
             onBuyClick={handleBuyClick}
+            onReadClick={handleReadClick}
             addToFavorites={addToFavorites}
           />
 
           <CategorySection
             title="Science Fiction"
             books={[
-              { id: 9, image: bindingImage, title: "Dune by Frank Herbert", price: 200 },
-              { id: 10, image: universeImage, title: "Ender's Game", price: 180 },
-              { id: 11, image: kingdomImage, title: "Neuromancer", price: 150 },
-              { id: 12, image: ruinsImage, title: "The Hitchhiker's Guide to the Galaxy", price: 220 },
+              { id: 9, image: bindingImage, title: "Dune by Frank Herbert", price: 200, summary: "A sci-fi masterpiece set on Arrakis.", rating: "4.9/5" },
+              { id: 10, image: universeImage, title: "Ender's Game", price: 180, summary: "A thrilling space adventure.", rating: "4.8/5" },
+              { id: 11, image: kingdomImage, title: "Neuromancer", price: 150, summary: "A cyberpunk classic.", rating: "4.7/5" },
+              { id: 12, image: ruinsImage, title: "The Hitchhiker's Guide to the Galaxy", price: 220, summary: "A hilarious intergalactic journey.", rating: "4.8/5" },
             ]}
             onBuyClick={handleBuyClick}
+            onReadClick={handleReadClick}
             addToFavorites={addToFavorites}
           />
         </div>
       </div>
+
+      {/* نافذة القراءة */}
+      {isPopupOpen && currentBook && (
+        <div className="popup-overlay">
+          <div className="popup">
+            <button className="close-btn" onClick={handleClosePopup}>✖</button>
+            <h2>{currentBook.title}</h2>
+            <p>{currentBook.summary}</p>
+            <p><strong>Rating:</strong> {currentBook.rating}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
-// Component for a single category
-const CategorySection = ({ title, books, onBuyClick, addToFavorites }) => (
+const CategorySection = ({ title, books, onBuyClick, onReadClick, addToFavorites }) => (
   <div className="category-section">
     <h3>{title}</h3>
     <div className="book-grid">
@@ -155,7 +181,7 @@ const CategorySection = ({ title, books, onBuyClick, addToFavorites }) => (
           <p>{book.title}</p>
           <p>Price: {book.price} MAD</p>
           <div className="actions">
-            <button>📖 Read</button>
+            <button onClick={() => onReadClick(book)}>📖 Read</button>
             <button onClick={() => addToFavorites(book)}>❤ Like</button>
             <button onClick={() => onBuyClick(book)}>🛒 Buy</button>
           </div>
@@ -164,5 +190,4 @@ const CategorySection = ({ title, books, onBuyClick, addToFavorites }) => (
     </div>
   </div>
 );
-
 export default EpicReads;
