@@ -138,7 +138,7 @@ const EpicReads = () => {
         removeFromFavorites={removeFromFavorites}
         isFavoritesOpen={isFavoritesOpen}
         toggleFavorites={toggleFavorites}
-      />
+      /> 
     </div>
   );
 };
