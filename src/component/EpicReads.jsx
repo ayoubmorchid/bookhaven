@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../style/EpicReads.css";
 import { CartContext } from "../context/CartContext";
@@ -20,22 +20,6 @@ import xoxoImage from "../images/XOXO.jpg";
 const EpicReads = () => {
   const navigate = useNavigate();
   const { addToCart } = useContext(CartContext); // استخدام سياق CartContext
-  const [favorites, setFavorites] = useState([]); // حالة للمفضلة
-  const [isFavoritesOpen, setIsFavoritesOpen] = useState(false); // حالة فتح النافذة
-
-  const toggleFavorites = () => {
-    setIsFavoritesOpen(!isFavoritesOpen);
-  };
-
-  const addToFavorites = (book) => {
-    if (!favorites.find((fav) => fav.id === book.id)) {
-      setFavorites([...favorites, book]);
-    }
-  };
-
-  const removeFromFavorites = (id) => {
-    setFavorites(favorites.filter((fav) => fav.id !== id));
-  };
 
   const isLoggedIn = () => {
     return localStorage.getItem("token") === "logged_in";
@@ -103,7 +87,6 @@ const EpicReads = () => {
               { id: 4, image: dragonTattooImage, title: "The Girl with the Dragon Tattoo", price: 180 },
             ]}
             onBuyClick={handleBuyClick}
-            onLikeClick={addToFavorites}
           />
 
           <CategorySection
@@ -115,7 +98,6 @@ const EpicReads = () => {
               { id: 8, image: hollowImage, title: "The Time Traveler's Wife", price: 170 },
             ]}
             onBuyClick={handleBuyClick}
-            onLikeClick={addToFavorites}
           />
 
           <CategorySection
@@ -127,39 +109,15 @@ const EpicReads = () => {
               { id: 12, image: ruinsImage, title: "The Hitchhiker's Guide to the Galaxy", price: 220 },
             ]}
             onBuyClick={handleBuyClick}
-            onLikeClick={addToFavorites}
           />
         </div>
       </div>
-
-      <button className="favorites-toggle-btn" onClick={toggleFavorites}>
-        {isFavoritesOpen ? "Close Favorites" : "Open Favorites"}
-      </button>
-
-      {isFavoritesOpen && (
-        <div className="favorites-popup">
-          <h2>Your Favorites</h2>
-          {favorites.length === 0 ? (
-            <p>No favorites added yet.</p>
-          ) : (
-            <ul>
-              {favorites.map((fav) => (
-                <li key={fav.id}>
-                  <img src={fav.image} alt={fav.title} />
-                  <span>{fav.title}</span>
-                  <button onClick={() => removeFromFavorites(fav.id)}>Remove</button>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      )}
     </div>
   );
 };
 
 // Component for a single category
-const CategorySection = ({ title, books, onBuyClick, onLikeClick }) => (
+const CategorySection = ({ title, books, onBuyClick }) => (
   <div className="category-section">
     <h3>{title}</h3>
     <div className="book-grid">
@@ -169,7 +127,8 @@ const CategorySection = ({ title, books, onBuyClick, onLikeClick }) => (
           <p>{book.title}</p>
           <p>Price: {book.price} MAD</p>
           <div className="actions">
-            <button onClick={() => onLikeClick(book)}>❤ Like</button>
+            <button>📖 Read</button>
+            <button>❤ Like</button>
             <button onClick={() => onBuyClick(book)}>🛒 Buy</button>
           </div>
         </div>
