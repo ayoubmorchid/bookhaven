@@ -13,7 +13,7 @@ const Login = () => {
     if (name === "password") {
       setErrors((prev) => ({
         ...prev,
-        password:
+        password:a
           value.length < 6 ? "Password must be at least 6 characters" : "",
       }));
     }
