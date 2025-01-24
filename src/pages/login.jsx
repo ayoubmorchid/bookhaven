@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 import "../style/login.css";
 
 const Login = () => {
+  const { importPendingBook } = useContext(CartContext); // استيراد الدالة من السياق
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [errors, setErrors] = useState({});
@@ -56,15 +59,9 @@ const Login = () => {
     setTimeout(() => {
       if (formData.username === "admin" && formData.password === "123456") {
         localStorage.setItem("token", "logged_in"); // Save token
-        const pendingBook = localStorage.getItem("pendingBook");
 
-        if (pendingBook) {
-          const book = JSON.parse(pendingBook);
-          const cartContext = JSON.parse(localStorage.getItem("cart")) || [];
-          cartContext.push(book);
-          localStorage.setItem("cart", JSON.stringify(cartContext));
-          localStorage.removeItem("pendingBook"); // Remove book from localStorage
-        }
+        // استدعاء importPendingBook لإضافة الكتاب إلى السلة
+        importPendingBook();
 
         const redirectPath = localStorage.getItem("redirectPath") || "/";
         localStorage.removeItem("redirectPath");
