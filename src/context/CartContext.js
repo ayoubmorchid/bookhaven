@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 // إنشاء سياق السلة
 export const CartContext = createContext();
@@ -6,6 +6,17 @@ export const CartContext = createContext();
 // مزود السلة لتوفير الحالة والوظائف
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
+
+  // تحميل السلة من localStorage عند التهيئة
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    setCartItems(storedCart);
+  }, []);
+
+  // حفظ السلة إلى localStorage عند تغييرها
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   // إضافة عنصر إلى السلة
   const addToCart = (item) => {
@@ -30,22 +41,39 @@ export const CartProvider = ({ children }) => {
   const updateQuantity = (itemId, quantity) => {
     setCartItems((prevItems) =>
       prevItems.map((item) =>
-        item.id === itemId ? { ...item, quantity } : item
+        item.id === itemId ? { ...item, quantity: Math.max(1, quantity) } : item
       )
     );
   };
 
+  // إزالة عنصر من السلة
   const removeFromCart = (itemId) => {
     setCartItems((prevItems) =>
       prevItems.filter((item) => item.id !== itemId)
     );
   };
 
+  // استيراد الكتاب المعلق من localStorage
+  const importPendingBook = () => {
+    const pendingBook = localStorage.getItem("pendingBook");
+    if (pendingBook) {
+      addToCart(JSON.parse(pendingBook)); // إضافة الكتاب إلى السلة
+      localStorage.removeItem("pendingBook"); // إزالة الكتاب من التخزين
+    }
+  };
+
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, updateQuantity, removeFromCart }}
+      value={{
+        cartItems,
+        addToCart,
+        updateQuantity,
+        removeFromCart,
+        importPendingBook,
+      }}
     >
       {children}
     </CartContext.Provider>
   );
 };
+

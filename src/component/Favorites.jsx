@@ -1,7 +1,7 @@
 import React from "react";
 import "../style/Favorites.css";
 
-const Favorites = ({ favorites, removeFromFavorites, isFavoritesOpen, toggleFavorites }) => {
+const Favorites = ({ favorites, removeFromFavorites, isFavoritesOpen, toggleFavorites  }) => {
   return (
     <>
       <button className="favorites-toggle-btn" onClick={toggleFavorites}>
@@ -10,7 +10,7 @@ const Favorites = ({ favorites, removeFromFavorites, isFavoritesOpen, toggleFavo
 
       {isFavoritesOpen && (
         <div className="favorites-popup">
-          {/* Close button */}
+          {/* Close button  for favorites popup*/}
           <button className="close-btn" onClick={toggleFavorites}>
             &times;
           </button>

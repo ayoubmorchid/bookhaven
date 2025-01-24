@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import '../style/navbar.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [activeTab, setActiveTab] = useState('home');
+  const navigate = useNavigate();
+  const isAuthenticated = !!localStorage.getItem('token'); // التحقق من تسجيل الدخول
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token'); // إزالة رمز المصادقة
+    navigate('/login'); // التوجيه إلى صفحة تسجيل الدخول
   };
 
   return (
@@ -41,8 +48,16 @@ const Navbar = () => {
         </li>
       </ul>
       <div className="auth-links">
-        <Link to="/login" className="auth-link">Login</Link>
-        <Link to="/signup" className="auth-link">Sign Up</Link>
+        {isAuthenticated ? (
+          <button className="auth-link logout-btn" onClick={handleLogout}>
+            Logout
+          </button>
+        ) : (
+          <>
+            <Link to="/login" className="auth-link">Login</Link>
+            <Link to="/signup" className="auth-link">Sign Up</Link>
+          </>
+        )}
       </div>
     </nav>
   );

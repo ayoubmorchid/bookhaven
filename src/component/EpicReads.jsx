@@ -118,7 +118,7 @@ const EpicReads = () => {
           <CategorySection
             title="Detective"
             books={[
-              { id: 1, image: classyImage, title: "Jaya: The Mahabharata", price: 120, summary: "A great epic of Indian mythology.", rating: "4.5/5" },
+              { id: 1, image: classyImage, title: "Jaya: The Mahabharata", price: 120, summary: "The introduction of Jaya sets the tone for the retelling of India's great epic, the Mahabharata. Devdutt Pattanaik emphasizes that the Mahabharata is more than a story of war; it is a deep exploration of human nature, ethics, and spirituality. He discusses the origin of the epic, attributed to Sage Vyasa, and how it has been transmitted through generations. The title Jaya ('Victory') signifies the ultimate triumph of dharma (righteousness) over adharma (unrighteousness), contrasting with the word Vijaya, which refers to a materialistic or worldly victory. Pattanaik highlights how this retelling focuses not only on the grand narrative but also on the lesser-known tales and characters from regional and folk traditions, making the Mahabharata a rich tapestry of lessons about life and humanity." , rating: "4.5/5" },
               { id: 2, image: harryImage, title: "1984 by George Orwell", price: 150, summary: "A dystopian novel about totalitarianism.", rating: "4.8/5" },
               { id: 3, image: robertsImage, title: "Sherlock Holmes", price: 200, summary: "The classic detective adventures.", rating: "4.7/5" },
               { id: 4, image: dragonTattooImage, title: "The Girl with the Dragon Tattoo", price: 180, summary: "A gripping crime thriller.", rating: "4.6/5" },
