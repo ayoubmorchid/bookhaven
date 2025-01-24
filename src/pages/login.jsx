@@ -54,7 +54,7 @@ const Login = () => {
 
     // Mock authentication logic
     setTimeout(() => {
-      if (formData.username === "admin" && formData.password === "1234") {
+      if (formData.username === "admin" && formData.password === "123456") {
         localStorage.setItem("token", "logged_in"); // Save token
         setIsLoading(false);
         navigate("/"); // Redirect to home
