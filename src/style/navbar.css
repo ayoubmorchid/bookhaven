@@ -56,3 +56,16 @@
 .auth-link:hover {
   text-decoration: underline;
 }
+
+.logout-btn {
+  text-decoration: none;
+  color: var(--background-color); 
+  font-size: 16px; 
+  background-color: transparent; 
+  border: none; 
+  cursor: pointer; 
+}
+
+.logout-btn:hover {
+  text-decoration: underline; 
+}
