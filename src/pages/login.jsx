@@ -1,23 +1,32 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../style/login.css";
 
 const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const handleValidation = (e) => {
     const { name, value } = e.target;
 
+    setFormData((prev) => ({ ...prev, [name]: value }));
+
+    if (name === "username") {
+      setErrors((prev) => ({
+        ...prev,
+        username: value.trim() === "" ? "Username is required" : "",
+      }));
+    }
+
     if (name === "password") {
       setErrors((prev) => ({
         ...prev,
-        password:a
+        password:
           value.length < 6 ? "Password must be at least 6 characters" : "",
       }));
     }
-    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
@@ -26,19 +35,33 @@ const Login = () => {
 
     // Final validation before submission
     if (!formData.username || errors.username) {
-      alert("Please provide a valid username.");
-      setIsLoading(false);
-      return;
-    }
-    if (!formData.password || errors.password) {
-      alert("Please provide a valid password.");
+      setErrors((prev) => ({
+        ...prev,
+        username: "Please provide a valid username.",
+      }));
       setIsLoading(false);
       return;
     }
 
-    setTimeout(() => {
+    if (!formData.password || errors.password) {
+      setErrors((prev) => ({
+        ...prev,
+        password: "Please provide a valid password.",
+      }));
       setIsLoading(false);
-      alert("Logged in successfully!");
+      return;
+    }
+
+    // Mock authentication logic
+    setTimeout(() => {
+      if (formData.username === "admin" && formData.password === "1234") {
+        localStorage.setItem("token", "logged_in"); // Save token
+        setIsLoading(false);
+        navigate("/"); // Redirect to home
+      } else {
+        setIsLoading(false);
+        alert("Invalid username or password");
+      }
     }, 2000);
   };
 
@@ -57,9 +80,9 @@ const Login = () => {
                 id="username"
                 name="username"
                 placeholder="Type your username or Email"
-                required
                 onChange={handleValidation}
                 className={`input ${errors.username ? "error" : ""}`}
+                required
               />
               {errors.username && <p className="error-text">{errors.username}</p>}
             </div>
@@ -70,9 +93,9 @@ const Login = () => {
                 id="password"
                 name="password"
                 placeholder="Type your password"
-                required
                 onChange={handleValidation}
                 className={`input ${errors.password ? "error" : ""}`}
+                required
               />
               {errors.password && <p className="error-text">{errors.password}</p>}
             </div>
