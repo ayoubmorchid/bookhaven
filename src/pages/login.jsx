@@ -56,8 +56,20 @@ const Login = () => {
     setTimeout(() => {
       if (formData.username === "admin" && formData.password === "123456") {
         localStorage.setItem("token", "logged_in"); // Save token
+        const pendingBook = localStorage.getItem("pendingBook");
+
+        if (pendingBook) {
+          const book = JSON.parse(pendingBook);
+          const cartContext = JSON.parse(localStorage.getItem("cart")) || [];
+          cartContext.push(book);
+          localStorage.setItem("cart", JSON.stringify(cartContext));
+          localStorage.removeItem("pendingBook"); // Remove book from localStorage
+        }
+
+        const redirectPath = localStorage.getItem("redirectPath") || "/";
+        localStorage.removeItem("redirectPath");
         setIsLoading(false);
-        navigate("/"); // Redirect to home
+        navigate(redirectPath); // Redirect to the saved path
       } else {
         setIsLoading(false);
         alert("Invalid username or password");
