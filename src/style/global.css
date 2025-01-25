@@ -1,8 +1,8 @@
 :root {
-  --background-color: #F2EFE7; /* لون بيج فاتح - للخلفيات */
-  --primary-color: #9ACBD0; /* لون أزرق فاتح - للأزرار والعناصر البارزة */
-  --secondary-color: #48A6A7; /* لون تركوازي - للعناوين أو الحواف */
-  --hover-color: #2973B2; /* لون أزرق غامق - عند التفاعل مع العناصر */
-  --text-color: #000000; /* لون أبيض للنصوص */
-  --accent-color: #48A6A7; /* لون تركوازي إضافي للتفاصيل */
+  --background-color: #F2EFE7; 
+  --primary-color: #9ACBD0; 
+  --secondary-color: #48A6A7; 
+  --hover-color: #2973B2; 
+  --text-color: #000000; 
+  --accent-color: #48A6A7; 
 }
