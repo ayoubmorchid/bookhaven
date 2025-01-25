@@ -3,8 +3,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
-  background-color: var(--primary-color);
   position: fixed;
+  background-color: #1f717a;
+
   top: 0;
   left: 0;
   width: 100%;
@@ -15,7 +16,9 @@
 }
 
 .navbar:hover {
-  background-color: var(--secondary-color); 
+    background-color: var(--secondary-color); 
+
+
 }
 
 .logo-link {
@@ -27,7 +30,7 @@
 }
 
 .logo-link:hover {
-  color: var(--accent-color); /* لون جذاب عند التحويم */
+  color: var(--text-color);
 }
 
 .nav-links {
@@ -78,7 +81,8 @@
 
 .auth-link:hover {
   background-color: var(--background-color);
-  color: var(--primary-color);
+  color: var(--text-color);
+
 }
 
 .logout-btn {
