@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 const FooterSection = () => {
   return (
-    <div className="app-container">
-      
+    <div className="footer-container">
+      {/* Subscription Section */}
       <div className="subscribe-section">
         <h2>Subscribe to Our Newsletter</h2>
         <p>Stay updated with our latest news and promotions!</p>
@@ -15,32 +15,34 @@ const FooterSection = () => {
             placeholder="Enter your email address..."
             className="email-input"
           />
-          <button className="subscribe-button">Subscribe Now</button>
+          <button className="subscribe-button">Subscribe</button>
         </div>
         <div className="circle-top-right"></div>
       </div>
 
+      {/* Footer Section */}
       <footer className="footer-section">
-        <p>&copy; 2023 Bucca di Beppo. All rights reserved.</p>
-        <div className="footer-links">
-          <Link to="/privacy">Privacy Policy</Link>
-          <Link to="/terms">Terms of Service</Link>
-          <Link to="/cookies">Cookies Settings</Link>
-        </div>
-        <div className="circle-bottom-left"></div>
-        <div className="social-icons">
-          <Link to="/">
-            <i className="fa fa-facebook"></i>
-          </Link>
-          <Link to="/">
-            <i className="fa fa-instagram"></i>
-          </Link>
-          <Link to="/">
-            <i className="fa fa-twitter"></i>
-          </Link>
-          <Link to="/">
-            <i className="fa fa-linkedin"></i>
-          </Link>
+        <div className="footer-content">
+          <p>&copy; 2023 BookHaven. All rights reserved.</p>
+          <div className="footer-links">
+            <Link to="/privacy">Privacy Policy</Link>
+            <Link to="/terms">Terms of Service</Link>
+            <Link to="/cookies">Cookies Settings</Link>
+          </div>
+          <div className="social-icons">
+            <Link to="/" aria-label="Facebook">
+              <i className="fa fa-facebook"></i>
+            </Link>
+            <Link to="/" aria-label="Instagram">
+              <i className="fa fa-instagram"></i>
+            </Link>
+            <Link to="/" aria-label="Twitter">
+              <i className="fa fa-twitter"></i>
+            </Link>
+            <Link to="/" aria-label="LinkedIn">
+              <i className="fa fa-linkedin"></i>
+            </Link>
+          </div>
         </div>
       </footer>
     </div>

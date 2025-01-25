@@ -6,8 +6,11 @@
   font-family: 'Arial', sans-serif;
   overflow: hidden;
 }
+.contact-container {
+  margin-top: 60px; 
+  padding: 20px; 
+}
 
-/* النص التقديمي */
 .intro-text {
   text-align: center;
   margin-bottom: 40px;

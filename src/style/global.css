@@ -1,8 +1,8 @@
 :root {
-  --primary-color: #b98b73; /* لون بني فاتح يرمز للأثاث الخشبي */
-  --secondary-color: #6c5b4c; /* لون بني داكن للأرفف */
-  --background-color: #f5f1e3; /* لون بيج فاتح لجدران المكتبة */
-  --text-color: #3e3c3a; /* لون رمادي غامق للنصوص */
-  --link-color: #1a535c; /* لون أخضر داكن يرمز للطبيعة */
-  --link-hover-color: #4ecdc4; /* لون فيروزي لطيف للتفاعل */
+  --background-color: #F2EFE7; 
+  --primary-color: #9ACBD0; 
+  --secondary-color: #48A6A7; 
+  --hover-color: #2973B2; 
+  --text-color: #000000; 
+  --accent-color: #48A6A7; 
 }

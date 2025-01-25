@@ -18,9 +18,18 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="logo-link">
-        <Link to="/shopping" onClick={() => handleTabClick('home')}>EpicReads</Link>
+      {/* الشعار */}
+      <div className="logo">
+        <Link
+          to="/shopping"
+          className="logo-link"
+          onClick={() => handleTabClick('home')}
+        >
+          EpicReads
+        </Link>
       </div>
+
+      {/* الروابط */}
       <ul className="nav-links">
         <li
           className={`nav-item ${activeTab === 'home' ? 'active' : ''}`}
@@ -47,6 +56,8 @@ const Navbar = () => {
           <Link to="/contact">Contact</Link>
         </li>
       </ul>
+
+      {/* روابط تسجيل الدخول */}
       <div className="auth-links">
         {isAuthenticated ? (
           <button className="auth-link logout-btn" onClick={handleLogout}>
@@ -54,8 +65,12 @@ const Navbar = () => {
           </button>
         ) : (
           <>
-            <Link to="/login" className="auth-link">Login</Link>
-            <Link to="/signup" className="auth-link">Sign Up</Link>
+            <Link to="/login" className="auth-link">
+              Login
+            </Link>
+            <Link to="/signup" className="auth-link">
+              Sign Up
+            </Link>
           </>
         )}
       </div>
