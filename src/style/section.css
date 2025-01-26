@@ -1,14 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
 
-/* المتغيرات */
-:root {
-    --primary-color: #85191A;
-    --secondary-color: #E9C3B2;
-    --hover-color: #C0504D;
-    --background-color: #fefefe;
-    --text-color: #333;
-    --font-family-main: "Open Sans", sans-serif;
-}
 
 /* القواعد العامة */
 body {
@@ -160,6 +151,7 @@ body {
 /* Selling Button */
 .description button {
     background-color: transparent;
+    background-color: #a00000;
     font-size: 1rem;
     font-weight: 550;
     color: var(--primary-color);
@@ -174,7 +166,7 @@ body {
 
 .description button:hover {
     transform: scale(1.1);
-    background-color: var(--primary-color);
+    background-color: #a00000;
     color: var(--secondary-color);
 }
 
