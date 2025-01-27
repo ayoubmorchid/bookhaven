@@ -11,7 +11,6 @@ import '../style/section.css';
 export default function Section() {
   return (
     <div className="section">
-      {/* Welcome Section */}
       <div className="welcome-container">
         <div className="welcome-text">
           <h1>Welcome To EpicReads</h1>
@@ -24,7 +23,6 @@ export default function Section() {
         </div>
       </div>
 
-      {/* Popular Books Section */}
       <div className="description">
         <h1>
           Find your next great <br />

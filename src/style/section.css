@@ -88,6 +88,7 @@
   color: var(--primary-color);
   margin: 50px auto;
   width: 90%;
+  margin-left: 50px;
 }
 
 .description h1 {
@@ -138,7 +139,6 @@
   font-size: medium;
 }
 
-/* تحسين زر See All */
 .description button {
   background-color: var(--primary-color);
   color: white;
@@ -158,7 +158,6 @@
   background-color: var(--hover-color);
 }
 
-/* Description Section */
 .desc-section {
   margin-top: 50px;
   display: flex;
@@ -196,7 +195,6 @@
   border-radius: 10px;
 }
 
-/* Responsive Design */
 @media (max-width: 1200px) {
   .description {
     width: 95%;
@@ -258,7 +256,12 @@
   }
 }
 
-/* Animation Keyframes */
+
+
+
+
+
+
 @keyframes fadeIn {
   from {
     opacity: 0;

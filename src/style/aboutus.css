@@ -1,18 +1,18 @@
 /* About Us Page Styles */
 
 :root {
-  --primary-color: #4caf50; /* الأخضر الأساسي */
-  --secondary-color: #388e3c; /* الأخضر الداكن */
-  --background-color: #f5f5f5; /* اللون الرمادي الفاتح */
-  --text-color: #333333; /* النصوص */
-  --subtext-color: #555555; /* النصوص الثانوية */
-  --box-shadow-color: rgba(0, 0, 0, 0.1); /* ظل الصناديق */
-  --hover-color: #a00000; /* لون التحويم */
+  --primary-color: #4caf50; 
+  --secondary-color: #388e3c; 
+  --background-color: #f5f5f5; 
+  --text-color: #333333; 
+  --subtext-color: #555555;
+  --box-shadow-color: rgba(0, 0, 0, 0.1); 
+  --hover-color: #a00000;
 }
 
 .about-container {
-  background-color: var(--background-color);
   padding: 20px;
+  margin-top: 60px;
   color: var(--text-color);
 }
 
@@ -37,7 +37,7 @@
 }
 
 .about-text h2 {
-  color: var(--primary-color);
+  color: var(--text-color);
   font-size: 2rem;
   margin-bottom: 10px;
 }

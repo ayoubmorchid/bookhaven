@@ -50,6 +50,30 @@ const teamData = [
     img: med,
     color: '#8cbed6',
   },
+  {
+    id: 1,
+    name: 'Lhcen Boussedra',
+    role: 'Manufacturing and design',
+    img: hsina,
+    color: '#8cbed6',
+    fb: 'https://www.facebook.com/profile.php?id=100071638552830',
+  },
+  {
+    id: 2,
+    name: 'Mohamed Fakir',
+    role: 'Manufacturing and design',
+    img: med,
+    color: '#8cbed6',
+    fb: 'https://www.facebook.com/Mohamed.PNX.01',
+  },
+  {
+    id: 3,
+    name: 'Brahim Elallam',
+    role: 'Marketing',
+    img: brahim,
+    color: '#8cbed6',
+    fb: 'https://www.facebook.com/brahim.elallam.18',
+  },
 ];
 
 const AboutUs = () => {
