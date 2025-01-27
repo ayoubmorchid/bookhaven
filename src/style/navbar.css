@@ -1,3 +1,4 @@
+/* تصميم النافبار */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -5,26 +6,22 @@
   padding: 15px 20px;
   position: fixed;
   background-color: #1f717a;
-
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   transition: background-color 0.3s ease;
-  margin: 0;
 }
 
 .navbar:hover {
-    background-color: var(--secondary-color); 
-
-
+    background-color: var(--secondary-color);
 }
 
 .logo-link {
   font-size: 22px;
   font-weight: bold;
-  color: var(--background-color);
+  color: white;
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -33,46 +30,73 @@
   color: var(--text-color);
 }
 
+/* زر القائمة المنسدلة */
+.menu-toggle {
+  display: none; /* مخفي في الشاشات الكبيرة */
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: white; /* لون الزر */
+  cursor: pointer;
+  margin-left: auto; /* يبعد الزر عن العناصر الأخرى */
+}
+
+/* الروابط */
 .nav-links {
   list-style: none;
   display: flex;
   gap: 20px;
   margin: 0;
   padding: 0;
+  transition: all 0.3s ease; /* حركة سلسة عند الفتح */
+}
+
+.nav-links.open {
+  display: flex;
+  flex-direction: column; /* عرض عمودي في الشاشات الصغيرة */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #1f717a; /* خلفية نفس لون النافبار */
+  width: 100%;
+  padding: 10px 0;
+  z-index: 999; /* للتأكد من الظهور فوق المحتوى */
+}
+
+.nav-links.open .nav-item {
+  text-align: left; /* محاذاة الروابط لليسار */
+  padding-left: 15px; /* مسافة صغيرة من الحافة */
 }
 
 .nav-item a {
   text-decoration: none;
-  color: var(--text-color);
+  color: white;
   font-size: 16px;
-  text-transform: capitalize;
   padding: 5px 10px;
   border-radius: 5px;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .nav-item a:hover {
-  background-color: var(--background-color);
-  color: var(--primary-color);
-  text-decoration: none;
+  background-color: white;
+  color: #1f717a;
 }
 
 .active a {
   font-weight: bold;
-  border-bottom: 2px solid var(--background-color);
-  color: var(--accent-color);
+  border-bottom: 2px solid white;
 }
 
+/* روابط تسجيل الدخول */
 .auth-links {
   display: flex;
   gap: 15px;
-  margin-right: 30px; /* إزالة أي هوامش افتراضية */
-  padding: 0; /* إزالة أي تباعد داخلي */
+  margin-right: 30px;
 }
 
 .auth-link {
   text-decoration: none;
-  color: var(--background-color);
+  color: white;
   font-size: 16px;
   padding: 5px 10px;
   border-radius: 5px;
@@ -80,45 +104,42 @@
 }
 
 .auth-link:hover {
-  background-color: var(--background-color);
-  color: var(--text-color);
-
+  background-color: white;
+  color: #1f717a;
 }
 
 .logout-btn {
-  text-decoration: none;
-  color: var(--background-color); 
-  font-size: 16px; 
-  background-color: transparent; 
-  border: none; 
-  cursor: pointer; 
-  padding: 5px 10px;
-  border-radius: 5px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .logout-btn:hover {
-  background-color: var(--background-color); 
-  color: var(--primary-color);
+  background-color: white;
+  color: #1f717a;
 }
 
+/* تصميم متجاوب */
 @media (max-width: 768px) {
-  .navbar {
-    flex-direction: column; /* ترتيب رأسي للشاشات الصغيرة */
-    align-items: flex-start;
-    padding: 10px;
+  .menu-toggle {
+    display: block; /* يظهر الزر في الشاشات الصغيرة */
   }
 
   .nav-links {
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    align-items: flex-start; /* الروابط تبدأ من اليسار */
+    display: none; /* مخفي افتراضيًا في الشاشات الصغيرة */
+  }
+
+  .nav-links.open {
+    display: flex; /* عرض القائمة عند فتحها */
   }
 
   .auth-links {
-    width: 100%;
-    justify-content: flex-end;
+    flex-direction: column; /* ترتيب رأسي لروابط تسجيل الدخول */
+    align-items: flex-start;
     margin-top: 10px;
+    gap: 10px; /* مسافة بين الروابط */
   }
 }
