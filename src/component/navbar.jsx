@@ -4,11 +4,13 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [activeTab, setActiveTab] = useState('home');
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // إدارة القائمة المنسدلة
   const navigate = useNavigate();
   const isAuthenticated = !!localStorage.getItem('token'); // التحقق من تسجيل الدخول
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
+    setIsMenuOpen(false); // إغلاق القائمة عند النقر
   };
 
   const handleLogout = () => {
@@ -29,8 +31,17 @@ const Navbar = () => {
         </Link>
       </div>
 
+      {/* زر القائمة المنسدلة للشاشات الصغيرة */}
+      <button
+        className="menu-toggle"
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        aria-label="Toggle Menu"
+      >
+        ☰
+      </button>
+
       {/* الروابط */}
-      <ul className="nav-links">
+      <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
         <li
           className={`nav-item ${activeTab === 'home' ? 'active' : ''}`}
           onClick={() => handleTabClick('home')}
