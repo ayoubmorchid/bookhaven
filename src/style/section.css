@@ -1,273 +1,293 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
 
 
-/* القواعد العامة */
-body {
-    font-family: var(--font-family-main);
-    background-color: var(--background-color);
-    margin: 0;
-    padding: 0;
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
-/* Welcome Section */
 .welcome-container {
-    margin-top: 100px;
-    margin-left: 100px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
-    padding: 30px 20px;
-    background-color: var(--secondary-color);
-    border-radius: 10px;
-    animation: fadeIn 1s ease-in-out;
+  margin-top: 80px;
+  margin-left: 90px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 30px 20px;
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  animation: fadeIn 1s ease-in-out;
 }
-.section{
-    
-    transform: translateX(-50px);
 
+.section {
+  transform: translateX(-50px);
 }
 
 .welcome-text {
-    max-width: 500px;
-    text-align: center;
-    margin: 20px 0;
-    animation: slideInFromLeft 1.2s ease-in-out;
+  max-width: 500px;
+  flex: 1;
+  text-align: center;
+  margin: 20px 0;
+  animation: slideInFromLeft 1.2s ease-in-out;
 }
 
 .welcome-text h1 {
-    color: var(--primary-color);
-    font-size: 2rem;
-    margin-bottom: 10px;
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 10px;
 }
 
 .welcome-text p {
-    color: var(--text-color);
-    font-size: 1rem;
-    margin-bottom: 15px;
+  color: var(--text-color);
+  font-size: 1rem;
+  margin-bottom: 15px;
 }
 
 .welcome-text h5 {
-    color: var(--hover-color);
-    font-size: 1rem;
-    margin-bottom: 20px;
+  color: var(--hover-color);
+  font-size: 1rem;
+  margin-bottom: 20px;
 }
 
 .welcome-button {
-    background-color: var(--primary-color);
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: transform 0.3s;
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 0.3s;
 }
 
 .welcome-button:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+.welcome-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .welcome-image img {
-    width: 350px;
-    max-width: 100%;
-    border-radius: 10px;
-    animation: slideInFromRight 1.2s ease-in-out;
-    animation-delay: 0.3s;
+  width: 350px;
+  max-width: 100%;
+  border-radius: 10px;
+  animation: slideInFromRight 1.2s ease-in-out;
+  animation-delay: 0.3s;
 }
 
-/* Popular Books Section */
 .description {
-    display: flex;
-    flex-direction: column;
-    font-family: var(--font-family-main);
-    font-size: 1rem;
-    color: var(--primary-color);
-    position: relative;
-    top: 50px;
-    left: 90px;
-    width: 1130px;
+
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  color: var(--primary-color);
+  margin: 50px auto;
+  width: 90%;
 }
 
 .description h1 {
-    text-align: left;
-    padding: 5px 40px;
-    margin: 0;
-    width: 1130px;
+  text-align: left;
+  padding: 5px 40px;
+  margin: 0;
 }
 
 .description h2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--hover-color);
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 20px 0;
-    text-align: center;
-}
-
-.description h2::before,
-.description h2::after {
-    content: "";
-    width: 400px;
-    height: 2px;
-    background-color: var(--primary-color);
-    margin: 0 10px;
+  text-align: center;
+  color: var(--hover-color);
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 20px 0;
 }
 
 .popularbook,
 .sellingbook {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    margin: 20px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px auto;
 }
 
 .popularbook div,
 .sellingbook div {
-    cursor: pointer;
-    transition: transform 0.3s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s;
+  text-align: center;
 }
 
 .popularbook div:hover,
 .sellingbook div:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .popularbook img,
 .sellingbook img {
-    width: 170px;
-    height: 270px;
-    margin-top: 20px;
-    border-radius: 10px;
+  width: 170px;
+  height: auto;
+  border-radius: 10px;
 }
 
 .popularbook p,
 .sellingbook p {
-    color: var(--text-color);
-    font-size: medium;
-    text-align: center;
+  color: var(--text-color);
+  font-size: medium;
 }
 
-/* Selling Button */
+/* تحسين زر See All */
 .description button {
-    background-color: transparent;
-    background-color: #a00000;
-    font-size: 1rem;
-    font-weight: 550;
-    color: var(--primary-color);
-    border: 1px solid var(--primary-color);
-    width: 160px;
-    height: 30px;
-    margin: 10px auto 30px auto;
-    display: block;
-    cursor: pointer;
-    transition: transform 0.3s, color 0.3s, background-color 0.3s;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 20px auto;
+  display: inline-block;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .description button:hover {
-    transform: scale(1.1);
-    background-color: #a00000;
-    color: var(--secondary-color);
+  transform: scale(1.1);
+  background-color: var(--hover-color);
 }
 
 /* Description Section */
 .desc-section {
-    margin-top: 50px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
-    gap: 30px;
-    padding: 20px;
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px;
 }
 
 .desc-text {
-    max-width: 500px;
-    text-align: center;
+  max-width: 500px;
+  text-align: center;
 }
 
 .desc-text h2 {
-    text-align: center;
-    font-size: 2rem;
-    font-weight: 900;
-    padding: 10px 0;
-    color: var(--primary-color);
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 900;
+  padding: 10px 0;
+  color: var(--primary-color);
 }
 
 .desc-text p {
-    text-align: center;
-    font-size: 1.3rem;
-    font-weight: 400;
-    margin-top: 10px;
-    font-family: var(--font-family-main);
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-top: 10px;
+  font-family: var(--font-family-main);
 }
 
 .desc-image img {
-    width: 100%;
-    max-width: 400px;
-    border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+  .description {
+    width: 95%;
+  }
+
+  .description h1 {
+    text-align: center;
+    font-size: 1.8rem;
+  }
+
+  .description h2 {
+    font-size: 1.3rem;
+  }
+}
+
 @media (max-width: 768px) {
-    .welcome-container {
-        flex-direction: column;
-    }
+  .welcome-container {
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+  }
 
-    .welcome-text {
-        text-align: center;
-    }
+  .welcome-text h1 {
+    font-size: 1.8rem;
+  }
 
-    .welcome-image img {
-        width: 100%;
-    }
+  .welcome-image img {
+    width: 100%;
+  }
 
-    .desc-section {
-        flex-direction: column;
-    }
+  .popularbook,
+  .sellingbook {
+    gap: 10px;
+  }
 
-    .popularbook,
-    .sellingbook {
-        flex-wrap: wrap;
-    }
+  .description h1 {
+    font-size: 1.5rem;
+  }
+
+  .description h2 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-text h1 {
+    font-size: 1.5rem;
+  }
+
+  .welcome-button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+
+  .popularbook img,
+  .sellingbook img {
+    width: 140px;
+    height: auto;
+  }
 }
 
 /* Animation Keyframes */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideInFromLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-100px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes slideInFromRight {
-    from {
-        opacity: 0;
-        transform: translateX(100px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

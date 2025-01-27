@@ -24,14 +24,14 @@ export default function Section() {
         </div>
       </div>
 
-      {/* Keep Popular Books As Is */}
+      {/* Popular Books Section */}
       <div className="description">
         <h1>
           Find your next great <br />
           read at our online <br />
           book store
         </h1>
-        <h2 style={{ width: '1130px' }}>Best Authors Books</h2>
+        <h2>Best Authors Books</h2>
         <div className="popularbook">
           {[book1, book2, book3, book4, book5].map((book, index) => (
             <div key={index}>
