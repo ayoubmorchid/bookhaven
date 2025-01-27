@@ -19,7 +19,7 @@
 
 .intro-text h2 {
   font-size: 2.5rem;
-  color: var(--primary-color);
+  color: var(--text-color);
   margin-bottom: 10px;
   animation: slideInFromLeft 1.5s ease-out;
 }
