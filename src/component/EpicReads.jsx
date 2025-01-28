@@ -176,7 +176,7 @@ const EpicReads = () => {
 };
 
 const CategorySection = ({ title, books, onBuyClick, onReadClick, addToFavorites }) => (
-  <div className="category-section">
+  <div className="category-section" data-title={title}>
     <h3>{title}</h3>
     <div className="book-grid">
       {books.map((book) => (
@@ -194,4 +194,5 @@ const CategorySection = ({ title, books, onBuyClick, onReadClick, addToFavorites
     </div>
   </div>
 );
+
 export default EpicReads;
