@@ -4,18 +4,18 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [activeTab, setActiveTab] = useState('home');
-  const [isMenuOpen, setIsMenuOpen] = useState(false); 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const isAuthenticated = !!localStorage.getItem('token'); 
+  const isAuthenticated = !!localStorage.getItem('token');
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
-    setIsMenuOpen(false); 
+    setIsMenuOpen(false);
   };
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    navigate('/login'); 
+    navigate('/login');
   };
 
   return (
@@ -29,7 +29,6 @@ const Navbar = () => {
           EpicReads
         </Link>
       </div>
-
       <button
         className="menu-toggle"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -37,7 +36,6 @@ const Navbar = () => {
       >
         ☰
       </button>
-
       <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
         <li
           className={`nav-item ${activeTab === 'home' ? 'active' : ''}`}
@@ -64,7 +62,6 @@ const Navbar = () => {
           <Link to="/contact">Contact</Link>
         </li>
       </ul>
-
       <div className="auth-links">
         {isAuthenticated ? (
           <button className="auth-link logout-btn" onClick={handleLogout}>
