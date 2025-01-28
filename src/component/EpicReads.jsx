@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import "../style/EpicReads.css";
 import { CartContext } from "../context/CartContext";
 
-// Import images
 import bindingImage from "../images/BINDING.jpg";
 import classyImage from "../images/CLASSY.jpg";
 import dragonTattooImage from "../images/Detective Investigation Book Cover Template.jpg";
@@ -66,12 +65,11 @@ const EpicReads = () => {
   };
 
   return (
-    <div className="books-container">
-      <div className="title">
-      <h1 style={{color:"black"}}>Explore Our Books</h1>
+  <div className="books-container">
+    <div className="title">
+      <h1>Explore Our Books</h1>
       <p>Find your next favorite read from our diverse collection.</p>
-      </div>
-      
+    </div>
 
       <Favorites
         favorites={favorites}
@@ -116,7 +114,6 @@ const EpicReads = () => {
           </ul>
         </div>
 
-        {/* الأقسام */}
         <div className="books-grid">
           <CategorySection
             title="Detective"
@@ -179,7 +176,7 @@ const EpicReads = () => {
 };
 
 const CategorySection = ({ title, books, onBuyClick, onReadClick, addToFavorites }) => (
-  <div className="category-section">
+  <div className="category-section" data-title={title}>
     <h3>{title}</h3>
     <div className="book-grid">
       {books.map((book) => (
@@ -197,4 +194,5 @@ const CategorySection = ({ title, books, onBuyClick, onReadClick, addToFavorites
     </div>
   </div>
 );
+
 export default EpicReads;

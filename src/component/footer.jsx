@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 const FooterSection = () => {
   return (
     <div className="footer-container">
-      {/* Subscription Section */}
       <div className="subscribe-section">
         <h2>Subscribe to Our Newsletter</h2>
         <p>Stay updated with our latest news and promotions!</p>
@@ -20,7 +19,6 @@ const FooterSection = () => {
         <div className="circle-top-right"></div>
       </div>
 
-      {/* Footer Section */}
       <footer className="footer-section">
         <div className="footer-content">
           <p>&copy; 2023 BookHaven. All rights reserved.</p>

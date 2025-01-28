@@ -4,23 +4,22 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [activeTab, setActiveTab] = useState('home');
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // إدارة القائمة المنسدلة
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const isAuthenticated = !!localStorage.getItem('token'); // التحقق من تسجيل الدخول
+  const isAuthenticated = !!localStorage.getItem('token');
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
-    setIsMenuOpen(false); // إغلاق القائمة عند النقر
+    setIsMenuOpen(false);
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('token'); // إزالة رمز المصادقة
-    navigate('/login'); // التوجيه إلى صفحة تسجيل الدخول
+    localStorage.removeItem('token');
+    navigate('/login');
   };
 
   return (
     <nav className="navbar">
-      {/* الشعار */}
       <div className="logo">
         <Link
           to="/shopping"
@@ -30,8 +29,6 @@ const Navbar = () => {
           EpicReads
         </Link>
       </div>
-
-      {/* زر القائمة المنسدلة للشاشات الصغيرة */}
       <button
         className="menu-toggle"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -39,8 +36,6 @@ const Navbar = () => {
       >
         ☰
       </button>
-
-      {/* الروابط */}
       <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
         <li
           className={`nav-item ${activeTab === 'home' ? 'active' : ''}`}
@@ -67,8 +62,6 @@ const Navbar = () => {
           <Link to="/contact">Contact</Link>
         </li>
       </ul>
-
-      {/* روابط تسجيل الدخول */}
       <div className="auth-links">
         {isAuthenticated ? (
           <button className="auth-link logout-btn" onClick={handleLogout}>
