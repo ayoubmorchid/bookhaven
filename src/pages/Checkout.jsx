@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Checkout = () => {
   const { cartItems, updateQuantity, removeFromCart } = useContext(CartContext);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const navigate = useNavigate(); // للتنقل بين الصفحات
+  const navigate = useNavigate(); 
 
   const handleOpenPopup = () => setIsPopupOpen(true);
   const handleClosePopup = () => setIsPopupOpen(false);
@@ -64,7 +64,7 @@ const Checkout = () => {
 
       <div className="checkout-actions">
         <button
-          onClick={() => navigate("/books")} // التنقل إلى صفحة Books
+          onClick={() => navigate("/books")}
           className="back-btn"
         >
           Back to Books

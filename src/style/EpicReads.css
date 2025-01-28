@@ -135,7 +135,6 @@
     margin: 10px auto;
     padding: 10px;
     background: linear-gradient(135deg, #1b8490, #2aac83);
-
     color: white;
     border-radius: 15px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -166,26 +165,24 @@
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-
 .category-section[data-title] h3 {
-    background: linear-gradient(to right, #e64d06, #6d0101e1); 
+    background: linear-gradient(to right, #842300d7, #9d5600d7);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 2rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
-    animation: slideIn 2s ease-in-out infinite alternate; 
-    letter-spacing: 2px; 
-    text-transform: uppercase; 
-    overflow: hidden; 
-    }
-    
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    animation: slideIn 2s ease-in-out infinite alternate;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    overflow: hidden;
+}
 
 @keyframes slideIn {
     0% {
         transform: translateX(-5px);
     }
     100% {
-        transform: translateX(5px); 
+        transform: translateX(5px);
     }
 }
 
