@@ -1,4 +1,3 @@
-/* تصميم النافبار */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -10,12 +9,12 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
 }
 
 .navbar:hover {
-    background-color: var(--secondary-color);
+  background-color: var(--secondary-color);
 }
 
 .logo-link {
@@ -30,42 +29,40 @@
   color: var(--text-color);
 }
 
-/* زر القائمة المنسدلة */
 .menu-toggle {
-  display: none; /* مخفي في الشاشات الكبيرة */
+  display: none;
   background: none;
   border: none;
   font-size: 24px;
-  color: white; /* لون الزر */
+  color: white;
   cursor: pointer;
-  margin-left: auto; /* يبعد الزر عن العناصر الأخرى */
+  margin-left: auto;
 }
 
-/* الروابط */
 .nav-links {
   list-style: none;
   display: flex;
   gap: 20px;
   margin: 0;
   padding: 0;
-  transition: all 0.3s ease; /* حركة سلسة عند الفتح */
+  transition: all 0.3s ease;
 }
 
 .nav-links.open {
   display: flex;
-  flex-direction: column; /* عرض عمودي في الشاشات الصغيرة */
+  flex-direction: column;
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #1f717a; /* خلفية نفس لون النافبار */
+  background-color: #1f717a;
   width: 100%;
   padding: 10px 0;
-  z-index: 999; /* للتأكد من الظهور فوق المحتوى */
+  z-index: 999;
 }
 
 .nav-links.open .nav-item {
-  text-align: left; /* محاذاة الروابط لليسار */
-  padding-left: 15px; /* مسافة صغيرة من الحافة */
+  text-align: left;
+  padding-left: 15px;
 }
 
 .nav-item a {
@@ -87,7 +84,6 @@
   border-bottom: 2px solid white;
 }
 
-/* روابط تسجيل الدخول */
 .auth-links {
   display: flex;
   gap: 15px;
@@ -122,24 +118,23 @@
   color: #1f717a;
 }
 
-/* تصميم متجاوب */
 @media (max-width: 768px) {
   .menu-toggle {
-    display: block; /* يظهر الزر في الشاشات الصغيرة */
+    display: block;
   }
 
   .nav-links {
-    display: none; /* مخفي افتراضيًا في الشاشات الصغيرة */
+    display: none;
   }
 
   .nav-links.open {
-    display: flex; /* عرض القائمة عند فتحها */
+    display: flex;
   }
 
   .auth-links {
-    flex-direction: column; /* ترتيب رأسي لروابط تسجيل الدخول */
+    flex-direction: column;
     align-items: flex-start;
     margin-top: 10px;
-    gap: 10px; /* مسافة بين الروابط */
+    gap: 10px;
   }
 }
