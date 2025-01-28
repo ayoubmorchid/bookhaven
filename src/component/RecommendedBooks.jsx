@@ -6,7 +6,7 @@ const RecommendedBooks = () => {
       id: 1,
       title: 'India After Gandhi',
       author: 'Ramachandra Guha',
-      image: 'https://via.placeholder.com/150', // Replace with actual image URL
+      image: 'https://via.placeholder.com/150', 
       rating: 4.5,
     },
     {

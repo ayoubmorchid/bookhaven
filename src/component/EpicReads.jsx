@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import "../style/EpicReads.css";
 import { CartContext } from "../context/CartContext";
 
-// Import images
 import bindingImage from "../images/BINDING.jpg";
 import classyImage from "../images/CLASSY.jpg";
 import dragonTattooImage from "../images/Detective Investigation Book Cover Template.jpg";
@@ -116,7 +115,6 @@ const EpicReads = () => {
           </ul>
         </div>
 
-        {/* الأقسام */}
         <div className="books-grid">
           <CategorySection
             title="Detective"
