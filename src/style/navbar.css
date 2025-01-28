@@ -9,12 +9,12 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   transition: background-color 0.3s ease;
 }
 
 .navbar:hover {
-  background-color: var(--secondary-color);
+    background-color: var(--secondary-color);
 }
 
 .logo-link {
@@ -30,13 +30,13 @@
 }
 
 .menu-toggle {
-  display: none;
+  display: none; 
   background: none;
   border: none;
   font-size: 24px;
-  color: white;
+  color: white; 
   cursor: pointer;
-  margin-left: auto;
+  margin-left: auto; 
 }
 
 .nav-links {
@@ -54,14 +54,13 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #1f717a;
+  background-color: #1f717a; 
   width: 100%;
   padding: 10px 0;
-  z-index: 999;
+  z-index: 999; 
 }
-
 .nav-links.open .nav-item {
-  text-align: left;
+  text-align: left; 
   padding-left: 15px;
 }
 
@@ -124,17 +123,17 @@
   }
 
   .nav-links {
-    display: none;
+    display: none; 
   }
 
   .nav-links.open {
-    display: flex;
+    display: flex; 
   }
 
   .auth-links {
-    flex-direction: column;
+    flex-direction: column; 
     align-items: flex-start;
     margin-top: 10px;
-    gap: 10px;
+    gap: 10px; 
   }
 }
