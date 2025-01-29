@@ -3,7 +3,13 @@ import "../style/Checkout.css";
 import { CartContext } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
 
+const Checkout = () => {
+  const { cartItems, updateQuantity, removeFromCart } = useContext(CartContext);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const navigate = useNavigate(); 
 
+  const handleOpenPopup = () => setIsPopupOpen(true);
+  const handleClosePopup = () => setIsPopupOpen(false);
 
   const handleConfirmPurchase = () => {
     alert("Thank you for your purchase! Your order has been confirmed.");
