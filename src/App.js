@@ -8,7 +8,7 @@ import ContactUs from "./pages/contactus";
 import AboutUs from "./pages/about";
 import NotFound from "./pages/NotFound";
 import Checkout from "./pages/Checkout";
-import PrivateRoute from "./component/PrivateRoute"; // استيراد PrivateRoute
+import PrivateRoute from "./component/PrivateRoute"; 
 import "./style/global.css";
 import Payment from "./pages/Payment";
 
