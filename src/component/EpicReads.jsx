@@ -2,6 +2,10 @@ import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../style/EpicReads.css";
 import { CartContext } from "../context/CartContext";
+
+
+
+
 import bindingImage from "../images/BINDING.jpg";
 import classyImage from "../images/CLASSY.jpg";
 import dragonTattooImage from "../images/Detective Investigation Book Cover Template.jpg";
