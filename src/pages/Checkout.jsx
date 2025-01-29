@@ -100,9 +100,6 @@ const Checkout = () => {
               <button onClick={handleClosePopup} className="continue-btn">
                 Back to Cart
               </button>
-              <button onClick={handleConfirmPurchase} className="confirm-btn">
-                Place Order
-              </button>
               <button onClick={() => navigate("/payment")} className="confirm-btn">
                 Pay with MasterCard
               </button>
