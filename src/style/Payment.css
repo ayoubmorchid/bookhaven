@@ -55,3 +55,29 @@
     width: 48%;
   }
   
+  .pay-btn {
+    background: linear-gradient(135deg, #ff8c00, #ff3b3b);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    width: 100%;
+  }
+  
+  .pay-btn:hover {
+    background: linear-gradient(135deg, #ff3b3b, #ff8c00);
+    transform: scale(1.05);
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
