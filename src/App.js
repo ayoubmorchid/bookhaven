@@ -11,6 +11,8 @@ import Checkout from "./pages/Checkout";
 import PrivateRoute from "./component/PrivateRoute"; // استيراد PrivateRoute
 import "./style/global.css";
 
+
+
 function App() {
   return (
     <Router>
