@@ -11,13 +11,23 @@ const Payment = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState("");
 
+  const isValidExpiryDate = (date) => {
+    const regex = /^(0[1-9]|1[0-2])\/\d{2}$/;
+    if (!regex.test(date)) return false;
+    const [month, year] = date.split("/").map(Number);
+    const now = new Date();
+    const currentYear = Number(String(now.getFullYear()).slice(-2));
+    const currentMonth = now.getMonth() + 1;
+    return year > currentYear || (year === currentYear && month >= currentMonth);
+  };
+
   const handlePayment = (e) => {
     e.preventDefault();
     setIsProcessing(true);
     setError("");
 
     setTimeout(() => {
-      if (cardNumber.length !== 16 || cvv.length !== 3) {
+      if (cardNumber.length !== 16 || cvv.length !== 3 || !isValidExpiryDate(expiryDate)) {
         setError("Invalid card details. Please check your information.");
         setIsProcessing(false);
         return;
@@ -35,7 +45,7 @@ const Payment = () => {
         <label>Card Number</label>
         <input
           type="text"
-          placeholder="1234 5678 9012 3456"
+          placeholder="1234 5678 9123 4567"
           maxLength="16"
           value={cardNumber}
           onChange={(e) => setCardNumber(e.target.value.replace(/\D/g, ""))}
@@ -59,7 +69,14 @@ const Payment = () => {
               placeholder="MM/YY"
               maxLength="5"
               value={expiryDate}
-              onChange={(e) => setExpiryDate(e.target.value)}
+              onChange={(e) =>
+                setExpiryDate(
+                  e.target.value
+                    .replace(/[^\d/]/g, "")
+                    .replace(/(\d{2})(\d{1,2})/, "$1/$2")
+                    .slice(0, 5)
+                )
+              }
               required
             />
           </div>
