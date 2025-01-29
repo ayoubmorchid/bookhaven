@@ -164,7 +164,6 @@
     margin-top: 10px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
-
 .category-section[data-title] h3 {
     background: linear-gradient(to right, #842300d7, #9d5600d7);
     -webkit-background-clip: text;

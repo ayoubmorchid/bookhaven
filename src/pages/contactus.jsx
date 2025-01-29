@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import '../style/contactus.css';
-import Navbar from '../component/navbar'; // Import the Navbar component
+import Navbar from '../component/navbar';
 
 const ContactUs = () => {
     const [errors, setErrors] = useState({});
@@ -48,7 +48,6 @@ const ContactUs = () => {
 
     return (
         <>
-            {/* Navbar */}
             <Navbar />
 
             {/* Contact Section */}
