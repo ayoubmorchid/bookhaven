@@ -139,14 +139,42 @@ const EpicReads = () => {
             onReadClick={handleReadClick}
             addToFavorites={addToFavorites}
           />
-          <CategorySection
-            title="Love"
-            books={[
-              { id: 5, image: hooverImage, title: "Pride and Prejudice", price: 140, summary: "Summary here...", rating: "4.9/5" },
-              { id: 6, image: xoxoImage, title: "The Notebook", price: 160, summary: "Summary here...", rating: "4.7/5" },
-              { id: 7, image: turanoImage, title: "Me Before You", price: 130, summary: "Summary here...", rating: "4.6/5" },
-              { id: 8, image: hollowImage, title: "The Time Traveler's Wife", price: 170, summary: "Summary here...", rating: "4.8/5" },
-            ]}
+      <CategorySection
+          title="Love"
+          books={[
+            { 
+              id: 5, 
+              image: hooverImage, 
+              title: "Pride and Prejudice", 
+              price: 140, 
+              summary: "Pride and Prejudice by Jane Austen is a novel about love, marriage, and social expectations in 19th-century England. The story centers on Elizabeth Bennet, a smart and independent young woman, and her evolving relationship with the wealthy, aloof Mr. Darcy. Initially, Elizabeth’s prejudice against Darcy is shaped by misunderstandings, but as she gets to know him better, she discovers his true character. The novel critiques societal norms while highlighting themes of personal growth, mutual respect, and the importance of true love.", 
+              rating: "4.9/5" 
+            },
+            { 
+              id: 6, 
+              image: xoxoImage, 
+              title: "The Notebook", 
+              price: 160, 
+              summary: "The Notebook by Nicholas Sparks is a romantic novel about the enduring love between Noah and Allie. The story follows their deep connection during their youth, despite social and familial obstacles, leading to a heartbreaking separation. Years later, Noah reads their love story to Allie, who suffers from Alzheimer's disease. The novel explores themes of memory, commitment, and the power of love to overcome time and challenges, highlighting the lasting bond between soulmates.", 
+              rating: "4.7/5" 
+            },
+            { 
+              id: 7, 
+              image: turanoImage, 
+              title: "Me Before You", 
+              price: 130, 
+              summary: "Me Before You by Jojo Moyes is a romantic drama about Louisa Clark, an optimistic young woman, and Will Traynor, a wealthy man left paralyzed after an accident. Louisa becomes Will’s caregiver, and they form an unlikely bond despite their differences. As Louisa helps Will find joy in life again, she learns that he is considering assisted suicide, leading to difficult decisions about love, dignity, and the meaning of life. The novel explores themes of love, personal growth, and the impact of life-changing events.", 
+              rating: "4.6/5" 
+            },
+            { 
+              id: 8, 
+              image: hollowImage, 
+              title: "The Time Traveler's Wife", 
+              price: 170, 
+              summary: "The Time Traveler's Wife by Audrey Niffenegger is a science fiction romance about Henry, a man who involuntarily time-travels, and Clare, his wife, who experiences life in a linear way. The novel alternates between their perspectives, highlighting the challenges of their relationship as they navigate time travel and its emotional toll. It explores themes of love, fate, memory, and the passage of time, as Henry and Clare's bond endures despite the unpredictable nature of their lives. The story reflects on the complexities of love and how it transcends time.", 
+              rating: "4.8/5" 
+            }
+          ]}
             onBuyClick={handleBuyClick}
             onReadClick={handleReadClick}
             addToFavorites={addToFavorites}
