@@ -180,14 +180,42 @@ const EpicReads = () => {
             addToFavorites={addToFavorites}
           />
 
-          <CategorySection
-            title="Science Fiction"
-            books={[
-              { id: 9, image: bindingImage, title: "Dune by Frank Herbert", price: 200, summary: "Summary here...", rating: "4.9/5" },
-              { id: 10, image: universeImage, title: "Ender's Game", price: 180, summary: "Summary here...", rating: "4.8/5" },
-              { id: 11, image: kingdomImage, title: "Neuromancer", price: 150, summary: "Summary here...", rating: "4.7/5" },
-              { id: 12, image: ruinsImage, title: "The Hitchhiker's Guide to the Galaxy", price: 220, summary: "Summary here...", rating: "4.8/5" },
-            ]}
+        <CategorySection
+          title="Science Fiction"
+          books={[
+            { 
+              id: 9, 
+              image: bindingImage, 
+              title: "Dune by Frank Herbert", 
+              price: 200, 
+              summary: "Dune by Frank Herbert is a science fiction epic set on the desert planet of Arrakis, where powerful noble houses vie for control of the spice, a substance vital for space travel. The story follows Paul Atreides, heir to House Atreides, whose family is betrayed and overthrown. As Paul navigates political intrigue, religious prophecy, and survival in the harsh desert, he discovers his potential to lead and change the future. The novel explores themes of power, ecology, religion, and human evolution, offering a complex narrative with rich world-building and deep philosophical insights.", 
+              rating: "4.9/5" 
+            },
+            { 
+              id: 10, 
+              image: universeImage, 
+              title: "Ender's Game", 
+              price: 180, 
+              summary: "Ender's Game by Orson Scott Card is a science fiction novel about Ender Wiggin, a young boy recruited into a military academy to train for an impending alien invasion by the 'Buggers.' Ender excels in the academy, using his intelligence and strategic skills to rise through the ranks. As he faces increasingly difficult battle simulations, he begins to question the morality of the war and the psychological toll of his training. The novel explores themes of leadership, the ethics of warfare, and the cost of conflict, offering a deep look into human nature and the consequences of manipulation.", 
+              rating: "4.8/5" 
+            },
+            { 
+              id: 11, 
+              image: kingdomImage, 
+              title: "Neuromancer", 
+              price: 150, 
+              summary: "Neuromancer by William Gibson is a cyberpunk science fiction novel set in a dystopian future where technology and corporate power dominate society. The story follows Case, a washed-up hacker hired by a mysterious employer, Armitage, to perform a complex hack. Joined by a street samurai named Molly and a virtual intelligence called Wintermute, Case navigates cyberspace and the real world. The novel explores themes of artificial intelligence, identity, and the merging of human consciousness with technology, influencing the cyberpunk genre and concepts of virtual reality and cyberspace.", 
+              rating: "4.7/5" 
+            },
+            { 
+              id: 12, 
+              image: ruinsImage, 
+              title: "The Hitchhiker's Guide to the Galaxy", 
+              price: 220, 
+              summary: "The Hitchhiker's Guide to the Galaxy by Douglas Adams is a comedic science fiction novel that follows Arthur Dent, an ordinary man who is saved from Earth’s destruction by an alien named Ford Prefect. Ford, a researcher for a quirky travel guide, takes Arthur on an absurd journey through space. Along the way, they meet eccentric characters like the two-headed Zaphod Beeblebrox, the depressed robot Marvin, and Trillian, the only other human survivor. The novel humorously explores themes of life, the universe, and existence, filled with witty dialogue and satirical commentary on bureaucracy and human nature.", 
+              rating: "4.8/5" 
+            }
+          ]}
             onBuyClick={handleBuyClick}
             onReadClick={handleReadClick}
             addToFavorites={addToFavorites}
