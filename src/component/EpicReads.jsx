@@ -141,7 +141,8 @@ const EpicReads = () => {
             ]}
             onBuyClick={handleBuyClick}
             onReadClick={handleReadClick}
-            addToFavorites={addToFavorites}
+            toggleFavorite={toggleFavorite}
+            favorites={favorites}
           />
       <CategorySection
           title="Love"
@@ -181,7 +182,8 @@ const EpicReads = () => {
           ]}
             onBuyClick={handleBuyClick}
             onReadClick={handleReadClick}
-            addToFavorites={addToFavorites}
+            toggleFavorite={toggleFavorite}
+            favorites={favorites}
           />
 
         <CategorySection
@@ -222,7 +224,8 @@ const EpicReads = () => {
           ]}
             onBuyClick={handleBuyClick}
             onReadClick={handleReadClick}
-            addToFavorites={addToFavorites}
+            toggleFavorite={toggleFavorite}
+            favorites={favorites}
           />
         </div>
       </div>
@@ -252,7 +255,10 @@ const CategorySection = ({ title, books, onBuyClick, onReadClick, addToFavorites
           <p>Price: {book.price} MAD</p>
           <div className="actions">
             <button onClick={() => onReadClick(book)}>📖 Read</button>
-            <button onClick={() => addToFavorites(book)}>❤ Like</button>
+            <button 
+                 onClick={() => toggleFavorite(book)} 
+                className={favorites.find((fav) => fav.id === book.id) ? "like-btn liked" : "like-btn"}
+            >❤ Like</button>
             <button onClick={() => onBuyClick(book)}>🛒 Buy</button>
           </div>
         </div>
