@@ -188,3 +188,16 @@
 html, body {
     overflow-x: hidden;
 }
+
+.like-btn {
+    background-color: transparent;
+    color: black;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .like-btn.liked {
+    color: red;
+  }
