@@ -7,14 +7,9 @@ const Checkout = () => {
   const { cartItems, updateQuantity, removeFromCart } = useContext(CartContext);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const navigate = useNavigate(); 
-
   const handleOpenPopup = () => setIsPopupOpen(true);
   const handleClosePopup = () => setIsPopupOpen(false);
 
-  const handleConfirmPurchase = () => {
-    alert("Thank you for your purchase! Your order has been confirmed.");
-    setIsPopupOpen(false);
-  };
 
   const calculateTotal = () => {
     return cartItems.reduce(
