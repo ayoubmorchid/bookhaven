@@ -244,7 +244,7 @@ const EpicReads = () => {
   );
 };
 
-const CategorySection = ({ title, books, onBuyClick, onReadClick, addToFavorites }) => (
+const CategorySection = ({ title, books, onBuyClick, onReadClick, toggleFavorite, favorites }) => (
   <div className="category-section" data-title={title}>
     <h3>{title}</h3>
     <div className="book-grid">
@@ -256,9 +256,11 @@ const CategorySection = ({ title, books, onBuyClick, onReadClick, addToFavorites
           <div className="actions">
             <button onClick={() => onReadClick(book)}>📖 Read</button>
             <button 
-                 onClick={() => toggleFavorite(book)} 
-                className={favorites.find((fav) => fav.id === book.id) ? "like-btn liked" : "like-btn"}
-            >❤ Like</button>
+              onClick={() => toggleFavorite(book)} 
+              className={favorites.find((fav) => fav.id === book.id) ? "like-btn liked" : "like-btn"}
+            >
+              ❤ Like
+            </button>
             <button onClick={() => onBuyClick(book)}>🛒 Buy</button>
           </div>
         </div>
