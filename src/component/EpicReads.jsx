@@ -46,11 +46,15 @@ const EpicReads = () => {
     setIsPopupOpen(true);
   };
 
-  const addToFavorites = (book) => {
-    if (!favorites.find((fav) => fav.id === book.id)) {
-      setFavorites([...favorites, book]);
-    }
-  };
+  const toggleFavorite = (book) => {
+    setFavorites((prevFavorites) => {
+      if (prevFavorites.find((fav) => fav.id === book.id)) {
+        return prevFavorites.filter((fav) => fav.id !== book.id);
+      } else {
+        return [...prevFavorites, book];
+      }
+    });
+  };  
 
   const removeFromFavorites = (id) => {
     setFavorites(favorites.filter((fav) => fav.id !== id));
