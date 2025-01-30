@@ -66,11 +66,11 @@ const EpicReads = () => {
   };
 
   return (
-  <div className="books-container">
-    <div className="title">
-      <h1>Explore Our Books</h1>
-      <p>Find your next favorite read from our diverse collection.</p>
-    </div>
+    <div className="books-container">
+      <div className="title">
+        <h1 >Explore Our Books</h1>
+        <p>Find your next favorite read from our diverse collection.</p>
+      </div>
 
       <Favorites
         favorites={favorites}
