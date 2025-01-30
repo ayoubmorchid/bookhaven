@@ -99,13 +99,41 @@ const EpicReads = () => {
         </div>
 
         <div className="books-grid">
-          <CategorySection
+        <CategorySection
             title="Detective"
             books={[
-              { id: 1, image: classyImage, title: "Jaya: The Mahabharata", price: 120, summary: "Summary here...", rating: "4.5/5" },
-              { id: 2, image: harryImage, title: "1984 by George Orwell", price: 150, summary: "Summary here...", rating: "4.8/5" },
-              { id: 3, image: robertsImage, title: "Sherlock Holmes", price: 200, summary: "Summary here...", rating: "4.7/5" },
-              { id: 4, image: dragonTattooImage, title: "The Girl with the Dragon Tattoo", price: 180, summary: "Summary here...", rating: "4.6/5" },
+              { 
+                id: 1, 
+                image: classyImage, 
+                title: "Jaya: The Mahabharata", 
+                price: 120, 
+                summary: "Jaya: An Illustrated Retelling of the Mahabharata by Devdutt Pattanaik is a simplified yet profound retelling of the Mahabharata. The book blends the epic’s central narrative with lesser-known stories and philosophical insights. It explores the rivalry between the Pandavas and Kauravas, culminating in the Kurukshetra War, while delving into themes of duty (dharma), morality, and human behavior. With engaging storytelling, illustrations, and cultural context, Pattanaik makes this ancient epic accessible and relevant to modern readers.", 
+                rating: "4.5/5" 
+              },
+              { 
+                id: 2, 
+                image: harryImage, 
+                title: "1984 by George Orwell", 
+                price: 150, 
+                summary: "1984 by George Orwell is a dystopian novel set in a totalitarian society ruled by the Party and its leader, Big Brother. The story follows Winston Smith, a man who secretly rebels against the Party’s oppressive rule by questioning propaganda, pursuing forbidden love, and seeking truth. However, his defiance leads to his capture and brutal reeducation, breaking his spirit and forcing submission. The novel explores themes of surveillance, censorship, control, and the destruction of individuality, warning about authoritarian regimes.", 
+                rating: "4.8/5" 
+              },
+              { 
+                id: 3, 
+                image: robertsImage, 
+                title: "Sherlock Holmes", 
+                price: 200, 
+                summary: "Sherlock Holmes, created by Sir Arthur Conan Doyle, is a brilliant and eccentric detective renowned for his sharp observation and deductive reasoning. Alongside his friend Dr. John Watson, Holmes solves complex cases, tackling mysteries involving murder, theft, and deception. His most famous adventures, including The Hound of the Baskervilles and A Study in Scarlet, showcase his intellectual prowess and keen investigative skills, making him one of the most iconic fictional detectives in literature.", 
+                rating: "4.7/5" 
+              },
+              { 
+                id: 4, 
+                image: dragonTattooImage, 
+                title: "The Girl with the Dragon Tattoo", 
+                price: 180, 
+                summary: "The Girl with the Dragon Tattoo by Stieg Larsson is a gripping crime thriller following investigative journalist Mikael Blomkvist and brilliant hacker Lisbeth Salander as they probe the decades-old disappearance of Harriet Vanger, a young woman from a powerful Swedish family. As they uncover shocking secrets about the Vanger family and corporate corruption, they also face personal challenges. The novel explores themes of justice, revenge, and abuse, featuring complex characters and an intense, suspenseful plot.", 
+                rating: "4.6/5" 
+              }
             ]}
             onBuyClick={handleBuyClick}
             onReadClick={handleReadClick}
