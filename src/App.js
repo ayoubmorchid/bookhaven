@@ -8,8 +8,11 @@ import ContactUs from "./pages/contactus";
 import AboutUs from "./pages/about";
 import NotFound from "./pages/NotFound";
 import Checkout from "./pages/Checkout";
-import PrivateRoute from "./component/PrivateRoute"; // استيراد PrivateRoute
+import PrivateRoute from "./component/PrivateRoute"; 
 import "./style/global.css";
+import Payment from "./pages/Payment";
+
+
 
 function App() {
   return (
@@ -24,6 +27,7 @@ function App() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/checkout" element={<PrivateRoute element={Checkout} />} />
+        <Route path="/payment" element={<Payment />} />
       </Routes>
     </Router>
   );

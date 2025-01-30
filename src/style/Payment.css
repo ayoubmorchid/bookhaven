@@ -1,0 +1,89 @@
+.payment-container {
+    text-align: center;
+    padding: 30px 20px;
+    font-family: 'Open Sans', sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+  }
+  
+  .payment-title {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px var(--box-shadow-color);
+  }
+  
+  .payment-form {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px var(--box-shadow-color);
+    width: 100%;
+    max-width: 400px;
+    text-align: left;
+    box-sizing: border-box;
+  }
+  
+  .payment-form label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--text-color);
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .payment-form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid var(--box-shadow-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  
+  .payment-details {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .payment-details div {
+    width: 48%;
+  }
+  
+  .pay-btn {
+    background: linear-gradient(135deg, #ff8c00, #ff3b3b);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease; 
+    width: 100%;
+    margin-top: 15px;
+  }
+  
+  .pay-btn:hover {
+    background: linear-gradient(135deg, #ff3b3b, #ff8c00);
+    transform: scale(1.05);
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+  
