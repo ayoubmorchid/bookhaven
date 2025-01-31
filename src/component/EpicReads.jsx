@@ -46,11 +46,15 @@ const EpicReads = () => {
     setIsPopupOpen(true);
   };
 
-  const addToFavorites = (book) => {
-    if (!favorites.find((fav) => fav.id === book.id)) {
-      setFavorites([...favorites, book]);
-    }
-  };
+  const toggleFavorite = (book) => {
+    setFavorites((prevFavorites) => {
+      if (prevFavorites.find((fav) => fav.id === book.id)) {
+        return prevFavorites.filter((fav) => fav.id !== book.id);
+      } else {
+        return [...prevFavorites, book];
+      }
+    });
+  };  
 
   const removeFromFavorites = (id) => {
     setFavorites(favorites.filter((fav) => fav.id !== id));
@@ -137,7 +141,8 @@ const EpicReads = () => {
             ]}
             onBuyClick={handleBuyClick}
             onReadClick={handleReadClick}
-            addToFavorites={addToFavorites}
+            toggleFavorite={toggleFavorite}
+            favorites={favorites}
           />
       <CategorySection
           title="Love"
@@ -177,7 +182,8 @@ const EpicReads = () => {
           ]}
             onBuyClick={handleBuyClick}
             onReadClick={handleReadClick}
-            addToFavorites={addToFavorites}
+            toggleFavorite={toggleFavorite}
+            favorites={favorites}
           />
 
         <CategorySection
@@ -218,7 +224,8 @@ const EpicReads = () => {
           ]}
             onBuyClick={handleBuyClick}
             onReadClick={handleReadClick}
-            addToFavorites={addToFavorites}
+            toggleFavorite={toggleFavorite}
+            favorites={favorites}
           />
         </div>
       </div>
@@ -237,7 +244,7 @@ const EpicReads = () => {
   );
 };
 
-const CategorySection = ({ title, books, onBuyClick, onReadClick, addToFavorites }) => (
+const CategorySection = ({ title, books, onBuyClick, onReadClick, toggleFavorite, favorites }) => (
   <div className="category-section" data-title={title}>
     <h3>{title}</h3>
     <div className="book-grid">
@@ -248,7 +255,12 @@ const CategorySection = ({ title, books, onBuyClick, onReadClick, addToFavorites
           <p>Price: {book.price} MAD</p>
           <div className="actions">
             <button onClick={() => onReadClick(book)}>📖 Read</button>
-            <button onClick={() => addToFavorites(book)}>❤ Like</button>
+            <button 
+              onClick={() => toggleFavorite(book)} 
+              className={favorites.find((fav) => fav.id === book.id) ? "like-btn liked" : "like-btn"}
+            >
+              ❤ Like
+            </button>
             <button onClick={() => onBuyClick(book)}>🛒 Buy</button>
           </div>
         </div>
