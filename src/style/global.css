@@ -1,8 +1,8 @@
 :root {
-  --background-color: #F2EFE7; 
-  --primary-color: #9ACBD0; 
-  --secondary-color: #48A6A7; 
-  --hover-color: #2973B2; 
-  --text-color: #000000; 
-  --accent-color: #48A6A7; 
+  --background-color: #ECE8DD;
+  --primary-color: #FF6B6B;
+  --secondary-color: #4ECDC4;
+  --hover-color: #1A535C;
+  --text-color: #333333;
+  --accent-color: #FF9F1C;
 }
