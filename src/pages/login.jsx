@@ -5,7 +5,7 @@ import { CartContext } from "../context/CartContext";
 import "../style/login.css";
 
 const Login = () => {
-  const { importPendingBook } = useContext(CartContext); // استيراد الدالة من السياق
+  const { importPendingBook } = useContext(CartContext); 
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [errors, setErrors] = useState({});
@@ -60,13 +60,12 @@ const Login = () => {
       if (formData.username === "admin" && formData.password === "123456") {
         localStorage.setItem("token", "logged_in"); // Save token
 
-        // استدعاء importPendingBook لإضافة الكتاب إلى السلة
         importPendingBook();
 
         const redirectPath = localStorage.getItem("redirectPath") || "/";
         localStorage.removeItem("redirectPath");
         setIsLoading(false);
-        navigate(redirectPath); // Redirect to the saved path
+        navigate(redirectPath);
       } else {
         setIsLoading(false);
         alert("Invalid username or password");

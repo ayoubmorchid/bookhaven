@@ -21,7 +21,7 @@ const FooterSection = () => {
 
       <footer className="footer-section">
         <div className="footer-content">
-          <p>&copy; 2023 BookHaven. All rights reserved.</p>
+          <p>&copy; 2023 EpicReads. All rights reserved.</p>
           <div className="footer-links">
             <Link to="/privacy">Privacy Policy</Link>
             <Link to="/terms">Terms of Service</Link>

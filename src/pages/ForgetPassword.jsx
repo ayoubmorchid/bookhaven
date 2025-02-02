@@ -79,7 +79,7 @@ const ForgetPassword = () => {
         <h2>Forgot Your Password?</h2>
         <p>Choose how you want to recover your account:</p>
 
-        {/* اختيار الطريقة */}
+    
         <div className="method-selection">
           <button
             className={`method-button ${method === "email" ? "active" : ""}`}
@@ -152,7 +152,6 @@ const ForgetPassword = () => {
           </form>
         )}
 
-        {/* فقاعة الكود */}
         {showBubble && (
           <div className="code-bubble">
             Verification Code: <strong>{generatedCode}</strong>

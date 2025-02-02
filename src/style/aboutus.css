@@ -31,7 +31,7 @@
 }
 
 .about-image .image {
-  max-width: 100%;
+  max-width: 500px;
   border-radius: 8px;
   box-shadow: 0px 4px 8px var(--box-shadow-color);
 }

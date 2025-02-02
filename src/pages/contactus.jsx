@@ -49,13 +49,11 @@ const ContactUs = () => {
     return (
         <>
             <Navbar />
-
-            {/* Contact Section */}
             <section id="contact" className="contact-container">
                 <div className="intro-text">
                     <h2>We'd Love to Hear From You!</h2>
                     <p>
-                        Whether you're looking for your next great read, need help finding a specific book, or just want to explore our collection, our team at <strong>BookHaven</strong> is here to assist you. Connect with us today, and let's dive into the world of stories together!
+                        Whether you're looking for your next great read, need help finding a specific book, or just want to explore our collection, our team at <strong>EpicReads</strong> is here to assist you. Connect with us today, and let's dive into the world of stories together!
                     </p>
                 </div>
 
@@ -97,7 +95,7 @@ const ContactUs = () => {
                         <ul className="contact-info">
                             <li>
                                 <FontAwesomeIcon icon={faEnvelope} />
-                                <a href="mailto:contact@bookhaven.com">contact@bookhaven.com</a>
+                                <a href="mailto:contact@bookhaven.com">contact@EpicReads.com</a>
                             </li>
                             <li>
                                 <FontAwesomeIcon icon={faPhone} />

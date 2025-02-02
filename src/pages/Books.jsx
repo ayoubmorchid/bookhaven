@@ -1,4 +1,3 @@
-// pages/books.jsx
 import React from "react";
 import "../style/books.css";
 import Navbar from "../component/navbar";
