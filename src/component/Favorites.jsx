@@ -17,8 +17,8 @@ const Favorites = ({ favorites, removeFromFavorites, isFavoritesOpen, toggleFavo
           <ul>
             {favorites.map((fav) => (
               <li key={fav.id}>
-                <img src={fav.image} alt={fav.title} />
-                <span>{fav.title}</span>
+                <img src={fav.image} alt={fav.nom} />
+                <span>{fav.nom}</span>
                 <button onClick={() => removeFromFavorites(fav.id)}>Remove</button>
               </li>
             ))}

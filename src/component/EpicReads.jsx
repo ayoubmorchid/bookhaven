@@ -1,26 +1,46 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../style/EpicReads.css";
 import { CartContext } from "../context/CartContext";
-
-
-
-
-import bindingImage from "../images/BINDING.jpg";
-import classyImage from "../images/CLASSY.jpg";
-import dragonTattooImage from "../images/Detective Investigation Book Cover Template.jpg";
-import harryImage from "../images/HARRY.jpg";
-import hollowImage from "../images/HOLLOW.jpg";
-import hooverImage from "../images/HOOVER.jpg";
-import kingdomImage from "../images/KINGDOM.jpg";
-import robertsImage from "../images/ROBERTS.jpg";
-import ruinsImage from "../images/RUINS.jpg";
-import turanoImage from "../images/TURANO.jpg";
-import universeImage from "../images/UNIVERSE.jpg";
-import xoxoImage from "../images/XOXO.jpg";
 import Favorites from "../component/Favorites";
+import api from "../config/api";
+import Categorie from "./Categorie";
+
+// Random book images
+export const RandomLinks = [
+  "https://i.pinimg.com/236x/43/75/b7/4375b7d9bf24b88aa53744b417227485.jpg",
+  "https://i.pinimg.com/236x/2e/3b/83/2e3b83a578b82e931ddc636db9f0cf27.jpg",
+  "https://i.pinimg.com/236x/73/53/bc/7353bc704c70b6e33b5d1edb81ccfd01.jpg",
+  "https://i.pinimg.com/474x/ce/42/f9/ce42f9ef20ed794e058f579f7d6c761b.jpg",
+  "https://i.pinimg.com/236x/1f/13/1a/1f131af5e89af18bf835f2a5c4f609f4.jpg",
+  "https://i.pinimg.com/236x/f0/66/0c/f0660ce0569d12be9082ac15dd23799f.jpg",
+  "https://i.pinimg.com/236x/97/54/7b/97547b5abc1b6ee5ba5d362bbc4de38c.jpg",
+  "https://i.pinimg.com/474x/22/73/ec/2273ec14d270c83777abbf93ed8975bd.jpg",
+  "https://i.pinimg.com/236x/63/c3/44/63c344b8eaba0eb78a87106b856375a3.jpg",
+  "https://i.pinimg.com/236x/c0/31/35/c031351c98bf72da7281b884ada14f31.jpg",
+  "https://i.pinimg.com/236x/5a/a5/7a/5aa57a926a649f6a93d8435de9d567bd.jpg",
+  "https://i.pinimg.com/236x/d2/b6/e4/d2b6e461c99cf9eead02f461a8b1b900.jpg",
+  "https://i.pinimg.com/236x/33/eb/8f/33eb8f57d177a6525ab7b0077ea9fc62.jpg",
+  "https://i.pinimg.com/236x/80/4d/c9/804dc93e5bba117398c0d61ebc22b623.jpg",
+  "https://i.pinimg.com/236x/13/ad/62/13ad62f07a215db38786b87178a0f36b.jpg",
+  "https://i.pinimg.com/236x/21/ab/fa/21abfa59fd7cd6aba9f5dc0c97c274b2.jpg",
+  "https://i.pinimg.com/236x/f7/6e/31/f76e319b882f9ba3d3f82bb168f22329.jpg",
+  "https://i.pinimg.com/236x/1c/4e/f2/1c4ef29cd22c5fec1210b97df9449e05.jpg",
+  "https://i.pinimg.com/236x/20/01/f6/2001f640f8b80016921341524ed07d5d.jpg",
+  "https://i.pinimg.com/236x/a0/fa/97/a0fa9784ce6985cfbcec3e66d02d6899.jpg",
+  "https://i.pinimg.com/236x/ef/6e/6e/ef6e6eedd719d3015036843e0de647e0.jpg",
+  "https://i.pinimg.com/236x/ef/aa/70/efaa70b713d7c5eabac1c1cd0930ec87.jpg",
+  "https://i.pinimg.com/236x/f5/92/80/f5928045d533b080e789a2f3fb562d8c.jpg",
+  "https://i.pinimg.com/236x/d3/77/5d/d3775dd662bf240c140085f8d2c53aca.jpg",
+  "https://i.pinimg.com/474x/c2/ee/df/c2eedf90ad1229513f51e862d8bf9f7b.jpg",
+  "https://i.pinimg.com/236x/40/7d/c9/407dc94f9773166970a29588e92417ed.jpg",
+  "https://i.pinimg.com/236x/51/6d/d2/516dd29eaa714222e8b62fc735080c8e.jpg",
+  "https://i.pinimg.com/236x/ce/18/cc/ce18cc3bfe2615da0675baf1380d8de2.jpg"
+];
 
 const EpicReads = () => {
+  const [books, setBooks] = useState([]);
+  const [isLoadingBooks, setLoadingBooks] = useState(true);
   const navigate = useNavigate();
   const { addToCart } = useContext(CartContext);
 
@@ -30,6 +50,26 @@ const EpicReads = () => {
   const [currentBook, setCurrentBook] = useState(null);
 
   const isLoggedIn = () => localStorage.getItem("token") === "logged_in";
+
+  const getBooks = async () => {
+    setLoadingBooks(true);
+    try {
+      const res = await api.get("/livres");
+      console.log(res.data);
+      const booksWithImages = res.data.map((book) => ({
+        ...book,
+        image: RandomLinks[Math.floor(Math.random() * RandomLinks.length)],
+      }));
+      setBooks(booksWithImages);
+    } catch (err) {
+      console.error("Error fetching books:", err);
+    }
+    setLoadingBooks(false);
+  };
+
+  useEffect(() => {
+    getBooks();
+  }, []);
 
   const handleBuyClick = (book) => {
     if (!isLoggedIn()) {
@@ -47,14 +87,12 @@ const EpicReads = () => {
   };
 
   const toggleFavorite = (book) => {
-    setFavorites((prevFavorites) => {
-      if (prevFavorites.find((fav) => fav.id === book.id)) {
-        return prevFavorites.filter((fav) => fav.id !== book.id);
-      } else {
-        return [...prevFavorites, book];
-      }
-    });
-  };  
+    setFavorites((prevFavorites) =>
+      prevFavorites.find((fav) => fav.id === book.id)
+        ? prevFavorites.filter((fav) => fav.id !== book.id)
+        : [...prevFavorites, book]
+    );
+  }; 
 
   const removeFromFavorites = (id) => {
     setFavorites(favorites.filter((fav) => fav.id !== id));
@@ -72,7 +110,7 @@ const EpicReads = () => {
   return (
     <div className="books-container">
       <div className="title">
-        <h1 >Explore Our Books</h1>
+        <h1>Explore Our Books</h1>
         <p>Find your next favorite read from our diverse collection.</p>
       </div>
 
@@ -84,149 +122,21 @@ const EpicReads = () => {
       />
 
       <div className="content-container">
-        <div className="sidebar">
-          <div className="search-bar">
-            <input type="text" placeholder="Search books..." />
-            <button>🔍</button>
-          </div>
-          <h2>Popular Categories</h2>
-          <ul>
-            <li><Link to="#">📘 Memory books</Link></li>
-            <li><Link to="#">📖 Novels</Link></li>
-            <li><Link to="#">🌍 Travel books</Link></li>
-            <li><Link to="#">✒️ Poetry books</Link></li>
-            <li><Link to="#">👤 Biography books</Link></li>
-            <li><Link to="#">📚 Religious books</Link></li>
-            <li><Link to="#">💡 Knowledge books</Link></li>
-            <li><Link to="#">👶 Children's books</Link></li>
-          </ul>
-        </div>
+        <Categorie/>
 
         <div className="books-grid">
-        <CategorySection
-            title="Detective"
-            books={[
-              { 
-                id: 1, 
-                image: classyImage, 
-                title: "Jaya: The Mahabharata", 
-                price: 120, 
-                summary: "Jaya: An Illustrated Retelling of the Mahabharata by Devdutt Pattanaik is a simplified yet profound retelling of the Mahabharata. The book blends the epic’s central narrative with lesser-known stories and philosophical insights. It explores the rivalry between the Pandavas and Kauravas, culminating in the Kurukshetra War, while delving into themes of duty (dharma), morality, and human behavior. With engaging storytelling, illustrations, and cultural context, Pattanaik makes this ancient epic accessible and relevant to modern readers.", 
-                rating: "4.5/5" 
-              },
-              { 
-                id: 2, 
-                image: harryImage, 
-                title: "1984 by George Orwell", 
-                price: 150, 
-                summary: "1984 by George Orwell is a dystopian novel set in a totalitarian society ruled by the Party and its leader, Big Brother. The story follows Winston Smith, a man who secretly rebels against the Party’s oppressive rule by questioning propaganda, pursuing forbidden love, and seeking truth. However, his defiance leads to his capture and brutal reeducation, breaking his spirit and forcing submission. The novel explores themes of surveillance, censorship, control, and the destruction of individuality, warning about authoritarian regimes.", 
-                rating: "4.8/5" 
-              },
-              { 
-                id: 3, 
-                image: robertsImage, 
-                title: "Sherlock Holmes", 
-                price: 200, 
-                summary: "Sherlock Holmes, created by Sir Arthur Conan Doyle, is a brilliant and eccentric detective renowned for his sharp observation and deductive reasoning. Alongside his friend Dr. John Watson, Holmes solves complex cases, tackling mysteries involving murder, theft, and deception. His most famous adventures, including The Hound of the Baskervilles and A Study in Scarlet, showcase his intellectual prowess and keen investigative skills, making him one of the most iconic fictional detectives in literature.", 
-                rating: "4.7/5" 
-              },
-              { 
-                id: 4, 
-                image: dragonTattooImage, 
-                title: "The Girl with the Dragon Tattoo", 
-                price: 180, 
-                summary: "The Girl with the Dragon Tattoo by Stieg Larsson is a gripping crime thriller following investigative journalist Mikael Blomkvist and brilliant hacker Lisbeth Salander as they probe the decades-old disappearance of Harriet Vanger, a young woman from a powerful Swedish family. As they uncover shocking secrets about the Vanger family and corporate corruption, they also face personal challenges. The novel explores themes of justice, revenge, and abuse, featuring complex characters and an intense, suspenseful plot.", 
-                rating: "4.6/5" 
-              }
-            ]}
-            onBuyClick={handleBuyClick}
-            onReadClick={handleReadClick}
-            toggleFavorite={toggleFavorite}
-            favorites={favorites}
-          />
-      <CategorySection
-          title="Love"
-          books={[
-            { 
-              id: 5, 
-              image: hooverImage, 
-              title: "Pride and Prejudice", 
-              price: 140, 
-              summary: "Pride and Prejudice by Jane Austen is a novel about love, marriage, and social expectations in 19th-century England. The story centers on Elizabeth Bennet, a smart and independent young woman, and her evolving relationship with the wealthy, aloof Mr. Darcy. Initially, Elizabeth’s prejudice against Darcy is shaped by misunderstandings, but as she gets to know him better, she discovers his true character. The novel critiques societal norms while highlighting themes of personal growth, mutual respect, and the importance of true love.", 
-              rating: "4.9/5" 
-            },
-            { 
-              id: 6, 
-              image: xoxoImage, 
-              title: "The Notebook", 
-              price: 160, 
-              summary: "The Notebook by Nicholas Sparks is a romantic novel about the enduring love between Noah and Allie. The story follows their deep connection during their youth, despite social and familial obstacles, leading to a heartbreaking separation. Years later, Noah reads their love story to Allie, who suffers from Alzheimer's disease. The novel explores themes of memory, commitment, and the power of love to overcome time and challenges, highlighting the lasting bond between soulmates.", 
-              rating: "4.7/5" 
-            },
-            { 
-              id: 7, 
-              image: turanoImage, 
-              title: "Me Before You", 
-              price: 130, 
-              summary: "Me Before You by Jojo Moyes is a romantic drama about Louisa Clark, an optimistic young woman, and Will Traynor, a wealthy man left paralyzed after an accident. Louisa becomes Will’s caregiver, and they form an unlikely bond despite their differences. As Louisa helps Will find joy in life again, she learns that he is considering assisted suicide, leading to difficult decisions about love, dignity, and the meaning of life. The novel explores themes of love, personal growth, and the impact of life-changing events.", 
-              rating: "4.6/5" 
-            },
-            { 
-              id: 8, 
-              image: hollowImage, 
-              title: "The Time Traveler's Wife", 
-              price: 170, 
-              summary: "The Time Traveler's Wife by Audrey Niffenegger is a science fiction romance about Henry, a man who involuntarily time-travels, and Clare, his wife, who experiences life in a linear way. The novel alternates between their perspectives, highlighting the challenges of their relationship as they navigate time travel and its emotional toll. It explores themes of love, fate, memory, and the passage of time, as Henry and Clare's bond endures despite the unpredictable nature of their lives. The story reflects on the complexities of love and how it transcends time.", 
-              rating: "4.8/5" 
-            }
-          ]}
-            onBuyClick={handleBuyClick}
-            onReadClick={handleReadClick}
-            toggleFavorite={toggleFavorite}
-            favorites={favorites}
-          />
-
-        <CategorySection
-          title="Science Fiction"
-          books={[
-            { 
-              id: 9, 
-              image: bindingImage, 
-              title: "Dune by Frank Herbert", 
-              price: 200, 
-              summary: "Dune by Frank Herbert is a science fiction epic set on the desert planet of Arrakis, where powerful noble houses vie for control of the spice, a substance vital for space travel. The story follows Paul Atreides, heir to House Atreides, whose family is betrayed and overthrown. As Paul navigates political intrigue, religious prophecy, and survival in the harsh desert, he discovers his potential to lead and change the future. The novel explores themes of power, ecology, religion, and human evolution, offering a complex narrative with rich world-building and deep philosophical insights.", 
-              rating: "4.9/5" 
-            },
-            { 
-              id: 10, 
-              image: universeImage, 
-              title: "Ender's Game", 
-              price: 180, 
-              summary: "Ender's Game by Orson Scott Card is a science fiction novel about Ender Wiggin, a young boy recruited into a military academy to train for an impending alien invasion by the 'Buggers.' Ender excels in the academy, using his intelligence and strategic skills to rise through the ranks. As he faces increasingly difficult battle simulations, he begins to question the morality of the war and the psychological toll of his training. The novel explores themes of leadership, the ethics of warfare, and the cost of conflict, offering a deep look into human nature and the consequences of manipulation.", 
-              rating: "4.8/5" 
-            },
-            { 
-              id: 11, 
-              image: kingdomImage, 
-              title: "Neuromancer", 
-              price: 150, 
-              summary: "Neuromancer by William Gibson is a cyberpunk science fiction novel set in a dystopian future where technology and corporate power dominate society. The story follows Case, a washed-up hacker hired by a mysterious employer, Armitage, to perform a complex hack. Joined by a street samurai named Molly and a virtual intelligence called Wintermute, Case navigates cyberspace and the real world. The novel explores themes of artificial intelligence, identity, and the merging of human consciousness with technology, influencing the cyberpunk genre and concepts of virtual reality and cyberspace.", 
-              rating: "4.7/5" 
-            },
-            { 
-              id: 12, 
-              image: ruinsImage, 
-              title: "The Hitchhiker's Guide to the Galaxy", 
-              price: 220, 
-              summary: "The Hitchhiker's Guide to the Galaxy by Douglas Adams is a comedic science fiction novel that follows Arthur Dent, an ordinary man who is saved from Earth’s destruction by an alien named Ford Prefect. Ford, a researcher for a quirky travel guide, takes Arthur on an absurd journey through space. Along the way, they meet eccentric characters like the two-headed Zaphod Beeblebrox, the depressed robot Marvin, and Trillian, the only other human survivor. The novel humorously explores themes of life, the universe, and existence, filled with witty dialogue and satirical commentary on bureaucracy and human nature.", 
-              rating: "4.8/5" 
-            }
-          ]}
-            onBuyClick={handleBuyClick}
-            onReadClick={handleReadClick}
-            toggleFavorite={toggleFavorite}
-            favorites={favorites}
-          />
+          {isLoadingBooks ? (
+            <p>Loading books...</p>
+          ) : (
+            <CategorySection
+              title="All Books"
+              books={books}
+              onBuyClick={handleBuyClick}
+              onReadClick={handleReadClick}
+              toggleFavorite={toggleFavorite}
+              favorites={favorites}
+            />
+          )}
         </div>
       </div>
 
@@ -250,13 +160,13 @@ const CategorySection = ({ title, books, onBuyClick, onReadClick, toggleFavorite
     <div className="book-grid">
       {books.map((book) => (
         <div className="book" key={book.id}>
-          <img src={book.image} alt={book.title} />
-          <p>{book.title}</p>
-          <p>Price: {book.price} MAD</p>
+          <img src={book.image} alt={book.nom} />
+          <p>{book.nom}</p>
+          <p>Price: {book.prix} MAD</p>
           <div className="actions">
             <button onClick={() => onReadClick(book)}>📖 Read</button>
-            <button 
-              onClick={() => toggleFavorite(book)} 
+            <button
+              onClick={() => toggleFavorite(book)}
               className={favorites.find((fav) => fav.id === book.id) ? "like-btn liked" : "like-btn"}
             >
               ❤ Like

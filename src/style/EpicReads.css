@@ -43,7 +43,7 @@
 
 .book-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 15px;
 }
 
@@ -57,16 +57,19 @@
 }
 
 .book img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-}
-
-.book p {
-    margin: 10px 0;
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+  
+  .book p {
+    margin: 6px 0;
     font-size: 16px;
     color: var(--text-color);
-}
+    font-weight: 500;
+  }
 
 .actions button {
     background-color: var(--primary-color);
@@ -201,3 +204,26 @@ html, body {
   .like-btn.liked {
     color: red;
   }
+
+  .category-item {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-bottom: 12px;
+  }
+  
+  .category-icon {
+    font-size: 1.4rem;
+  }
+  
+  .category-name {
+    font-size: 1rem;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+  }
+  
+  .category-name:hover {
+    color: var(--primary-color);
+  }
+  
