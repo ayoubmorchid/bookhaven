@@ -13,8 +13,8 @@ export default function Categorie() {
   const getCateBooks = async () => {
     try {
       setLoadingCat(true);
-      const res = await api.get(`/categories/${c}`);
-      setCatFounds(res.data);
+      const res = await api.get(`/categories`);
+      setCatFounds(res.data.data);
       setLoadingCat(false);
       listBooks.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     } catch (err) {
@@ -26,7 +26,7 @@ export default function Categorie() {
   const getAllCategories = async () => {
     try {
       const res = await api.get("/categories");
-      setCategories(res.data);
+      setCategories(res.data.data);
     } catch (err) {
       console.error("Error loading categories list", err);
     }
@@ -36,10 +36,7 @@ export default function Categorie() {
     getAllCategories();
   }, [c]);
 
-  const displayedCategories = Array.isArray(categories)
-  ? (showAll ? categories : categories.slice(0, 5))
-  : [];
-
+  const displayedCategories = showAll ? categories : categories.slice(0, 5);
 
   const getCategoryIcon = (name) => {
     switch (name.toLowerCase()) {
