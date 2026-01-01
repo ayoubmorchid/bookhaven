@@ -10,6 +10,10 @@ import ayoub from '../assets/img/team/ayoub.jpg';
 import { Link } from 'react-router-dom';
 import '../style/aboutus.css';
 
+<h2>About EpicReads</h2>
+<p className="last-update">Last update: {new Date().toLocaleDateString()}</p>
+
+
 const teamData = [
   {
     id: 1,
@@ -78,6 +82,9 @@ const teamData = [
 
 const AboutUs = () => {
   return (
+
+
+    
     <>
       <Navbar />
       <div className="about-container">
@@ -86,7 +93,14 @@ const AboutUs = () => {
             <div className="about-image">
               <img src={ayoub} alt="About BookHaven" className="image" />
             </div>
-
+            <div className="about-text">
+              <h2>About EpicReads</h2>
+              <p>
+                Welcome to EpicReads, your ultimate destination for discovering inspiring stories, educational resources, and timeless classics. We aim to ignite a love for reading and provide access to books for every reader.
+              </p>
+              <p>
+                Join us in our mission to build a world where knowledge and imagination are accessible to everyone, one book at a time.
+              </p>
               <Link
                 to="https://www.facebook.com/green.bag.206066"
                 className="learn-more-btn"
@@ -122,5 +136,7 @@ const AboutUs = () => {
     </>
   );
 };
+
+
 
 export default AboutUs;
