@@ -10,8 +10,6 @@ import ayoub from '../assets/img/team/ayoub.jpg';
 import { Link } from 'react-router-dom';
 import '../style/aboutus.css';
 
-<h2>About EpicReads</h2>
-<p className="last-update">Last update: {new Date().toLocaleDateString()}</p>
 
 
 const teamData = [
