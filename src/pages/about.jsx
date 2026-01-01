@@ -10,8 +10,6 @@ import ayoub from '../assets/img/team/ayoub.jpg';
 import { Link } from 'react-router-dom';
 import '../style/aboutus.css';
 
-
-
 const teamData = [
   {
     id: 1,
@@ -80,9 +78,6 @@ const teamData = [
 
 const AboutUs = () => {
   return (
-
-
-    
     <>
       <Navbar />
       <div className="about-container">
@@ -134,7 +129,5 @@ const AboutUs = () => {
     </>
   );
 };
-
-
 
 export default AboutUs;
