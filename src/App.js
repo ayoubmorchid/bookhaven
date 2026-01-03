@@ -15,18 +15,14 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-
       <Route path="/books" element={<Books />} />
       <Route path="/about" element={<AboutUs />} />
       <Route path="/contact" element={<ContactUs />} />
-
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Register />} />
       <Route path="/forget-password" element={<ForgetPassword />} />
-
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/payment" element={<Payment />} />
-
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
