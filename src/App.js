@@ -23,6 +23,7 @@ function App() {
       <Route path="/forget-password" element={<ForgetPassword />} />
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/payment" element={<Payment />} />
+
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
