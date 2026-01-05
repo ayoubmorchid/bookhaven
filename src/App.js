@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 
-import Home from "./pages/Home";
+import Home from "./pages/home";
 import Books from "./pages/Books";
-import AboutUs from "./pages/About";
-import ContactUs from "./pages/ContactUs";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import AboutUs from "./pages/about";
+import ContactUs from "./pages/contactus";
+import Login from "./pages/login";
+import Register from "./pages/register";
 import Checkout from "./pages/Checkout";
 import Payment from "./pages/Payment";
 import ForgetPassword from "./pages/ForgetPassword";
