@@ -1,12 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../style/EpicReads.css";
 import { CartContext } from "../context/CartContext";
 import Favorites from "../component/Favorites";
 import api from "../config/api";
 import Categorie from "./Categorie";
 
-// Random book images
 export const RandomLinks = [
   "https://i.pinimg.com/236x/43/75/b7/4375b7d9bf24b88aa53744b417227485.jpg",
   "https://i.pinimg.com/236x/2e/3b/83/2e3b83a578b82e931ddc636db9f0cf27.jpg",
@@ -55,7 +54,6 @@ const EpicReads = () => {
     setLoadingBooks(true);
     try {
       const res = await api.get("/livres");
-      console.log(res.data);
       const booksWithImages = res.data.map((book) => ({
         ...book,
         image: RandomLinks[Math.floor(Math.random() * RandomLinks.length)],
@@ -63,8 +61,9 @@ const EpicReads = () => {
       setBooks(booksWithImages);
     } catch (err) {
       console.error("Error fetching books:", err);
+    } finally {
+      setLoadingBooks(false);
     }
-    setLoadingBooks(false);
   };
 
   useEffect(() => {
@@ -92,7 +91,7 @@ const EpicReads = () => {
         ? prevFavorites.filter((fav) => fav.id !== book.id)
         : [...prevFavorites, book]
     );
-  }; 
+  };
 
   const removeFromFavorites = (id) => {
     setFavorites(favorites.filter((fav) => fav.id !== id));
@@ -122,11 +121,13 @@ const EpicReads = () => {
       />
 
       <div className="content-container">
-        <Categorie/>
+        <Categorie />
 
         <div className="books-grid">
           {isLoadingBooks ? (
             <p>Loading books...</p>
+          ) : books.length === 0 ? (
+            <p>No books available.</p>
           ) : (
             <CategorySection
               title="All Books"
