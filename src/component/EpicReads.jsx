@@ -40,6 +40,8 @@ export const RandomLinks = [
 const EpicReads = () => {
   const [books, setBooks] = useState([]);
   const [isLoadingBooks, setLoadingBooks] = useState(true);
+  const [booksError, setBooksError] = useState("");
+
   const navigate = useNavigate();
   const { addToCart } = useContext(CartContext);
 
@@ -52,6 +54,8 @@ const EpicReads = () => {
 
   const getBooks = async () => {
     setLoadingBooks(true);
+    setBooksError("");
+
     try {
       const res = await api.get("/livres");
       const booksWithImages = res.data.map((book) => ({
@@ -60,7 +64,7 @@ const EpicReads = () => {
       }));
       setBooks(booksWithImages);
     } catch (err) {
-      console.error("Error fetching books:", err);
+      setBooksError("Unable to load books. Please try again later.");
     } finally {
       setLoadingBooks(false);
     }
@@ -126,6 +130,8 @@ const EpicReads = () => {
         <div className="books-grid">
           {isLoadingBooks ? (
             <p>Loading books...</p>
+          ) : booksError ? (
+            <p>{booksError}</p>
           ) : books.length === 0 ? (
             <p>No books available.</p>
           ) : (
@@ -144,10 +150,14 @@ const EpicReads = () => {
       {isPopupOpen && currentBook && (
         <div className="popup-overlay">
           <div className="popup">
-            <button className="close-btn" onClick={handleClosePopup}>✖</button>
+            <button className="close-btn" onClick={handleClosePopup}>
+              ✖
+            </button>
             <h2>{currentBook.title}</h2>
             <p>{currentBook.summary}</p>
-            <p><strong>Rating:</strong> {currentBook.rating}</p>
+            <p>
+              <strong>Rating:</strong> {currentBook.rating}
+            </p>
           </div>
         </div>
       )}
@@ -155,7 +165,14 @@ const EpicReads = () => {
   );
 };
 
-const CategorySection = ({ title, books, onBuyClick, onReadClick, toggleFavorite, favorites }) => (
+const CategorySection = ({
+  title,
+  books,
+  onBuyClick,
+  onReadClick,
+  toggleFavorite,
+  favorites,
+}) => (
   <div className="category-section" data-title={title}>
     <h3>{title}</h3>
     <div className="book-grid">
@@ -168,7 +185,11 @@ const CategorySection = ({ title, books, onBuyClick, onReadClick, toggleFavorite
             <button onClick={() => onReadClick(book)}>📖 Read</button>
             <button
               onClick={() => toggleFavorite(book)}
-              className={favorites.find((fav) => fav.id === book.id) ? "like-btn liked" : "like-btn"}
+              className={
+                favorites.find((fav) => fav.id === book.id)
+                  ? "like-btn liked"
+                  : "like-btn"
+              }
             >
               ❤ Like
             </button>
