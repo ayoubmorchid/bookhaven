@@ -60,23 +60,23 @@ const EpicReads = () => {
     rating: book.rating ?? "N/A",
   });
 
-  const getBooks = async () => {
-    setLoadingBooks(true);
-    setBooksError("");
+ const getBooks = async () => {
+  setLoadingBooks(true);
+  setBooksError("");
 
-    try {
-      const res = await api.get("/livres");
-      const booksWithImages = res.data.map((book) => ({
-        ...normalizeBook(book),
-        image: RandomLinks[Math.floor(Math.random() * RandomLinks.length)],
-      }));
-      setBooks(booksWithImages);
-    } catch (err) {
-      setBooksError("Unable to load books. Please try again later.");
-    } finally {
-      setLoadingBooks(false);
-    }
-  };
+  try {
+    const res = await api.get("/livres");
+    const booksWithImages = res.data.map((book) => ({
+      ...normalizeBook(book),
+      image: RandomLinks[Math.floor(Math.random() * RandomLinks.length)],
+    }));
+    setBooks(booksWithImages);
+  } catch (err) {
+    setBooksError("Unable to load books. Please try again later.");
+  } finally {
+    setLoadingBooks(false);
+  }
+};
 
   useEffect(() => {
     getBooks();
