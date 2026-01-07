@@ -52,6 +52,14 @@ const EpicReads = () => {
 
   const isLoggedIn = () => localStorage.getItem("token") === "logged_in";
 
+  const normalizeBook = (book) => ({
+    id: book.id ?? book._id,
+    nom: book.nom ?? book.title ?? "Unknown",
+    prix: book.prix ?? book.price ?? 0,
+    summary: book.summary ?? book.description ?? "No description",
+    rating: book.rating ?? "N/A",
+  });
+
   const getBooks = async () => {
     setLoadingBooks(true);
     setBooksError("");
@@ -59,7 +67,7 @@ const EpicReads = () => {
     try {
       const res = await api.get("/livres");
       const booksWithImages = res.data.map((book) => ({
-        ...book,
+        ...normalizeBook(book),
         image: RandomLinks[Math.floor(Math.random() * RandomLinks.length)],
       }));
       setBooks(booksWithImages);
@@ -153,7 +161,7 @@ const EpicReads = () => {
             <button className="close-btn" onClick={handleClosePopup}>
               ✖
             </button>
-            <h2>{currentBook.title}</h2>
+            <h2>{currentBook.nom}</h2>
             <p>{currentBook.summary}</p>
             <p>
               <strong>Rating:</strong> {currentBook.rating}
