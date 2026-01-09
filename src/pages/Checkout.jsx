@@ -6,14 +6,14 @@ import { useNavigate } from "react-router-dom";
 const Checkout = () => {
   const { cartItems, updateQuantity, removeFromCart } = useContext(CartContext);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+
   const handleOpenPopup = () => setIsPopupOpen(true);
   const handleClosePopup = () => setIsPopupOpen(false);
 
-
   const calculateTotal = () => {
     return cartItems.reduce(
-      (total, item) => total + item.price * item.quantity,
+      (total, item) => total + Number(item.prix || 0) * item.quantity,
       0
     );
   };
@@ -21,13 +21,16 @@ const Checkout = () => {
   return (
     <div className="checkout-container">
       <h1 className="checkout-title">Order Summary</h1>
+
       <div className="checkout-items">
-        {cartItems.map((item, index) => (
-          <div className="item" key={index}>
-            <img src={item.image} alt={item.title} className="item-image" />
+        {cartItems.map((item) => (
+          <div className="item" key={item.id}>
+            <img src={item.image} alt={item.nom} className="item-image" />
+
             <div className="item-details">
-              <p className="item-title">{item.title}</p>
-              <p className="item-price">{item.price} MAD</p>
+              <p className="item-title">{item.nom}</p>
+              <p className="item-price">{item.prix} MAD</p>
+
               <div className="quantity-controls">
                 <button
                   onClick={() =>
@@ -37,13 +40,12 @@ const Checkout = () => {
                   -
                 </button>
                 <span>{item.quantity}</span>
-                <button
-                  onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                >
+                <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>
                   +
                 </button>
               </div>
             </div>
+
             <button
               className="remove-btn"
               onClick={() => removeFromCart(item.id)}
@@ -52,18 +54,17 @@ const Checkout = () => {
             </button>
           </div>
         ))}
+
         <div className="order-total">
           <h3>Total: {calculateTotal()} MAD</h3>
         </div>
       </div>
 
       <div className="checkout-actions">
-        <button
-          onClick={() => navigate("/books")}
-          className="back-btn"
-        >
+        <button onClick={() => navigate("/books")} className="back-btn">
           Back to Books
         </button>
+
         <button onClick={handleOpenPopup} className="confirm-btn">
           Proceed to Shipping Information
         </button>
@@ -73,34 +74,40 @@ const Checkout = () => {
         <div className="popup-overlay">
           <div className="popup">
             <h2>Shipping Information</h2>
+
             <form className="shipping-form">
               <label>
                 Full Name:
                 <input type="text" placeholder="Enter your full name" />
               </label>
+
               <label>
                 Location:
                 <input type="text" placeholder="Enter your location" />
               </label>
+
               <label>
                 Delivery Note:
                 <input type="text" placeholder="Optional note" />
               </label>
+
               <div className="terms">
                 <input type="checkbox" id="accept-terms" />
-                <label htmlFor="accept-terms">I accept the terms and conditions</label>
+                <label htmlFor="accept-terms">
+                  I accept the terms and conditions
+                </label>
               </div>
             </form>
+
             <div className="popup-actions">
               <button onClick={handleClosePopup} className="continue-btn">
                 Back to Cart
               </button>
+
               <button onClick={() => navigate("/payment")} className="confirm-btn">
                 Pay with MasterCard
               </button>
-
             </div>
-
           </div>
         </div>
       )}
