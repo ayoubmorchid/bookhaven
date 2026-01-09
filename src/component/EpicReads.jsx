@@ -56,27 +56,27 @@ const EpicReads = () => {
     id: book.id ?? book._id,
     nom: book.nom ?? book.title ?? "Unknown",
     prix: book.prix ?? book.price ?? 0,
-    summary: book.summary ?? book.description ?? "No description",
+    summary: book.summary ?? book.description ?? "",
     rating: book.rating ?? "N/A",
   });
 
- const getBooks = async () => {
-  setLoadingBooks(true);
-  setBooksError("");
+  const getBooks = async () => {
+    setLoadingBooks(true);
+    setBooksError("");
 
-  try {
-    const res = await api.get("/livres");
-    const booksWithImages = res.data.map((book) => ({
-      ...normalizeBook(book),
-      image: RandomLinks[Math.floor(Math.random() * RandomLinks.length)],
-    }));
-    setBooks(booksWithImages);
-  } catch (err) {
-    setBooksError("Unable to load books. Please try again later.");
-  } finally {
-    setLoadingBooks(false);
-  }
-};
+    try {
+      const res = await api.get("/livres");
+      const booksWithImages = res.data.map((book) => ({
+        ...normalizeBook(book),
+        image: RandomLinks[Math.floor(Math.random() * RandomLinks.length)],
+      }));
+      setBooks(booksWithImages);
+    } catch (err) {
+      setBooksError("Unable to load books. Please try again later.");
+    } finally {
+      setLoadingBooks(false);
+    }
+  };
 
   useEffect(() => {
     getBooks();
@@ -98,15 +98,15 @@ const EpicReads = () => {
   };
 
   const toggleFavorite = (book) => {
-    setFavorites((prevFavorites) =>
-      prevFavorites.find((fav) => fav.id === book.id)
-        ? prevFavorites.filter((fav) => fav.id !== book.id)
-        : [...prevFavorites, book]
+    setFavorites((prev) =>
+      prev.find((fav) => fav.id === book.id)
+        ? prev.filter((fav) => fav.id !== book.id)
+        : [...prev, book]
     );
   };
 
   const removeFromFavorites = (id) => {
-    setFavorites(favorites.filter((fav) => fav.id !== id));
+    setFavorites((prev) => prev.filter((fav) => fav.id !== id));
   };
 
   const toggleFavorites = () => {
@@ -137,11 +137,11 @@ const EpicReads = () => {
 
         <div className="books-grid">
           {isLoadingBooks ? (
-            <p>Loading books...</p>
+            <p className="loading-message">Loading books...</p>
           ) : booksError ? (
-            <p>{booksError}</p>
+            <p className="error-message">{booksError}</p>
           ) : books.length === 0 ? (
-            <p>No books available.</p>
+            <p className="empty-message">No books available.</p>
           ) : (
             <CategorySection
               title="All Books"
@@ -158,14 +158,10 @@ const EpicReads = () => {
       {isPopupOpen && currentBook && (
         <div className="popup-overlay">
           <div className="popup">
-            <button className="close-btn" onClick={handleClosePopup}>
-              ✖
-            </button>
+            <button className="close-btn" onClick={handleClosePopup}>✖</button>
             <h2>{currentBook.nom}</h2>
-            <p>{currentBook.summary}</p>
-            <p>
-              <strong>Rating:</strong> {currentBook.rating}
-            </p>
+            <p>{currentBook.summary || "No description available."}</p>
+            <p><strong>Rating:</strong> {currentBook.rating || "N/A"}</p>
           </div>
         </div>
       )}
@@ -188,7 +184,7 @@ const CategorySection = ({
         <div className="book" key={book.id}>
           <img src={book.image} alt={book.nom} />
           <p>{book.nom}</p>
-          <p>Price: {book.prix} MAD</p>
+          <p>{book.prix} MAD</p>
           <div className="actions">
             <button onClick={() => onReadClick(book)}>📖 Read</button>
             <button
