@@ -16,7 +16,7 @@ const Checkout = () => {
       (total, item) => total + Number(item.prix || 0) * item.quantity,
       0
     );
-  };
+  };  
 
   return (
     <div className="checkout-container">
@@ -25,7 +25,7 @@ const Checkout = () => {
       <div className="checkout-items">
         {cartItems.map((item) => (
           <div className="item" key={item.id}>
-            <img src={item.image} alt={item.nom} className="item-image" />
+             <img src={item.image} alt={item.nom} className="item-image" />
 
             <div className="item-details">
               <p className="item-title">{item.nom}</p>
