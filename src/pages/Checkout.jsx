@@ -12,11 +12,12 @@ const Checkout = () => {
   const handleClosePopup = () => setIsPopupOpen(false);
 
   const calculateTotal = () => {
-    return cartItems.reduce(
-      (total, item) => total + Number(item.prix || 0) * item.quantity,
-      0
-    );
-  };  
+    return cartItems.reduce((total, item) => {
+      const price = Number(item.prix || item.price || 0);
+      const quantity = Number(item.quantity || 1);
+      return total + price * quantity;
+    }, 0);
+  };   
 
   return (
     <div className="checkout-container">
