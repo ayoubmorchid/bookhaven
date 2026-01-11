@@ -41,14 +41,21 @@ const Checkout = () => {
 
                 <div className="quantity-controls">
                   <button
+                    disabled={item.quantity <= 1}
                     onClick={() =>
                       updateQuantity(item.id, Math.max(item.quantity - 1, 1))
                     }
                   >
                     -
                   </button>
-                  <span>{item.quantity}</span>
-                  <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>
+
+                  <span className="quantity">{item.quantity}</span>
+
+                  <button
+                    onClick={() =>
+                      updateQuantity(item.id, item.quantity + 1)
+                    }
+                  >
                     +
                   </button>
                 </div>
