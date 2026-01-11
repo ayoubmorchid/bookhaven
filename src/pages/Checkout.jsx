@@ -17,48 +17,52 @@ const Checkout = () => {
       const quantity = Number(item.quantity || 1);
       return total + price * quantity;
     }, 0);
-  };   
+  };
 
   return (
     <div className="checkout-container">
       <h1 className="checkout-title">Order Summary</h1>
 
       <div className="checkout-items">
-        {cartItems.map((item) => (
-          <div className="item" key={item.id}>
-             <img
-              src={item.image}
-              alt={item.nom || "Book image"}
-              className="item-image"
-            />
+        {cartItems.length === 0 ? (
+          <p className="empty-message">Your cart is empty.</p>
+        ) : (
+          cartItems.map((item) => (
+            <div className="item" key={item.id}>
+              <img
+                src={item.image}
+                alt={item.nom || "Book image"}
+                className="item-image"
+              />
 
-            <div className="item-details">
-              <p className="item-title">{item.nom}</p>
-              <p className="item-price">{item.prix} MAD</p>
+              <div className="item-details">
+                <p className="item-title">{item.nom}</p>
+                <p className="item-price">{item.prix} MAD</p>
 
-              <div className="quantity-controls">
-                <button
-                  onClick={() =>
-                    updateQuantity(item.id, Math.max(item.quantity - 1, 1))
-                  }
-                >
-                  -
-                </button>
-                <span>{item.quantity}</span>
-                <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>
-                  +
-                </button>
+                <div className="quantity-controls">
+                  <button
+                    onClick={() =>
+                      updateQuantity(item.id, Math.max(item.quantity - 1, 1))
+                    }
+                  >
+                    -
+                  </button>
+                  <span>{item.quantity}</span>
+                  <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>
+                    +
+                  </button>
+                </div>
               </div>
-            </div>
 
-            <button
-              className="remove-btn"
-              onClick={() => removeFromCart(item.id)}
-            >
-              Remove
-            </button>
-          </div>
-        ))}
+              <button
+                className="remove-btn"
+                onClick={() => removeFromCart(item.id)}
+              >
+                Remove
+              </button>
+            </div>
+          ))
+        )}
 
         <div className="order-total">
           <h3>Total: {calculateTotal()} MAD</h3>
