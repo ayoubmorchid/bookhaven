@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "../style/Checkout.css";
 import { CartContext } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,12 @@ const Checkout = () => {
   const { cartItems, updateQuantity, removeFromCart } = useContext(CartContext);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!cartItems || cartItems.length === 0) {
+      navigate("/books");
+    }
+  }, [cartItems, navigate]);
 
   const handleOpenPopup = () => setIsPopupOpen(true);
   const handleClosePopup = () => setIsPopupOpen(false);
@@ -60,13 +66,14 @@ const Checkout = () => {
                   </button>
                 </div>
               </div>
-                <button
-                  className="remove-btn"
-                  title="Remove item"
-                  onClick={() => removeFromCart(item.id)}
-                >
-                  ✖
-                </button>
+
+              <button
+                className="remove-btn"
+                title="Remove item"
+                onClick={() => removeFromCart(item.id)}
+              >
+                ✖
+              </button>
             </div>
           ))
         )}
