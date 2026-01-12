@@ -94,11 +94,11 @@ const Checkout = () => {
       </div>
 
       {isPopupOpen && (
-        <div className="popup-overlay">
-          <div className="popup">
+        <div className="checkout-popup-overlay">
+          <div className="checkout-popup">
             <h2>Shipping Information</h2>
 
-            <form className="shipping-form">
+            <form className="checkout-shipping-form">
               <label>
                 Full Name:
                 <input type="text" placeholder="Enter your full name" />
@@ -114,7 +114,7 @@ const Checkout = () => {
                 <input type="text" placeholder="Optional note" />
               </label>
 
-              <div className="terms">
+              <div className="checkout-terms">
                 <input type="checkbox" id="accept-terms" />
                 <label htmlFor="accept-terms">
                   I accept the terms and conditions
@@ -122,7 +122,7 @@ const Checkout = () => {
               </div>
             </form>
 
-            <div className="popup-actions">
+            <div className="checkout-popup-actions">
               <button onClick={handleClosePopup} className="continue-btn">
                 Back to Cart
               </button>
