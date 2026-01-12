@@ -60,13 +60,13 @@ const Checkout = () => {
                   </button>
                 </div>
               </div>
-
-              <button
-                className="remove-btn"
-                onClick={() => removeFromCart(item.id)}
-              >
-                Remove
-              </button>
+                <button
+                  className="remove-btn"
+                  title="Remove item"
+                  onClick={() => removeFromCart(item.id)}
+                >
+                  ✖
+                </button>
             </div>
           ))
         )}
