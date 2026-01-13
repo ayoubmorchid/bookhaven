@@ -268,3 +268,53 @@
 .remove-btn:hover {
   background-color: #d9363e;
 }
+
+
+@media (max-width: 768px) {
+  .checkout-container {
+    padding: 20px 12px;
+  }
+
+  .checkout-title {
+    font-size: 2rem;
+  }
+
+  .checkout-items {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .item-image {
+    width: 110px;
+    height: 140px;
+  }
+
+  .quantity-controls {
+    justify-content: center;
+  }
+
+  .checkout-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .back-btn,
+  .confirm-btn {
+    width: 100%;
+  }
+
+  .checkout-popup {
+    width: 95%;
+    padding: 25px 18px;
+  }
+
+  .checkout-popup-actions {
+    flex-direction: column;
+  }
+}
