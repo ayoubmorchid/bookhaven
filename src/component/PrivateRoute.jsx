@@ -1,9 +1,16 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { isAuthenticated } from "../utils/auth";
 
 const PrivateRoute = ({ element: Element }) => {
-  return isAuthenticated() ? <Element /> : <Navigate to="/login" />;
+  const location = useLocation();
+
+  if (!isAuthenticated()) {
+    localStorage.setItem("redirectPath", location.pathname);
+    return <Navigate to="/login" replace />;
+  }
+
+  return <Element />;
 };
 
 export default PrivateRoute;
