@@ -10,6 +10,11 @@ import Checkout from "./pages/Checkout";
 import Payment from "./pages/Payment";
 import ForgetPassword from "./pages/ForgetPassword";
 import NotFound from "./pages/NotFound";
+import PrivateRoute from "./component/PrivateRoute";
+
+// ...
+
+
 
 function App() {
   return (
@@ -24,6 +29,7 @@ function App() {
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/payment" element={<Payment />} />
       <Route path="*" element={<NotFound />} />
+      <Route path="/checkout" element={<PrivateRoute element={Checkout} />} />
     </Routes>
   );
 }
