@@ -36,20 +36,20 @@ const Login = () => {
     e.preventDefault();
     setIsLoading(true);
 
+    const newErrors = {};
+
     if (!formData.username.trim()) {
-      setErrors((prev) => ({
-        ...prev,
-        username: "Please provide a valid username.",
-      }));
-      setIsLoading(false);
-      return;
+      newErrors.username = "Username is required.";
     }
 
-    if (!formData.password || formData.password.length < 6) {
-      setErrors((prev) => ({
-        ...prev,
-        password: "Please provide a valid password.",
-      }));
+    if (!formData.password) {
+      newErrors.password = "Password is required.";
+    } else if (formData.password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters.";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       setIsLoading(false);
       return;
     }
@@ -69,8 +69,7 @@ const Login = () => {
 
       setIsLoading(false);
       setErrors({
-        username: "",
-        password: "Invalid username or password.",
+        general: "Invalid username or password.",
       });
     }, 1000);
   };
@@ -85,6 +84,10 @@ const Login = () => {
           <h2>Login</h2>
 
           <form onSubmit={handleSubmit}>
+            {errors.general && (
+              <p className="error-text">{errors.general}</p>
+            )}
+
             <div className="input-group">
               <label htmlFor="username">Username</label>
               <input
@@ -95,7 +98,6 @@ const Login = () => {
                 value={formData.username}
                 onChange={handleValidation}
                 className={`input ${errors.username ? "error" : ""}`}
-                required
               />
               {errors.username && (
                 <p className="error-text">{errors.username}</p>
@@ -112,7 +114,6 @@ const Login = () => {
                 value={formData.password}
                 onChange={handleValidation}
                 className={`input ${errors.password ? "error" : ""}`}
-                required
               />
               {errors.password && (
                 <p className="error-text">{errors.password}</p>
@@ -134,24 +135,13 @@ const Login = () => {
 
           <div className="social-login">
             <Link to="#" aria-label="Log in with Facebook">
-              <img
-                src="https://img.icons8.com/color/48/000000/facebook.png"
-                alt="Facebook"
-              />
+              <img src="https://img.icons8.com/color/48/000000/facebook.png" alt="Facebook" />
             </Link>
-
             <Link to="#" aria-label="Log in with Google">
-              <img
-                src="https://img.icons8.com/color/48/000000/google-logo.png"
-                alt="Google"
-              />
+              <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google" />
             </Link>
-
             <Link to="#" aria-label="Log in with Twitter">
-              <img
-                src="https://img.icons8.com/color/48/000000/twitter.png"
-                alt="Twitter"
-              />
+              <img src="https://img.icons8.com/color/48/000000/twitter.png" alt="Twitter" />
             </Link>
           </div>
 
