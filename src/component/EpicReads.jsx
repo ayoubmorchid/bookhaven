@@ -85,12 +85,14 @@ const EpicReads = () => {
 
   const handleBuyClick = (book) => {
     if (!isLoggedIn()) {
+      localStorage.setItem("pendingBook", JSON.stringify(book));
       localStorage.setItem("redirectPath", "/checkout");
       navigate("/login");
-    } else {
-      addToCart(book);
-      navigate("/checkout");
+      return;
     }
+
+    addToCart(book);
+    navigate("/checkout");
   };
 
   const handleReadClick = (book) => {

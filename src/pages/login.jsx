@@ -36,7 +36,7 @@ const Login = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    if (!formData.username || errors.username) {
+    if (!formData.username.trim()) {
       setErrors((prev) => ({
         ...prev,
         username: "Please provide a valid username.",
@@ -45,7 +45,7 @@ const Login = () => {
       return;
     }
 
-    if (!formData.password || errors.password) {
+    if (!formData.password || formData.password.length < 6) {
       setErrors((prev) => ({
         ...prev,
         password: "Please provide a valid password.",
@@ -64,11 +64,15 @@ const Login = () => {
 
         setIsLoading(false);
         navigate(redirectPath);
-      } else {
-        setIsLoading(false);
-        alert("Invalid username or password");
+        return;
       }
-    }, 2000);
+
+      setIsLoading(false);
+      setErrors({
+        username: "",
+        password: "Invalid username or password.",
+      });
+    }, 1000);
   };
 
   return (
