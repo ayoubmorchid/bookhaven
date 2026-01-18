@@ -17,8 +17,13 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout();
+
+    // تنظيف البيانات المرتبطة بالـ auth
+    localStorage.removeItem("redirectPath");
+    localStorage.removeItem("pendingBook");
+
     setIsMenuOpen(false);
-    navigate("/login");
+    navigate("/");
   };
 
   return (
