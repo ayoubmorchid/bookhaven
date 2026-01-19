@@ -94,20 +94,25 @@ export default function Categorie() {
         {!isLoadingCate && !categoryError && categories.length > 0 && (
           <>
             <ul className="category-list">
-              {displayedCategories.map((cat) => (
-                <li key={cat.id || cat.nom} className="category-item">
-                  <span className="category-icon">
-                    {getCategoryIcon(cat.nom)}
-                  </span>
+              {displayedCategories.map((cat, index) => {
+                const categoryName = cat?.nom || cat?.name || "Unknown category";
+                const categoryKey = cat?.id || categoryName || index;
 
-                  <Link
-                    to={`/categories/${cat.nom}`}
-                    className="category-name"
-                  >
-                    {cat.nom}
-                  </Link>
-                </li>
-              ))}
+                return (
+                  <li key={categoryKey} className="category-item">
+                    <span className="category-icon">
+                      {getCategoryIcon(categoryName)}
+                    </span>
+
+                    <Link
+                      to={`/categories/${encodeURIComponent(categoryName)}`}
+                      className="category-name"
+                    >
+                      {categoryName}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
 
             {categories.length > 5 && (
