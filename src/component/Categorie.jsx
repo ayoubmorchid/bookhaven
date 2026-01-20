@@ -75,7 +75,7 @@ export default function Categorie() {
 
   return (
     <div className="content-container">
-      <div className="sidebar">
+      <aside className="sidebar">
         <div className="search-bar">
           <input type="text" placeholder="Search books..." />
           <button type="button">🔍</button>
@@ -83,20 +83,23 @@ export default function Categorie() {
 
         <h2>Popular Categories</h2>
 
-        {isLoadingCate && <p>Loading categories...</p>}
+        {isLoadingCate && <p className="loading-message">Loading categories...</p>}
 
         {categoryError && <p className="error-message">{categoryError}</p>}
 
         {!isLoadingCate && !categoryError && categories.length === 0 && (
-          <p className="empty-message">No categories available.</p>
+          <div className="category-empty-state">
+            <p>No categories available.</p>
+          </div>
         )}
 
         {!isLoadingCate && !categoryError && categories.length > 0 && (
           <>
             <ul className="category-list">
               {displayedCategories.map((cat, index) => {
-                const categoryName = cat?.nom || cat?.name || "Unknown category";
-                const categoryKey = cat?.id || categoryName || index;
+                const categoryName =
+                  cat?.nom || cat?.name || "Unknown category";
+                const categoryKey = cat?.id || `${categoryName}-${index}`;
 
                 return (
                   <li key={categoryKey} className="category-item">
@@ -126,7 +129,7 @@ export default function Categorie() {
             )}
           </>
         )}
-      </div>
+      </aside>
     </div>
   );
 }
