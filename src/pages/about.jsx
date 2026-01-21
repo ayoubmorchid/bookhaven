@@ -8,7 +8,7 @@ import med from '../assets/img/team/med.jpg';
 import brahim from '../assets/img/team/brahim.jpg';
 import ayoub from '../assets/img/team/ayoub.jpg';
 import { Link } from 'react-router-dom';
-import '../style/aboutus.css';
+
 
 const teamData = [
   {

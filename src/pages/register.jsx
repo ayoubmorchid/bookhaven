@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "../style/register.css";
+import { Link, useNavigate } from "react-router-dom";
+import { registerUser } from "../utils/auth";
 
 const SignUpForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -10,6 +10,7 @@ const SignUpForm = () => {
     confirmPassword: "",
   });
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -55,8 +56,22 @@ const SignUpForm = () => {
     setIsLoading(true);
 
     setTimeout(() => {
+      const result = registerUser({
+        username: formData.username.trim(),
+        password: formData.password,
+      });
+
       setIsLoading(false);
+
+      if (!result.success) {
+        setErrors({
+          general: result.message,
+        });
+        return;
+      }
+
       alert("Registered successfully!");
+      navigate("/login");
     }, 1000);
   };
 

@@ -6,7 +6,7 @@ import book3 from "../images/book3.png";
 import book4 from "../images/book4.png";
 import book5 from "../images/book5.png";
 import photo1 from '../images/photo1.jpg';
-import '../style/section.css';
+
 
 export default function Section() {
   return (

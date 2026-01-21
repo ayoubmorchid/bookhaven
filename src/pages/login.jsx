@@ -1,8 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
-import { login } from "../utils/auth";
-import "../style/login.css";
+import { login, getUsers } from "../utils/auth";
 
 const Login = () => {
   const { importPendingBook } = useContext(CartContext);
@@ -20,6 +19,7 @@ const Login = () => {
       setErrors((prev) => ({
         ...prev,
         username: value.trim() === "" ? "Username is required" : "",
+        general: "",
       }));
     }
 
@@ -28,6 +28,7 @@ const Login = () => {
         ...prev,
         password:
           value.length < 6 ? "Password must be at least 6 characters" : "",
+        general: "",
       }));
     }
   };
@@ -55,15 +56,26 @@ const Login = () => {
     }
 
     setTimeout(() => {
-      if (formData.username === "admin" && formData.password === "123456") {
-        login();
-        importPendingBook();
+      const users = getUsers();
+
+      const foundUser = users.find(
+        (user) =>
+          user.username === formData.username.trim() &&
+          user.password === formData.password
+      );
+
+      if (foundUser) {
+        login(foundUser);
+
+        if (typeof importPendingBook === "function") {
+          importPendingBook();
+        }
 
         const redirectPath = localStorage.getItem("redirectPath") || "/";
         localStorage.removeItem("redirectPath");
 
         setIsLoading(false);
-        navigate(redirectPath);
+        navigate(redirectPath, { replace: true });
         return;
       }
 
@@ -84,9 +96,7 @@ const Login = () => {
           <h2>Login</h2>
 
           <form onSubmit={handleSubmit}>
-            {errors.general && (
-              <p className="error-text">{errors.general}</p>
-            )}
+            {errors.general && <p className="error-text">{errors.general}</p>}
 
             <div className="input-group">
               <label htmlFor="username">Username</label>
@@ -135,13 +145,22 @@ const Login = () => {
 
           <div className="social-login">
             <Link to="#" aria-label="Log in with Facebook">
-              <img src="https://img.icons8.com/color/48/000000/facebook.png" alt="Facebook" />
+              <img
+                src="https://img.icons8.com/color/48/000000/facebook.png"
+                alt="Facebook"
+              />
             </Link>
             <Link to="#" aria-label="Log in with Google">
-              <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google" />
+              <img
+                src="https://img.icons8.com/color/48/000000/google-logo.png"
+                alt="Google"
+              />
             </Link>
             <Link to="#" aria-label="Log in with Twitter">
-              <img src="https://img.icons8.com/color/48/000000/twitter.png" alt="Twitter" />
+              <img
+                src="https://img.icons8.com/color/48/000000/twitter.png"
+                alt="Twitter"
+              />
             </Link>
           </div>
 

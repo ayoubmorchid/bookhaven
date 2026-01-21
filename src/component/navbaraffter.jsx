@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../style/navbaraffter.css'; 
 const NavbarAffter = () => {
   return (
     <div className="bar-container">
