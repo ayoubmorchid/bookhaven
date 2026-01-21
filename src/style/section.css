@@ -1,69 +1,74 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
 
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+  box-sizing: border-box;
+}
+
+.section {
+  padding: 90px 24px 40px;
 }
 
 .welcome-container {
-  margin-top: 80px;
-  margin-left: 90px;
+  max-width: 1150px;
+  margin: 0 auto 60px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  padding: 30px 20px;
-  background-color: var(--secondary-color);
-  border-radius: 10px;
-  animation: fadeIn 1s ease-in-out;
-}
-
-.section {
-  transform: translateX(-50px);
+  gap: 30px;
+  padding: 45px 35px;
+  background: linear-gradient(135deg, #ffffff, var(--background-color));
+  border-radius: 24px;
+  box-shadow: 0 12px 30px var(--box-shadow-color);
+  animation: fadeIn 0.8s ease-in-out;
 }
 
 .welcome-text {
-  max-width: 500px;
+  max-width: 520px;
   flex: 1;
-  text-align: center;
-  margin: 20px 0;
-  animation: slideInFromLeft 1.2s ease-in-out;
+  text-align: left;
+  animation: slideInFromLeft 1s ease-in-out;
 }
 
 .welcome-text h1 {
-  color: var(--primary-color);
-  font-size: 2rem;
-  margin-bottom: 10px;
+  color: var(--secondary-color);
+  font-size: 2.8rem;
+  margin-bottom: 12px;
+  font-weight: 800;
 }
 
 .welcome-text p {
-  color: var(--text-color);
-  font-size: 1rem;
-  margin-bottom: 15px;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  font-weight: 600;
 }
 
 .welcome-text h5 {
-  color: var(--hover-color);
+  color: var(--subtext-color);
   font-size: 1rem;
-  margin-bottom: 20px;
+  line-height: 1.7;
+  margin-bottom: 24px;
+  font-weight: 400;
 }
 
 .welcome-button {
   background-color: var(--primary-color);
-  color: #fff;
-  padding: 10px 20px;
+  color: #ffffff;
+  padding: 12px 24px;
   border: none;
-  border-radius: 5px;
+  border-radius: 14px;
   cursor: pointer;
   font-size: 1rem;
-  transition: transform 0.3s;
+  font-weight: 700;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .welcome-button:hover {
-  transform: scale(1.05);
+  background-color: var(--hover-color);
+  transform: translateY(-2px);
 }
 
 .welcome-image {
@@ -73,200 +78,136 @@
 }
 
 .welcome-image img {
-  width: 350px;
+  width: 360px;
   max-width: 100%;
-  border-radius: 10px;
-  animation: slideInFromRight 1.2s ease-in-out;
-  animation-delay: 0.3s;
+  border-radius: 20px;
+  animation: slideInFromRight 1s ease-in-out;
 }
 
 .description {
-
-  display: flex;
-  flex-direction: column;
-  font-size: 1rem;
-  color: var(--primary-color);
-  margin: 50px auto;
-  width: 90%;
-  margin-left: 90px;
+  max-width: 1150px;
+  margin: 0 auto;
+  color: var(--text-color);
 }
 
 .description h1 {
-  text-align: left;
-  padding: 5px 40px;
-  margin: 0;
+  text-align: center;
+  margin: 0 0 35px;
+  color: var(--secondary-color);
+  font-size: 2.4rem;
+  line-height: 1.3;
+  font-weight: 800;
 }
 
 .description h2 {
   text-align: center;
-  color: var(--hover-color);
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin: 20px 0;
+  color: var(--primary-color);
+  font-size: 1.7rem;
+  font-weight: 800;
+  margin: 35px 0 22px;
 }
 
 .popularbook,
 .sellingbook {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 24px;
   margin: 20px auto;
 }
 
 .popularbook div,
 .sellingbook div {
+  background-color: #ffffff;
+  border-radius: 18px;
+  padding: 14px;
   cursor: pointer;
-  transition: transform 0.3s;
   text-align: center;
+  box-shadow: 0 8px 20px var(--box-shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .popularbook div:hover,
 .sellingbook div:hover {
-  transform: scale(1.1);
+  transform: translateY(-5px);
+  box-shadow: 0 14px 28px var(--box-shadow-color);
 }
 
 .popularbook img,
 .sellingbook img {
-  width: 170px;
-  height: auto;
-  border-radius: 10px;
+  width: 150px;
+  max-width: 100%;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 14px;
 }
 
 .popularbook p,
 .sellingbook p {
   color: var(--text-color);
-  font-size: medium;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 10px 0 0;
 }
 
 .description button {
   background-color: var(--primary-color);
-  color: white;
+  color: #ffffff;
   font-size: 1rem;
-  font-weight: 600;
-  padding: 10px 20px;
+  font-weight: 700;
+  padding: 11px 24px;
   border: none;
-  border-radius: 5px;
+  border-radius: 14px;
   cursor: pointer;
-  margin: 20px auto;
-  display: inline-block;
+  margin: 24px auto 10px;
+  display: block;
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .description button:hover {
-  transform: scale(1.1);
   background-color: var(--hover-color);
-}
-
-.desc-section {
-  margin-top: 50px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  padding: 20px;
-}
-
-.desc-text {
-  max-width: 500px;
-  text-align: center;
-}
-
-.desc-text h2 {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 900;
-  padding: 10px 0;
-  color: var(--primary-color);
-}
-
-.desc-text p {
-  text-align: center;
-  font-size: 1.3rem;
-  font-weight: 400;
-  margin-top: 10px;
-  font-family: var(--font-family-main);
-}
-
-.desc-image img {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 10px;
-}
-
-@media (max-width: 1200px) {
-  .description {
-    width: 95%;
-  }
-
-  .description h1 {
-    text-align: center;
-    font-size: 1.8rem;
-  }
-
-  .description h2 {
-    font-size: 1.3rem;
-  }
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
+  .section {
+    padding: 85px 16px 30px;
+  }
+
   .welcome-container {
-    flex-direction: column;
-    gap: 10px;
-    padding: 20px;
+    padding: 30px 22px;
+    text-align: center;
+  }
+
+  .welcome-text {
+    text-align: center;
   }
 
   .welcome-text h1 {
-    font-size: 1.8rem;
+    font-size: 2.1rem;
   }
 
-  .welcome-image img {
-    width: 100%;
+  .description h1 {
+    font-size: 1.8rem;
   }
 
   .popularbook,
   .sellingbook {
-    gap: 10px;
-  }
-
-  .description h1 {
-    font-size: 1.5rem;
-  }
-
-  .description h2 {
-    font-size: 1.2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .welcome-text h1 {
-    font-size: 1.5rem;
-  }
-
-  .welcome-button {
-    font-size: 0.9rem;
-    padding: 8px 16px;
+    grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+    gap: 16px;
   }
 
   .popularbook img,
   .sellingbook img {
-    width: 140px;
-    height: auto;
+    height: 190px;
   }
 }
-
-
-
-
-
-
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(18px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -276,8 +217,9 @@
 @keyframes slideInFromLeft {
   from {
     opacity: 0;
-    transform: translateX(-100px);
+    transform: translateX(-70px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -287,8 +229,9 @@
 @keyframes slideInFromRight {
   from {
     opacity: 0;
-    transform: translateX(100px);
+    transform: translateX(70px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
