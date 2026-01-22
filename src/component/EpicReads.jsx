@@ -1,9 +1,7 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../style/EpicReads.css";
 import { CartContext } from "../context/CartContext";
 import Favorites from "../component/Favorites";
-import api from "../config/api";
 import Categorie from "./Categorie";
 
 export const RandomLinks = [
@@ -19,28 +17,121 @@ export const RandomLinks = [
   "https://i.pinimg.com/236x/c0/31/35/c031351c98bf72da7281b884ada14f31.jpg",
   "https://i.pinimg.com/236x/5a/a5/7a/5aa57a926a649f6a93d8435de9d567bd.jpg",
   "https://i.pinimg.com/236x/d2/b6/e4/d2b6e461c99cf9eead02f461a8b1b900.jpg",
-  "https://i.pinimg.com/236x/33/eb/8f/33eb8f57d177a6525ab7b0077ea9fc62.jpg",
-  "https://i.pinimg.com/236x/80/4d/c9/804dc93e5bba117398c0d61ebc22b623.jpg",
-  "https://i.pinimg.com/236x/13/ad/62/13ad62f07a215db38786b87178a0f36b.jpg",
-  "https://i.pinimg.com/236x/21/ab/fa/21abfa59fd7cd6aba9f5dc0c97c274b2.jpg",
-  "https://i.pinimg.com/236x/f7/6e/31/f76e319b882f9ba3d3f82bb168f22329.jpg",
-  "https://i.pinimg.com/236x/1c/4e/f2/1c4ef29cd22c5fec1210b97df9449e05.jpg",
-  "https://i.pinimg.com/236x/20/01/f6/2001f640f8b80016921341524ed07d5d.jpg",
-  "https://i.pinimg.com/236x/a0/fa/97/a0fa9784ce6985cfbcec3e66d02d6899.jpg",
-  "https://i.pinimg.com/236x/ef/6e/6e/ef6e6eedd719d3015036843e0de647e0.jpg",
-  "https://i.pinimg.com/236x/ef/aa/70/efaa70b713d7c5eabac1c1cd0930ec87.jpg",
-  "https://i.pinimg.com/236x/f5/92/80/f5928045d533b080e789a2f3fb562d8c.jpg",
-  "https://i.pinimg.com/236x/d3/77/5d/d3775dd662bf240c140085f8d2c53aca.jpg",
-  "https://i.pinimg.com/474x/c2/ee/df/c2eedf90ad1229513f51e862d8bf9f7b.jpg",
-  "https://i.pinimg.com/236x/40/7d/c9/407dc94f9773166970a29588e92417ed.jpg",
-  "https://i.pinimg.com/236x/51/6d/d2/516dd29eaa714222e8b62fc735080c8e.jpg",
-  "https://i.pinimg.com/236x/ce/18/cc/ce18cc3bfe2615da0675baf1380d8de2.jpg"
+];
+
+const booksData = [
+  {
+    id: 1,
+    nom: "The Great Gatsby",
+    prix: 120,
+    summary:
+      "A classic novel about wealth, love, ambition, and the American dream.",
+    rating: "4.5",
+    image: RandomLinks[0],
+  },
+  {
+    id: 2,
+    nom: "Atomic Habits",
+    prix: 150,
+    summary:
+      "A practical guide to building good habits and breaking bad ones.",
+    rating: "4.8",
+    image: RandomLinks[1],
+  },
+  {
+    id: 3,
+    nom: "Harry Potter",
+    prix: 180,
+    summary:
+      "A fantasy story about magic, friendship, courage, and adventure.",
+    rating: "4.9",
+    image: RandomLinks[2],
+  },
+  {
+    id: 4,
+    nom: "Rich Dad Poor Dad",
+    prix: 130,
+    summary:
+      "A book about money, investing, financial education, and mindset.",
+    rating: "4.6",
+    image: RandomLinks[3],
+  },
+  {
+    id: 5,
+    nom: "The Alchemist",
+    prix: 110,
+    summary:
+      "A philosophical story about dreams, destiny, and personal journey.",
+    rating: "4.7",
+    image: RandomLinks[4],
+  },
+  {
+    id: 6,
+    nom: "Clean Code",
+    prix: 220,
+    summary:
+      "A programming book about writing readable, maintainable, and clean code.",
+    rating: "4.8",
+    image: RandomLinks[5],
+  },
+  {
+    id: 7,
+    nom: "Think and Grow Rich",
+    prix: 140,
+    summary:
+      "A personal development book about success, goals, and mindset.",
+    rating: "4.4",
+    image: RandomLinks[6],
+  },
+  {
+    id: 8,
+    nom: "The Psychology of Money",
+    prix: 160,
+    summary:
+      "A book about financial behavior, money decisions, and long-term thinking.",
+    rating: "4.7",
+    image: RandomLinks[7],
+  },
+  {
+    id: 9,
+    nom: "Deep Work",
+    prix: 135,
+    summary:
+      "A productivity book about focus, discipline, and meaningful work.",
+    rating: "4.6",
+    image: RandomLinks[8],
+  },
+  {
+    id: 10,
+    nom: "1984",
+    prix: 100,
+    summary:
+      "A dystopian novel about surveillance, power, control, and freedom.",
+    rating: "4.6",
+    image: RandomLinks[9],
+  },
+  {
+    id: 11,
+    nom: "The Hobbit",
+    prix: 170,
+    summary:
+      "A fantasy adventure about Bilbo Baggins and his unexpected journey.",
+    rating: "4.8",
+    image: RandomLinks[10],
+  },
+  {
+    id: 12,
+    nom: "Start With Why",
+    prix: 145,
+    summary:
+      "A business and leadership book about purpose and inspiration.",
+    rating: "4.5",
+    image: RandomLinks[11],
+  },
 ];
 
 const EpicReads = () => {
-  const [books, setBooks] = useState([]);
-  const [isLoadingBooks, setLoadingBooks] = useState(true);
-  const [booksError, setBooksError] = useState("");
+  const [books] = useState(booksData);
 
   const navigate = useNavigate();
   const { addToCart } = useContext(CartContext);
@@ -51,37 +142,6 @@ const EpicReads = () => {
   const [currentBook, setCurrentBook] = useState(null);
 
   const isLoggedIn = () => localStorage.getItem("token") === "logged_in";
-
-  const normalizeBook = (book) => ({
-    id: book.id ?? book._id,
-    nom: book.nom ?? book.title ?? "Unknown",
-    prix: book.prix ?? book.price ?? 0,
-    summary: book.summary ?? book.description ?? "",
-    rating: book.rating ?? "N/A",
-  });
-
-  const getBooks = async () => {
-    setLoadingBooks(true);
-    setBooksError("");
-
-    try {
-      const res = await api.get("/livres");
-      const booksWithImages = res.data.map((book) => ({
-        ...normalizeBook(book),
-        image: RandomLinks[Math.floor(Math.random() * RandomLinks.length)],
-      }));
-      setBooks(booksWithImages);
-    } catch (err) {
-      setBooksError("Unable to load books. Please try again later.");
-    } finally {
-      setLoadingBooks(false);
-    }
-  };
-
-  useEffect(() => {
-    getBooks();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const handleBuyClick = (book) => {
     if (!isLoggedIn()) {
@@ -113,7 +173,7 @@ const EpicReads = () => {
   };
 
   const toggleFavorites = () => {
-    setIsFavoritesOpen(!isFavoritesOpen);
+    setIsFavoritesOpen((prev) => !prev);
   };
 
   const handleClosePopup = () => {
@@ -139,11 +199,7 @@ const EpicReads = () => {
         <Categorie />
 
         <div className="books-grid">
-          {isLoadingBooks ? (
-            <p className="loading-message">Loading books...</p>
-          ) : booksError ? (
-            <p className="error-message">{booksError}</p>
-          ) : books.length === 0 ? (
+          {books.length === 0 ? (
             <p className="empty-message">No books available.</p>
           ) : (
             <CategorySection
@@ -161,10 +217,15 @@ const EpicReads = () => {
       {isPopupOpen && currentBook && (
         <div className="popup-overlay">
           <div className="popup">
-            <button className="close-btn" onClick={handleClosePopup}>✖</button>
+            <button className="close-btn" onClick={handleClosePopup}>
+              ✖
+            </button>
+
             <h2>{currentBook.nom}</h2>
             <p>{currentBook.summary || "No description available."}</p>
-            <p><strong>Rating:</strong> {currentBook.rating || "N/A"}</p>
+            <p>
+              <strong>Rating:</strong> {currentBook.rating || "N/A"}
+            </p>
           </div>
         </div>
       )}
@@ -182,14 +243,18 @@ const CategorySection = ({
 }) => (
   <div className="category-section" data-title={title}>
     <h3>{title}</h3>
+
     <div className="book-grid">
       {books.map((book) => (
         <div className="book" key={book.id}>
           <img src={book.image} alt={book.nom} />
+
           <p>{book.nom}</p>
           <p>{book.prix} MAD</p>
+
           <div className="actions">
             <button onClick={() => onReadClick(book)}>📖 Read</button>
+
             <button
               onClick={() => toggleFavorite(book)}
               className={
@@ -200,6 +265,7 @@ const CategorySection = ({
             >
               ❤ Like
             </button>
+
             <button onClick={() => onBuyClick(book)}>🛒 Buy</button>
           </div>
         </div>
