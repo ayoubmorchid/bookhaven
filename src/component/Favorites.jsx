@@ -1,5 +1,4 @@
 import React from "react";
-import "../style/Favorites.css";
 
 const Favorites = ({ favorites, removeFromFavorites, isFavoritesOpen, toggleFavorites }) => {
   return (
