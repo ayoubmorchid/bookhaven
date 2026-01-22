@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../style/BookDetails.css";
+
 
 const BookDetails = ({ book, isOpen, toggleDetails }) => {
   if (!isOpen) return null;
