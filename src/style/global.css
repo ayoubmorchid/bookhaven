@@ -1,4 +1,5 @@
 :root {
+  /* Colors */
   --background-color: #f5f7fa;
   --primary-color: #3b82f6;
   --secondary-color: #1e293b;
@@ -8,5 +9,17 @@
   --subtext-color: #6b7280;
 
   --accent-color: #10b981;
+  --danger-color: #ef4444;
+
+  /* UI */
   --box-shadow-color: rgba(0, 0, 0, 0.08);
+  --border-color: #e5e7eb;
+
+  /* Typography */
+  --font-family-main: 'Roboto', sans-serif;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 18px;
 }
