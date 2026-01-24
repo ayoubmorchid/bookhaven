@@ -1,66 +1,42 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import api from "../config/api";
+import React from "react";
 
-const fallbackCategories = [
-  { id: 1, nom: "Roman" },
-  { id: 2, nom: "Science-fiction" },
-  { id: 3, nom: "Fantasy" },
-  { id: 4, nom: "Policier" },
-  { id: 5, nom: "Thriller" },
-  { id: 6, nom: "Historique" },
-  { id: 7, nom: "Philosophie" },
-  { id: 8, nom: "Technologie" },
+const categories = [
+  { id: "all", nom: "All", value: "all" },
+  { id: 1, nom: "Roman", value: "roman" },
+  { id: 2, nom: "Science-fiction", value: "science-fiction" },
+  { id: 3, nom: "Fantasy", value: "fantasy" },
+  { id: 4, nom: "Économie", value: "économie" },
+  { id: 5, nom: "Philosophie", value: "philosophie" },
+  { id: 6, nom: "Technologie", value: "technologie" },
+  {
+    id: 7,
+    nom: "Développement personnel",
+    value: "développement personnel",
+  },
+  { id: 8, nom: "Psychologie", value: "psychologie" },
 ];
 
-export default function Categorie() {
-  const [isLoadingCate, setLoadingCat] = useState(true);
-  const [categories, setCategories] = useState([]);
-  const [categoryError, setCategoryError] = useState("");
-  const [showAll, setShowAll] = useState(false);
-
-  useEffect(() => {
-    const getAllCategories = async () => {
-      try {
-        setLoadingCat(true);
-        setCategoryError("");
-
-        const res = await api.get("/categories");
-        const list = res.data?.data || res.data || [];
-
-        setCategories(Array.isArray(list) && list.length > 0 ? list : fallbackCategories);
-      } catch (err) {
-        console.error("Error loading categories:", err);
-        setCategories(fallbackCategories);
-        setCategoryError("");
-      } finally {
-        setLoadingCat(false);
-      }
-    };
-
-    getAllCategories();
-  }, []);
-
-  const displayedCategories = showAll ? categories : categories.slice(0, 5);
-
+export default function Categorie({ selectedCategory, setSelectedCategory }) {
   const getCategoryIcon = (name = "") => {
     switch (name.toLowerCase()) {
+      case "all":
+        return "📚";
       case "roman":
         return "📖";
       case "science-fiction":
         return "👽";
       case "fantasy":
         return "🧙‍♂️";
-      case "policier":
-        return "🕵️‍♂️";
-      case "thriller":
-        return "😱";
-      case "historique":
-        return "📜";
+      case "économie":
+        return "💰";
       case "philosophie":
         return "🧠";
       case "technologie":
         return "💻";
+      case "développement personnel":
+        return "🚀";
+      case "psychologie":
+        return "🧘";
       default:
         return "📘";
     }
@@ -68,62 +44,22 @@ export default function Categorie() {
 
   return (
     <aside className="sidebar">
-      <div className="search-bar">
-        <input type="text" placeholder="Search books..." />
-        <button type="button">🔍</button>
-      </div>
+      <h2>Categories</h2>
 
-      <h2>Popular Categories</h2>
-
-      {isLoadingCate && (
-        <p className="loading-message">Loading categories...</p>
-      )}
-
-      {categoryError && (
-        <p className="error-message">{categoryError}</p>
-      )}
-
-      {!isLoadingCate && categories.length === 0 && (
-        <div className="category-empty-state">
-          <p>No categories available.</p>
-        </div>
-      )}
-
-      {!isLoadingCate && categories.length > 0 && (
-        <>
-          <ul className="category-list">
-            {displayedCategories.map((cat, index) => {
-              const categoryName = cat?.nom || cat?.name || "Unknown category";
-              const categoryKey = cat?.id || `${categoryName}-${index}`;
-
-              return (
-                <li key={categoryKey} className="category-item">
-                  <span className="category-icon">
-                    {getCategoryIcon(categoryName)}
-                  </span>
-
-                  <Link
-                    to={`/categories/${encodeURIComponent(categoryName)}`}
-                    className="category-name"
-                  >
-                    {categoryName}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-
-          {categories.length > 5 && (
-            <button
-              type="button"
-              className="show-more-categories-btn"
-              onClick={() => setShowAll((prev) => !prev)}
-            >
-              {showAll ? "Voir moins ▲" : "Voir plus ▼"}
-            </button>
-          )}
-        </>
-      )}
+      <ul className="category-list">
+        {categories.map((cat) => (
+          <li
+            key={cat.id}
+            className={`category-item ${
+              selectedCategory === cat.value ? "active-category" : ""
+            }`}
+            onClick={() => setSelectedCategory(cat.value)}
+          >
+            <span className="category-icon">{getCategoryIcon(cat.value)}</span>
+            <span className="category-name">{cat.nom}</span>
+          </li>
+        ))}
+      </ul>
     </aside>
   );
 }
