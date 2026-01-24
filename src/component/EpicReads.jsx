@@ -24,8 +24,8 @@ const booksData = [
     id: 1,
     nom: "The Great Gatsby",
     prix: 120,
-    summary:
-      "A classic novel about wealth, love, ambition, and the American dream.",
+    category: "roman",
+    summary: "A classic novel about wealth, love, ambition, and the American dream.",
     rating: "4.5",
     image: RandomLinks[0],
   },
@@ -33,8 +33,8 @@ const booksData = [
     id: 2,
     nom: "Atomic Habits",
     prix: 150,
-    summary:
-      "A practical guide to building good habits and breaking bad ones.",
+    category: "développement personnel",
+    summary: "A practical guide to building good habits and breaking bad ones.",
     rating: "4.8",
     image: RandomLinks[1],
   },
@@ -42,8 +42,8 @@ const booksData = [
     id: 3,
     nom: "Harry Potter",
     prix: 180,
-    summary:
-      "A fantasy story about magic, friendship, courage, and adventure.",
+    category: "fantasy",
+    summary: "A fantasy story about magic, friendship, courage, and adventure.",
     rating: "4.9",
     image: RandomLinks[2],
   },
@@ -51,8 +51,8 @@ const booksData = [
     id: 4,
     nom: "Rich Dad Poor Dad",
     prix: 130,
-    summary:
-      "A book about money, investing, financial education, and mindset.",
+    category: "économie",
+    summary: "A book about money, investing, financial education, and mindset.",
     rating: "4.6",
     image: RandomLinks[3],
   },
@@ -60,8 +60,8 @@ const booksData = [
     id: 5,
     nom: "The Alchemist",
     prix: 110,
-    summary:
-      "A philosophical story about dreams, destiny, and personal journey.",
+    category: "philosophie",
+    summary: "A philosophical story about dreams, destiny, and personal journey.",
     rating: "4.7",
     image: RandomLinks[4],
   },
@@ -69,8 +69,8 @@ const booksData = [
     id: 6,
     nom: "Clean Code",
     prix: 220,
-    summary:
-      "A programming book about writing readable, maintainable, and clean code.",
+    category: "technologie",
+    summary: "A programming book about writing readable, maintainable, and clean code.",
     rating: "4.8",
     image: RandomLinks[5],
   },
@@ -78,8 +78,8 @@ const booksData = [
     id: 7,
     nom: "Think and Grow Rich",
     prix: 140,
-    summary:
-      "A personal development book about success, goals, and mindset.",
+    category: "développement personnel",
+    summary: "A personal development book about success, goals, and mindset.",
     rating: "4.4",
     image: RandomLinks[6],
   },
@@ -87,8 +87,8 @@ const booksData = [
     id: 8,
     nom: "The Psychology of Money",
     prix: 160,
-    summary:
-      "A book about financial behavior, money decisions, and long-term thinking.",
+    category: "psychologie",
+    summary: "A book about financial behavior, money decisions, and long-term thinking.",
     rating: "4.7",
     image: RandomLinks[7],
   },
@@ -96,8 +96,8 @@ const booksData = [
     id: 9,
     nom: "Deep Work",
     prix: 135,
-    summary:
-      "A productivity book about focus, discipline, and meaningful work.",
+    category: "développement personnel",
+    summary: "A productivity book about focus, discipline, and meaningful work.",
     rating: "4.6",
     image: RandomLinks[8],
   },
@@ -105,8 +105,8 @@ const booksData = [
     id: 10,
     nom: "1984",
     prix: 100,
-    summary:
-      "A dystopian novel about surveillance, power, control, and freedom.",
+    category: "science-fiction",
+    summary: "A dystopian novel about surveillance, power, control, and freedom.",
     rating: "4.6",
     image: RandomLinks[9],
   },
@@ -114,8 +114,8 @@ const booksData = [
     id: 11,
     nom: "The Hobbit",
     prix: 170,
-    summary:
-      "A fantasy adventure about Bilbo Baggins and his unexpected journey.",
+    category: "fantasy",
+    summary: "A fantasy adventure about Bilbo Baggins and his unexpected journey.",
     rating: "4.8",
     image: RandomLinks[10],
   },
@@ -123,8 +123,8 @@ const booksData = [
     id: 12,
     nom: "Start With Why",
     prix: 145,
-    summary:
-      "A business and leadership book about purpose and inspiration.",
+    category: "économie",
+    summary: "A business and leadership book about purpose and inspiration.",
     rating: "4.5",
     image: RandomLinks[11],
   },
@@ -132,6 +132,7 @@ const booksData = [
 
 const EpicReads = () => {
   const [books] = useState(booksData);
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   const navigate = useNavigate();
   const { addToCart } = useContext(CartContext);
@@ -142,6 +143,11 @@ const EpicReads = () => {
   const [currentBook, setCurrentBook] = useState(null);
 
   const isLoggedIn = () => localStorage.getItem("token") === "logged_in";
+
+  const filteredBooks =
+    selectedCategory === "all"
+      ? books
+      : books.filter((book) => book.category === selectedCategory);
 
   const handleBuyClick = (book) => {
     if (!isLoggedIn()) {
@@ -196,15 +202,22 @@ const EpicReads = () => {
       />
 
       <div className="content-container">
-        <Categorie />
+        <Categorie
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
 
         <div className="books-grid">
-          {books.length === 0 ? (
-            <p className="empty-message">No books available.</p>
+          {filteredBooks.length === 0 ? (
+            <p className="empty-message">No books available in this category.</p>
           ) : (
             <CategorySection
-              title="All Books"
-              books={books}
+              title={
+                selectedCategory === "all"
+                  ? "All Books"
+                  : selectedCategory
+              }
+              books={filteredBooks}
               onBuyClick={handleBuyClick}
               onReadClick={handleReadClick}
               toggleFavorite={toggleFavorite}
@@ -223,6 +236,9 @@ const EpicReads = () => {
 
             <h2>{currentBook.nom}</h2>
             <p>{currentBook.summary || "No description available."}</p>
+            <p>
+              <strong>Category:</strong> {currentBook.category}
+            </p>
             <p>
               <strong>Rating:</strong> {currentBook.rating || "N/A"}
             </p>
