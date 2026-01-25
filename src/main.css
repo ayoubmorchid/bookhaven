@@ -2,20 +2,23 @@
 
 /* =========================
    GLOBAL VARIABLES
-   غير الألوان من هنا فقط
 ========================= */
 :root {
   /* Colors */
-  --background-color: #f5efe6;
-  --primary-color: #8b5e34;
+  --background-color: #f0f9ff;
+  --primary-color: #0284c7;
   --secondary-color: #ffffff;
-  --hover-color: #6f4728;
+  --hover-color: #0369a1;
 
-  --text-color: #2b2118;
-  --subtext-color: #7a6a5a;
+  --text-color: #0f172a;
+  --subtext-color: #475569;
 
-  --accent-color: #c58b4b;
+  --accent-color: #38bdf8;
   --danger-color: #ef4444;
+
+  /* UI */
+  --box-shadow-color: rgba(2, 132, 199, 0.12);
+  --border-color: #e0f2fe;
 
   /* UI */
   --box-shadow-color: rgba(43, 33, 24, 0.12);
