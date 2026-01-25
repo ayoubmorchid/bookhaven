@@ -1,6 +1,16 @@
 import React from "react";
 
-const Favorites = ({ favorites, removeFromFavorites, isFavoritesOpen, toggleFavorites }) => {
+const Favorites = ({
+  favorites,
+  removeFromFavorites,
+  isFavoritesOpen,
+  toggleFavorites,
+}) => {
+  const isLoggedIn = localStorage.getItem("token") === "logged_in";
+
+
+  if (!isLoggedIn) return null;
+
   return (
     <>
       <button className="favorites-toggle-btn" onClick={toggleFavorites}>
@@ -8,8 +18,12 @@ const Favorites = ({ favorites, removeFromFavorites, isFavoritesOpen, toggleFavo
       </button>
 
       <div className={`favorites-popup ${isFavoritesOpen ? "is-open" : ""}`}>
-        <button className="close-btn" onClick={toggleFavorites}>&times;</button>
+        <button className="close-btn" onClick={toggleFavorites}>
+          &times;
+        </button>
+
         <h2>Your Favorites</h2>
+
         {favorites.length === 0 ? (
           <p>No favorites added yet.</p>
         ) : (
@@ -18,7 +32,10 @@ const Favorites = ({ favorites, removeFromFavorites, isFavoritesOpen, toggleFavo
               <li key={fav.id}>
                 <img src={fav.image} alt={fav.nom} />
                 <span>{fav.nom}</span>
-                <button onClick={() => removeFromFavorites(fav.id)}>Remove</button>
+
+                <button onClick={() => removeFromFavorites(fav.id)}>
+                  Remove
+                </button>
               </li>
             ))}
           </ul>
