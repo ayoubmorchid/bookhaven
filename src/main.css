@@ -669,15 +669,15 @@ input:focus {
 ========================= */
 .books-container .title {
   text-align: center;
-  margin: 20px auto 35px;
+  margin: 20px 0 35px;
   padding: 24px;
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(135deg, var(--primary-color), var(--hover-color));
   color: #ffffff;
   border-radius: 20px;
   box-shadow: 0 12px 28px var(--box-shadow-color);
-  width: calc(100% - 320px);
-  max-width: 900px;
-  margin-left: 280px;
+  margin-left: 260px;
+  margin-right: 20px;
+  max-width: calc(100% - 300px);
 }
 
 .books-container .title h1 {
