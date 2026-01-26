@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import girl from "../images/girl.png";
 import book1 from "../images/book1.png";
 import book2 from "../images/book2.png";
@@ -23,9 +24,16 @@ const bestSellingBooks = [
 ];
 
 export default function Section() {
+  const navigate = useNavigate();
+
   const renderBooks = (books) =>
     books.map((book, index) => (
-      <div className="home-book-card" key={`${book.title}-${index}`}>
+      <div
+        className="home-book-card"
+        key={`${book.title}-${index}`}
+        onClick={() => navigate("/books")}
+        style={{ cursor: "pointer" }}
+      >
         <img src={book.image} alt={book.title} />
         <p>
           {book.title} <br />
@@ -44,7 +52,13 @@ export default function Section() {
             Discover thousands of books in different genres. Read more, learn
             more, and find your next favorite story.
           </h5>
-          <button className="welcome-button">Find Your Book</button>
+
+          <button
+            className="welcome-button"
+            onClick={() => navigate("/books")}
+          >
+            Find Your Book
+          </button>
         </div>
 
         <div className="welcome-image">
@@ -61,11 +75,13 @@ export default function Section() {
 
         <h2>Best Authors Books</h2>
         <div className="popularbook">{renderBooks(popularBooks)}</div>
-        <button>See All →</button>
+
+        <button onClick={() => navigate("/books")}>See All →</button>
 
         <h2>Best Selling Books</h2>
         <div className="sellingbook">{renderBooks(bestSellingBooks)}</div>
-        <button>See All →</button>
+
+        <button onClick={() => navigate("/books")}>See All →</button>
       </div>
     </section>
   );
